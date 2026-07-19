@@ -1,0 +1,45 @@
+name: Validate Live Build
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check JavaScript syntax
+        run: |
+          set -e
+          for file in src/js/*.js; do
+            node --check "$file"
+          done
+
+      - name: Check required runtime files
+        run: |
+          test -f index.html
+          test -f brand/masar-symbol.svg
+          test -f src/styles/app.css
+          test -f src/styles/governance.css
+          test -f src/js/00-foundation.js
+          test -f src/js/05-project-core.js
+          test -f src/js/06-governance-core.js
+          test -f src/js/10-editor.js
+          test -f src/js/20-inspector.js
+          test -f src/js/30-persistence.js
+          test -f src/js/40-ui.js
+          test -f src/js/50-validation-ui.js
+
+      - name: Reject root-absolute runtime paths
+        run: |
+          if grep -E '(src|href)="/src/' index.html; then
+            echo 'Root-absolute paths break GitHub Pages project sites.'
+            exit 1
+          fi
