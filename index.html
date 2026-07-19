@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#00a984">
+<title>مسار · محرّر مخططات سير العمليات</title>
+<link rel="icon" href="./brand/masar-symbol.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./src/styles/app.css">
+</head>
+<body>
+<div id="app">
+  <div class="head">
+    <div class="brand"><span class="logo">م</span><span>مسار<br><small>محرّر سير العمليات</small></span></div>
+    <div class="grp">
+      <button class="tb" id="undo" title="تراجع">↶</button>
+      <button class="tb" id="redo" title="إعادة">↷</button>
+    </div>
+    <div class="grp">
+      <button class="tb" id="zout">－</button>
+      <span class="zoomlbl" id="zlbl">100%</span>
+      <button class="tb" id="zin">＋</button>
+      <button class="tb" id="zfit" title="ملاءمة">⤢</button>
+    </div>
+    <div class="grp">
+      <button class="tb" id="snap" title="محاذاة للشبكة">▦ محاذاة</button>
+      <button class="tb" id="addLane" title="إضافة مسار قسم">▤ قسم</button>
+      <button class="tb" id="dup" title="تكرار">⧉</button>
+      <button class="tb danger" id="del" title="حذف">🗑</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="menu">
+      <button class="tb" id="tplBtn">قوالب ▾</button>
+      <div class="pop" id="tplPop">
+        <button data-tpl="stc">مخطط STC للقاصر</button>
+        <button data-tpl="approval">دورة اعتماد طلب</button>
+        <button data-tpl="onboarding">توظيف موظف جديد</button>
+        <div class="hr"></div>
+        <button data-tpl="blank">▢ لوحة فارغة</button>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="tb" id="bgBtn">الخلفية ▾</button>
+      <div class="pop" id="bgPop" style="min-width:210px">
+        <div style="font-size:11px;font-weight:800;color:var(--sub);padding:4px 8px">اللون</div>
+        <div class="swatches" id="bgColors" style="padding:2px 8px 8px"></div>
+        <div class="hr"></div>
+        <div style="font-size:11px;font-weight:800;color:var(--sub);padding:4px 8px">النمط</div>
+        <div class="row" id="bgPatterns" style="padding:2px 8px 6px;flex-wrap:wrap;gap:5px"></div>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="tb" id="sesBtn">الجلسات ▾</button>
+      <div class="pop" id="sesPop" style="min-width:220px">
+        <button id="sesNew">＋ حفظ كجلسة جديدة…</button>
+        <button id="sesSave">💾 حفظ الجلسة الحالية</button>
+        <div class="hr"></div>
+        <div id="sesList" style="max-height:230px;overflow:auto"></div>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="tb solid" id="expBtn">تصدير ▾</button>
+      <div class="pop" id="expPop">
+        <button id="exPng">⬇︎ صورة PNG</button>
+        <button id="exSvg">⬇︎ متجه SVG</button>
+        <button id="exJson">⬇︎ ملف مشروع JSON</button>
+        <button id="exReport">📋 تقرير حوكمة (سمات/RACI)</button>
+        <div class="hr"></div>
+        <button id="imJson">⬆︎ فتح مشروع JSON</button>
+        <button id="restore">↺ استعادة آخر حفظ</button>
+      </div>
+    </div>
+    <button class="tb validate-btn" id="validateBtn" title="فحص سلامة المخطط">✓ فحص <span id="validationBadge"></span></button>
+    <button class="tb" id="guideBtn" title="الدليل الشامل">📖 دليل</button>
+    <button class="tb" id="help" title="اختصارات">؟</button>
+  </div>
+
+  <div class="strip" id="strip"></div>
+
+  <div class="stage" id="stage">
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"></path>
+        </marker>
+        <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse">
+          <path d="M22,0 L0,0 0,22" fill="none" stroke="var(--grid)" stroke-width="1"></path>
+        </pattern>
+        <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.4" fill="var(--grid)"></circle>
+        </pattern>
+        <pattern id="lines" width="24" height="24" patternUnits="userSpaceOnUse">
+          <path d="M0,24 H24" fill="none" stroke="var(--grid)" stroke-width="1"></path>
+        </pattern>
+      </defs>
+      <rect id="bgfill" x="-5000" y="-5000" width="10000" height="10000" fill="#eef0f5"></rect>
+      <rect id="bg" x="-5000" y="-5000" width="10000" height="10000" fill="url(#grid)"></rect>
+      <g id="vp">
+        <g id="lanes"></g>
+        <g id="edges"></g>
+        <g id="nodes"></g>
+        <g id="overlay"></g>
+      </g>
+    </svg>
+    <div class="inspector" id="inspector"></div>
+    <div class="status" id="status">جاهز</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3>اختصارات لوحة المفاتيح</h3>
+    <div class="k"><span>تحديد متعدد</span><b>Shift + نقر</b></div>
+    <div class="k"><span>حذف</span><b>Delete</b></div>
+    <div class="k"><span>تكرار</span><b>Ctrl + D</b></div>
+    <div class="k"><span>نسخ / لصق</span><b>Ctrl + C / V</b></div>
+    <div class="k"><span>تراجع / إعادة</span><b>Ctrl + Z / Y</b></div>
+    <div class="k"><span>تكبير / تصغير</span><b>عجلة الماوس</b></div>
+    <div class="k"><span>تحريك اللوحة</span><b>سحب الخلفية</b></div>
+    <div class="k"><span>ربط عنصرين</span><b>اسحب من نقطة الارتساء</b></div>
+    <div class="k"><span>تعديل النص</span><b>نقر مزدوج</b></div>
+    <button class="close" onclick="document.getElementById('overlay').classList.remove('show')">تمام</button>
+  </div>
+</div>
+<input type="file" id="fileIn" accept="application/json" hidden>
+
+<div class="goverlay" id="guide">
+  <div class="gwrap">
+    <button class="gclose" id="gClose" title="إغلاق">✕</button>
+    <div id="gBody"></div>
+  </div>
+</div>
+
+<div class="goverlay" id="validationPanel">
+  <div class="gwrap validation-wrap">
+    <button class="gclose" id="validationClose" title="إغلاق">✕</button>
+    <div id="validationBody"></div>
+  </div>
+</div>
+
+<script src="./src/js/05-project-core.js"></script>
+<script src="./src/js/06-governance-core.js"></script>
+<script src="./src/js/00-foundation.js"></script>
+<script src="./src/js/10-editor.js"></script>
+<script src="./src/js/20-inspector.js"></script>
+<script src="./src/js/30-persistence.js"></script>
+<script src="./src/js/40-ui.js"></script>
+<script src="./src/js/50-validation-ui.js"></script>
+</body>
+</html>
