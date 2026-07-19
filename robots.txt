@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /app/
+
+Sitemap: https://mansour-cyber.github.io/Masar-Live/sitemap.xml
