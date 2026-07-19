@@ -3,6 +3,8 @@ name: Validate Live Build
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,14 +20,20 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           set -e
-          for file in src/js/*.js; do
+          for file in src/js/*.js assets/*.js; do
             node --check "$file"
           done
 
       - name: Check required runtime files
         run: |
           test -f index.html
+          test -f app/index.html
+          test -f editor.html
+          test -f robots.txt
+          test -f sitemap.xml
           test -f brand/masar-symbol.svg
+          test -f assets/landing.css
+          test -f assets/landing.js
           test -f src/styles/app.css
           test -f src/styles/governance.css
           test -f src/js/00-foundation.js
@@ -37,9 +45,22 @@ jobs:
           test -f src/js/40-ui.js
           test -f src/js/50-validation-ui.js
 
-      - name: Reject root-absolute runtime paths
+      - name: Check landing and editor paths
         run: |
-          if grep -E '(src|href)="/src/' index.html; then
+          set -e
+          grep -q 'href="./app/"' index.html
+          grep -q 'src="./app/"' index.html
+          grep -q 'href="../src/styles/app.css"' app/index.html
+          grep -q 'src="../src/js/50-validation-ui.js"' app/index.html
+          if grep -E '(src|href)="/(src|assets|brand)/' index.html app/index.html; then
             echo 'Root-absolute paths break GitHub Pages project sites.'
+            exit 1
+          fi
+
+      - name: Reject placeholder sales claims
+        run: |
+          set -e
+          if grep -Eiq 'آلاف العملاء|الأفضل في السوق|نتائج مضمونة|مدعوم بالذكاء الاصطناعي' index.html; then
+            echo 'Unsubstantiated marketing claim found.'
             exit 1
           fi
