@@ -2,152 +2,315 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#00a984">
-<title>مسار · محرّر مخططات سير العمليات</title>
+<meta name="description" content="مسار منصة عربية تساعد الشركات الصغيرة والمتوسطة على توثيق الإجراءات، توزيع المسؤوليات، كشف التعثرات، وإنتاج تقارير حوكمة واضحة.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:title" content="مسار — اعرف أين تتعطل العملية قبل أن تتعطل الشركة">
+<meta property="og:description" content="حوّل الإجراءات المبعثرة إلى خطوات واضحة، مسؤوليات محسومة، ومخاطر ظاهرة في مخطط واحد.">
+<meta property="og:url" content="https://mansour-cyber.github.io/Masar-Live/">
+<meta property="og:image" content="https://mansour-cyber.github.io/Masar-Live/brand/masar-symbol.svg">
+<title>مسار | توثيق العمليات والحوكمة للشركات الصغيرة والمتوسطة</title>
+<link rel="canonical" href="https://mansour-cyber.github.io/Masar-Live/">
 <link rel="icon" href="./brand/masar-symbol.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./src/styles/app.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/landing.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"مسار",
+  "applicationCategory":"BusinessApplication",
+  "operatingSystem":"Web",
+  "inLanguage":"ar",
+  "description":"منصة عربية لتوثيق العمليات والإجراءات وربطها بالأقسام والمسؤوليات والمخاطر والتقارير.",
+  "url":"https://mansour-cyber.github.io/Masar-Live/app/"
+}
+</script>
 </head>
 <body>
-<div id="app">
-  <div class="head">
-    <div class="brand"><span class="logo">م</span><span>مسار<br><small>محرّر سير العمليات</small></span></div>
-    <div class="grp">
-      <button class="tb" id="undo" title="تراجع">↶</button>
-      <button class="tb" id="redo" title="إعادة">↷</button>
+<a class="skip-link" href="#main">تجاوز إلى المحتوى</a>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="wordmark" href="./" aria-label="مسار، الصفحة الرئيسية">
+      <img src="./brand/masar-symbol.svg" alt="">
+      <span>مسار</span>
+    </a>
+
+    <nav class="nav-links" data-nav-links aria-label="التنقل الرئيسي">
+      <a href="#problem">المشكلة</a>
+      <a href="#how">كيف يعمل</a>
+      <a href="#capabilities">القدرات</a>
+      <a href="#uses">حالات الاستخدام</a>
+      <a href="#faq">الأسئلة</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="btn btn-quiet" href="#product">شاهد المنتج</a>
+      <a class="btn btn-primary" href="./app/">ابدأ التجربة</a>
+      <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" data-menu-toggle>☰</button>
     </div>
-    <div class="grp">
-      <button class="tb" id="zout">－</button>
-      <span class="zoomlbl" id="zlbl">100%</span>
-      <button class="tb" id="zin">＋</button>
-      <button class="tb" id="zfit" title="ملاءمة">⤢</button>
-    </div>
-    <div class="grp">
-      <button class="tb" id="snap" title="محاذاة للشبكة">▦ محاذاة</button>
-      <button class="tb" id="addLane" title="إضافة مسار قسم">▤ قسم</button>
-      <button class="tb" id="dup" title="تكرار">⧉</button>
-      <button class="tb danger" id="del" title="حذف">🗑</button>
-    </div>
-    <div class="spacer"></div>
-    <div class="menu">
-      <button class="tb" id="tplBtn">قوالب ▾</button>
-      <div class="pop" id="tplPop">
-        <button data-tpl="stc">مخطط STC للقاصر</button>
-        <button data-tpl="approval">دورة اعتماد طلب</button>
-        <button data-tpl="onboarding">توظيف موظف جديد</button>
-        <div class="hr"></div>
-        <button data-tpl="blank">▢ لوحة فارغة</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">نسخة إطلاق تجريبية متاحة الآن</span>
+        <h1>اعرف أين تتعطل العملية قبل أن تتعطل الشركة.</h1>
+        <p class="lead">مسار يحوّل الإجراءات المبعثرة إلى خطوات واضحة، ومسؤوليات محسومة، ومخاطر ظاهرة—في مخطط واحد يفهمه الفريق وتراجعه الإدارة.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="./app/">ابنِ أول مسار الآن</a>
+          <a class="btn btn-secondary btn-lg" href="#problem">هل هذه مشكلتك؟</a>
+        </div>
+        <div class="proof-row" aria-label="مزايا سريعة">
+          <span>واجهة عربية بالكامل</span>
+          <span>يعمل من المتصفح</span>
+          <span>حفظ محلي</span>
+          <span>تقارير حوكمة</span>
+        </div>
+      </div>
+
+      <div class="product-shell" aria-label="معاينة فعلية لمحرر مسار">
+        <div class="shell-bar">
+          <span class="shell-dot"></span><span class="shell-dot"></span><span class="shell-dot"></span>
+          <span class="shell-url">masar / workspace</span>
+        </div>
+        <iframe src="./app/" title="معاينة محرر مسار" loading="eager" tabindex="-1"></iframe>
+        <div class="preview-overlay"><a class="btn btn-dark" href="./app/">افتح المحرر بكامل الشاشة</a></div>
       </div>
     </div>
-    <div class="menu">
-      <button class="tb" id="bgBtn">الخلفية ▾</button>
-      <div class="pop" id="bgPop" style="min-width:210px">
-        <div style="font-size:11px;font-weight:800;color:var(--sub);padding:4px 8px">اللون</div>
-        <div class="swatches" id="bgColors" style="padding:2px 8px 8px"></div>
-        <div class="hr"></div>
-        <div style="font-size:11px;font-weight:800;color:var(--sub);padding:4px 8px">النمط</div>
-        <div class="row" id="bgPatterns" style="padding:2px 8px 6px;flex-wrap:wrap;gap:5px"></div>
+  </section>
+
+  <section class="pain-strip" aria-label="مشكلات تشغيلية شائعة">
+    <div class="container pain-items">
+      <div class="pain-item"><strong>الإجراء معروف لشخص واحد</strong><span>وعند غيابه يتوقف العمل أو يبدأ الاجتهاد.</span></div>
+      <div class="pain-item"><strong>الاعتماد موزع بين قنوات متعددة</strong><span>بريد، واتساب، ملفات، وتعليمات شفهية بلا مرجع واحد.</span></div>
+      <div class="pain-item"><strong>المسؤولية تظهر بعد الخطأ</strong><span>ولا تكون محسومة قبل التنفيذ أو أثناءه.</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="problem">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="kicker">الجرح الحقيقي</p>
+          <h2>المشكلة ليست أن فريقك لا يعمل. المشكلة أن طريقة العمل غير مكتوبة.</h2>
+        </div>
+        <p class="desc">عندما تكبر الشركة أسرع من إجراءاتها، تتحول الخبرة إلى معرفة شفهية، وتتحول الموافقات إلى مطاردة، وتصبح المراجعة رد فعل بعد وقوع المشكلة.</p>
+      </div>
+
+      <div class="wound-grid">
+        <article class="wound-card reveal"><div class="wound-num">01</div><h3>الإجراء داخل رأس الموظف</h3><p>لا يوجد مرجع واضح يشرح ما الذي يحدث، وبأي ترتيب، ومن المسؤول.</p></article>
+        <article class="wound-card reveal"><div class="wound-num">02</div><h3>الاعتماد يتنقل بين القنوات</h3><p>تفاصيل القرار موزعة بين رسائل واجتماعات وملفات لا تربطها صورة واحدة.</p></article>
+        <article class="wound-card reveal"><div class="wound-num">03</div><h3>الأدوار تتداخل</h3><p>أكثر من شخص يظن أنه المسؤول، أو لا أحد يعرف من يملك القرار النهائي.</p></article>
+        <article class="wound-card reveal"><div class="wound-num">04</div><h3>كل موظف جديد يبدأ من الصفر</h3><p>التدريب يعتمد على النقل الشفهي ويعيد نفس الأسئلة والأخطاء.</p></article>
+        <article class="wound-card reveal"><div class="wound-num">05</div><h3>المراجعة تبدأ بجمع المعلومات</h3><p>بدل تحليل العملية، يضيع الوقت أولًا في اكتشاف كيف تعمل أصلًا.</p></article>
       </div>
     </div>
-    <div class="menu">
-      <button class="tb" id="sesBtn">الجلسات ▾</button>
-      <div class="pop" id="sesPop" style="min-width:220px">
-        <button id="sesNew">＋ حفظ كجلسة جديدة…</button>
-        <button id="sesSave">💾 حفظ الجلسة الحالية</button>
-        <div class="hr"></div>
-        <div id="sesList" style="max-height:230px;overflow:auto"></div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <p class="kicker">من الفوضى إلى الوضوح</p>
+          <h2>مسار لا يكتفي برسم المخطط. يحوّل الإجراء إلى أصل تشغيلي قابل للإدارة.</h2>
+        </div>
+        <p class="desc">الرسم وحده لا يحل المشكلة. القيمة تبدأ عندما تعرف من ينفذ، ومن يعتمد، وأين المخاطر، وكيف يصل المسار إلى نهايته.</p>
+      </div>
+
+      <div class="before-after reveal">
+        <div class="compare-col">
+          <span class="compare-label">قبل مسار</span>
+          <h3>طريقة العمل قابلة للتفسير</h3>
+          <ul class="clean-list">
+            <li>خطوات غير موحدة بين الموظفين والفروع.</li>
+            <li>موافقات بلا مالك واضح أو توقيت محدد.</li>
+            <li>مخاطر لا تظهر إلا بعد التعطل.</li>
+            <li>صعوبة في تسليم العمل أو تدريب البديل.</li>
+            <li>تقارير تُبنى يدويًا من مصادر متفرقة.</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <span class="compare-label">بعد مسار</span>
+          <h3>طريقة العمل قابلة للمراجعة</h3>
+          <ul class="clean-list">
+            <li>تسلسل واحد واضح يراه جميع الأطراف.</li>
+            <li>RACI يحدد المنفذ والمعتمد والمستشار والمطلع.</li>
+            <li>المخاطر والزمن والتكلفة مرتبطة بكل خطوة.</li>
+            <li>الأقسام والمسؤوليات ظاهرة داخل نفس المسار.</li>
+            <li>تقرير حوكمة جاهز للمشاركة والمراجعة.</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="menu">
-      <button class="tb solid" id="expBtn">تصدير ▾</button>
-      <div class="pop" id="expPop">
-        <button id="exPng">⬇︎ صورة PNG</button>
-        <button id="exSvg">⬇︎ متجه SVG</button>
-        <button id="exJson">⬇︎ ملف مشروع JSON</button>
-        <button id="exReport">📋 تقرير حوكمة (سمات/RACI)</button>
-        <div class="hr"></div>
-        <button id="imJson">⬆︎ فتح مشروع JSON</button>
-        <button id="restore">↺ استعادة آخر حفظ</button>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="kicker">كيف يعمل</p><h2>ابدأ بإجراء واحد. حوّله إلى مرجع يفهمه الجميع.</h2></div>
+        <p class="desc">لا تحتاج مشروع تحول ضخم. اختر إجراءً يتكرر، يتأخر، أو يكثر حوله السؤال، ثم ابنِ صورته التشغيلية.</p>
+      </div>
+      <div class="steps">
+        <article class="step reveal" data-step="01"><h3>ارسم الواقع كما هو</h3><p>ضع البداية والخطوات والقرارات والنهاية، بدون تجميل أو افتراضات.</p></article>
+        <article class="step reveal" data-step="02"><h3>وزّع المسؤوليات</h3><p>اربط كل خطوة بالقسم والمالك ومصفوفة RACI الحقيقية.</p></article>
+        <article class="step reveal" data-step="03"><h3>أظهر تكلفة التعطّل</h3><p>أضف الزمن والتكلفة والنظام والمخاطر لكل نقطة في المسار.</p></article>
+        <article class="step reveal" data-step="04"><h3>افحص ثم اعتمد</h3><p>اكتشف العناصر المعلقة ونقص الحوكمة، ثم صدّر التقرير للمراجعة.</p></article>
       </div>
     </div>
-    <button class="tb validate-btn" id="validateBtn" title="فحص سلامة المخطط">✓ فحص <span id="validationBadge"></span></button>
-    <button class="tb" id="guideBtn" title="الدليل الشامل">📖 دليل</button>
-    <button class="tb" id="help" title="اختصارات">؟</button>
+  </section>
+
+  <section class="section section-soft" id="capabilities">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="kicker">القدرات الأساسية</p><h2>كل ما تحتاجه لتوثيق الإجراء قبل أن يتحول إلى نظام معقد.</h2></div>
+        <p class="desc">مصمم ليخدم التشغيل والجودة والحوكمة والامتثال، بدون منحنى تعلم أدوات المؤسسات الثقيلة.</p>
+      </div>
+      <div class="capability-grid">
+        <article class="capability reveal"><div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h5a4 4 0 0 1 4 4v5"/></svg></div><h3>محرر تدفق عربي</h3><p>ابنِ المسار بعناصر العمليات والقرارات والبدايات والنهايات، في واجهة RTL واضحة.</p></article>
+        <article class="capability reveal"><div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></div><h3>أقسام مرتبطة فعليًا</h3><p>قسّم العملية حسب الإدارات، واربط العناصر بالأقسام وانقلها معها كوحدة واحدة.</p></article>
+        <article class="capability reveal"><div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="7" r="2"/><path d="M3 20c0-3 2-6 5-6s5 3 5 6M14 14c3 0 5 2 5 5"/></svg></div><h3>RACI بدون غموض</h3><p>حدّد المنفذ، والمعتمد النهائي، والمستشارين، والمطلعين لكل خطوة.</p></article>
+        <article class="capability reveal"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M12 3 3 20h18L12 3Z"/><path d="M12 9v5M12 17h.01"/></svg></div><h3>مخاطر وزمن وتكلفة</h3><p>اربط الأثر التشغيلي بالخطوة نفسها بدل دفنه في ملف منفصل.</p></article>
+        <article class="capability reveal"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="9"/></svg></div><h3>فحص سلامة العملية</h3><p>اكتشف البوابات الناقصة، والعناصر المعلقة، ونقص RACI، والمسارات التي لا تصل للنهاية.</p></article>
+        <article class="capability reveal"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v5h5M8 13h8M8 17h6"/></svg></div><h3>تقرير حوكمة جاهز</h3><p>صدّر الأقسام والمسؤوليات والزمن والتكلفة والمخاطر في تقرير مفهوم للإدارة.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="product">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="kicker">المنتج أمامك</p><h2>لا صور دعائية مزيفة. هذه هي الأداة نفسها.</h2></div>
+        <p class="desc">جرّب الرسم، افتح خصائص أي خطوة، أضف قسمًا، ثم شغّل الفحص. النسخة المعروضة هي المنتج الفعلي.</p>
+      </div>
+      <div class="product-proof reveal">
+        <div class="product-frame">
+          <div class="shell-bar"><span class="shell-dot"></span><span class="shell-dot"></span><span class="shell-dot"></span><span class="shell-url">live product</span></div>
+          <iframe src="./app/" title="تجربة مباشرة لمحرر مسار" loading="lazy"></iframe>
+        </div>
+        <aside class="product-side">
+          <p class="kicker">جرّبه على إجراء حقيقي</p>
+          <h3>لا تختبره بمثال مثالي. اختبره على أكثر إجراء يرهق فريقك.</h3>
+          <p>اختر دورة موافقة أو إجراء خدمة أو تسليم مهمة. ستعرف بسرعة أين ينقص التسلسل، وأين تتداخل المسؤولية.</p>
+          <ul>
+            <li>لا يتطلب تثبيت برنامج.</li>
+            <li>ملفات المشروع والحفظ تبقى محليًا في المتصفح حاليًا.</li>
+            <li>يمكن تصدير نسخة JSON وفتحها لاحقًا.</li>
+            <li>يمكن تصدير مخطط وتقرير حوكمة.</li>
+          </ul>
+          <a class="btn btn-primary btn-lg" href="./app/">ابدأ بمسار فارغ</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="uses">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><p class="kicker">حالات استخدام مباشرة</p><h2>حيث يتكرر العمل، يوجد إجراء يستحق أن يكون واضحًا.</h2></div>
+        <p class="desc">مسار ليس حكرًا على إدارة الجودة. أي فريق يعتمد على تسلسل وموافقة وتسليم يمكنه الاستفادة منه.</p>
+      </div>
+      <div class="use-grid">
+        <article class="use-card reveal"><span class="tag">التشغيل</span><h3>تشغيل الفروع والخدمات</h3><p>وحّد خطوات التنفيذ والاستثناءات بدل اختلاف الطريقة من فرع إلى آخر.</p></article>
+        <article class="use-card reveal"><span class="tag">خدمة العملاء</span><h3>معالجة الطلبات والشكاوى</h3><p>اعرف أين ينتقل الطلب، ومن يملك القرار، ومتى يصبح التأخير تصعيدًا.</p></article>
+        <article class="use-card reveal"><span class="tag">الموارد البشرية</span><h3>التوظيف والتهيئة والمغادرة</h3><p>اربط الموارد البشرية وتقنية المعلومات والمدير المباشر في مسار واحد.</p></article>
+        <article class="use-card reveal"><span class="tag">المالية</span><h3>المشتريات والموافقات</h3><p>وثّق حدود القرار ومسارات الاستثناء والمستندات المطلوبة لكل مرحلة.</p></article>
+        <article class="use-card reveal"><span class="tag">الجودة</span><h3>الإجراءات والسياسات</h3><p>حوّل النصوص الطويلة إلى تدفق عملي يمكن مراجعته وتحديثه.</p></article>
+        <article class="use-card reveal"><span class="tag">الامتثال</span><h3>الضوابط والمخاطر</h3><p>اربط الخطر بالخطوة والمسؤول بدل تقييم عام منفصل عن الواقع التشغيلي.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container output-wrap">
+      <div class="output-copy reveal">
+        <p class="kicker">مخرجات ملموسة</p>
+        <h2>لا تنتهي بجلسة رسم. تنتهي بمرجع يمكن استخدامه.</h2>
+        <p>الهدف ليس إنتاج شكل جميل. الهدف أن يصبح الإجراء قابلًا للتسليم، والمراجعة، والتحسين، والتدقيق.</p>
+        <a class="btn btn-secondary" href="./app/">افتح مساحة العمل</a>
+      </div>
+      <div class="output-list reveal">
+        <div class="output-row"><span class="index">01</span><strong>مخطط عملية واضح</strong><span>PNG / SVG</span></div>
+        <div class="output-row"><span class="index">02</span><strong>مصفوفة مسؤوليات داخل كل خطوة</strong><span>RACI</span></div>
+        <div class="output-row"><span class="index">03</span><strong>توزيع الخطوات حسب الأقسام</strong><span>Swimlanes</span></div>
+        <div class="output-row"><span class="index">04</span><strong>تقييم الزمن والتكلفة والمخاطر</strong><span>Governance</span></div>
+        <div class="output-row"><span class="index">05</span><strong>نتيجة فحص قابلة للتنفيذ</strong><span>Validation</span></div>
+        <div class="output-row"><span class="index">06</span><strong>تقرير حوكمة قابل للمشاركة</strong><span>HTML</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container sme-panel reveal">
+      <div>
+        <p class="kicker">مصمم للشركات الصغيرة والمتوسطة</p>
+        <h2>رتّب عملياتك قبل أن يصبح إصلاحها مشروعًا كاملًا.</h2>
+        <p>الشركة الصغيرة لا تحتاج أداة مؤسسات ضخمة لتعرف كيف تعمل. تحتاج طريقة سريعة وواضحة لتوثيق الإجراء، حسم المسؤولية، واكتشاف الخلل مبكرًا.</p>
+      </div>
+      <div class="sme-points">
+        <div class="sme-point"><strong>ابدأ صغيرًا</strong><span>إجراء واحد متكرر أو متعثر يكفي ليظهر الأثر.</span></div>
+        <div class="sme-point"><strong>استخدمه مع الفريق مباشرة</strong><span>واجهة عربية ومفاهيم تشغيلية مفهومة بدون تدريب طويل.</span></div>
+        <div class="sme-point"><strong>ابنِ مكتبة عمليات تدريجيًا</strong><span>كل إجراء موثق يقلل الاعتماد على الذاكرة والاجتهاد.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="faq">
+    <div class="container faq">
+      <div class="reveal"><p class="kicker">أسئلة قبل التجربة</p><h2>ما الذي تحتاج معرفته؟</h2></div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false"><span>هل مسار مجرد أداة رسم Flowchart؟</span><span>+</span></button>
+          <div class="faq-answer">لا. الرسم هو الواجهة البصرية، لكن القيمة الأساسية هي ربط كل خطوة بالقسم والمالك وRACI والنظام والزمن والتكلفة والمخاطر، ثم فحص المسار وتصدير تقرير الحوكمة.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false"><span>هل يناسب شركة صغيرة ليس لديها إدارة جودة؟</span><span>+</span></button>
+          <div class="faq-answer">نعم. يمكن أن يبدأ به مدير التشغيل أو الموارد البشرية أو خدمة العملاء لتوثيق إجراء واحد يتكرر أو يتعطل، بدون بناء برنامج حوكمة كامل من اليوم الأول.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false"><span>أين تُحفظ بياناتي في النسخة الحالية؟</span><span>+</span></button>
+          <div class="faq-answer">الحفظ والجلسات تعمل محليًا داخل متصفحك في النسخة الحالية. يمكنك أيضًا تصدير ملف JSON كنسخة احتياطية وفتحه لاحقًا.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false"><span>هل يمكنني مشاركة النتائج مع الإدارة؟</span><span>+</span></button>
+          <div class="faq-answer">نعم. يمكنك تصدير المخطط بصيغ PNG وSVG، وتصدير تقرير حوكمة يعرض الأقسام والمسؤوليات والزمن والتكلفة والمخاطر.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false"><span>هل النسخة الحالية جاهزة للاستخدام المؤسسي الجماعي؟</span><span>+</span></button>
+          <div class="faq-answer">النسخة الحالية Local-first ومناسبة للتجربة وبناء العمليات وتصديرها. إدارة المستخدمين والتعاون السحابي والاعتمادات المؤسسية تأتي ضمن مراحل المنتج اللاحقة.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container cta-box reveal">
+      <p class="kicker">ابدأ من الجرح، لا من الشكل</p>
+      <h2>اختر أكثر إجراء يسبب تأخيرًا أو خلافًا، وابنِه الآن كما يحدث فعلًا.</h2>
+      <p>عندما ترى الخطوات والمسؤوليات والمخاطر في مكان واحد، تصبح المشكلة قابلة للنقاش والقرار والتحسين.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary btn-lg" href="./app/">ابدأ التجربة المجانية</a>
+        <a class="btn btn-secondary btn-lg" href="#how">راجع طريقة العمل</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <a class="footer-brand" href="./"><img src="./brand/masar-symbol.svg" alt=""><span>مسار</span></a>
+    <div class="footer-note">نسخة إطلاق تجريبية · الحفظ محلي في المتصفح · © <span data-year></span> مسار</div>
   </div>
+</footer>
 
-  <div class="strip" id="strip"></div>
-
-  <div class="stage" id="stage">
-    <svg id="svg" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"></path>
-        </marker>
-        <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse">
-          <path d="M22,0 L0,0 0,22" fill="none" stroke="var(--grid)" stroke-width="1"></path>
-        </pattern>
-        <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.4" fill="var(--grid)"></circle>
-        </pattern>
-        <pattern id="lines" width="24" height="24" patternUnits="userSpaceOnUse">
-          <path d="M0,24 H24" fill="none" stroke="var(--grid)" stroke-width="1"></path>
-        </pattern>
-      </defs>
-      <rect id="bgfill" x="-5000" y="-5000" width="10000" height="10000" fill="#eef0f5"></rect>
-      <rect id="bg" x="-5000" y="-5000" width="10000" height="10000" fill="url(#grid)"></rect>
-      <g id="vp">
-        <g id="lanes"></g>
-        <g id="edges"></g>
-        <g id="nodes"></g>
-        <g id="overlay"></g>
-      </g>
-    </svg>
-    <div class="inspector" id="inspector"></div>
-    <div class="status" id="status">جاهز</div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-<div class="overlay" id="overlay">
-  <div class="modal">
-    <h3>اختصارات لوحة المفاتيح</h3>
-    <div class="k"><span>تحديد متعدد</span><b>Shift + نقر</b></div>
-    <div class="k"><span>حذف</span><b>Delete</b></div>
-    <div class="k"><span>تكرار</span><b>Ctrl + D</b></div>
-    <div class="k"><span>نسخ / لصق</span><b>Ctrl + C / V</b></div>
-    <div class="k"><span>تراجع / إعادة</span><b>Ctrl + Z / Y</b></div>
-    <div class="k"><span>تكبير / تصغير</span><b>عجلة الماوس</b></div>
-    <div class="k"><span>تحريك اللوحة</span><b>سحب الخلفية</b></div>
-    <div class="k"><span>ربط عنصرين</span><b>اسحب من نقطة الارتساء</b></div>
-    <div class="k"><span>تعديل النص</span><b>نقر مزدوج</b></div>
-    <button class="close" onclick="document.getElementById('overlay').classList.remove('show')">تمام</button>
-  </div>
-</div>
-<input type="file" id="fileIn" accept="application/json" hidden>
-
-<div class="goverlay" id="guide">
-  <div class="gwrap">
-    <button class="gclose" id="gClose" title="إغلاق">✕</button>
-    <div id="gBody"></div>
-  </div>
-</div>
-
-<div class="goverlay" id="validationPanel">
-  <div class="gwrap validation-wrap">
-    <button class="gclose" id="validationClose" title="إغلاق">✕</button>
-    <div id="validationBody"></div>
-  </div>
-</div>
-
-<script src="./src/js/05-project-core.js"></script>
-<script src="./src/js/06-governance-core.js"></script>
-<script src="./src/js/00-foundation.js"></script>
-<script src="./src/js/10-editor.js"></script>
-<script src="./src/js/20-inspector.js"></script>
-<script src="./src/js/30-persistence.js"></script>
-<script src="./src/js/40-ui.js"></script>
-<script src="./src/js/50-validation-ui.js"></script>
+<script src="./assets/landing.js"></script>
 </body>
 </html>
