@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">رمز مسار</title>
+  <desc id="desc">مخطط تدفق مبسط يضم عقد عمليات وقرار ومسارات مترابطة</desc>
+  <defs>
+    <linearGradient id="flow" x1="60" y1="60" x2="450" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00A984"/>
+      <stop offset="0.48" stop-color="#3F668A"/>
+      <stop offset="1" stop-color="#00A984"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#flow)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="48" y="48" width="96" height="96" rx="18"/>
+    <path d="M144 96H332c42 0 68 27 68 66v10"/>
+    <circle cx="400" cy="220" r="43"/>
+    <path d="M400 263c0 37-27 61-65 61h-38"/>
+    <path d="M215 324H124c-37 0-62 26-62 63v23"/>
+    <circle cx="62" cy="430" r="43"/>
+    <path d="M105 430H407"/>
+    <rect x="211" y="385" width="90" height="90" rx="18"/>
+    <rect x="392" y="385" width="90" height="90" rx="18"/>
+  </g>
+  <path d="M256 265 315 324 256 383 197 324Z" fill="#fff" stroke="#202938" stroke-width="20" stroke-linejoin="miter"/>
+</svg>
