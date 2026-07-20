@@ -5,7 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0b1a15">
   <meta name="description" content="مسار منصة عربية لتوثيق العمليات، حسم المسؤوليات، وربط كل خطوة بالزمن والمخاطر والاعتمادات في مخطط واحد قابل للمراجعة.">
-  <meta name="robots" content="index,follow">
+  <meta name="robots" content="index,follow,noai,noimageai">
+  <meta name="googlebot" content="index,follow,noai,noimageai">
+  <meta name="CCBot" content="nofollow">
+  <meta name="GPTBot" content="noindex,nofollow">
+  <meta name="copyright" content="© مسار — جميع الحقوق محفوظة. يُمنع نسخ أو إعادة استخدام الكود أو الفكرة أو التصميم دون إذن خطّي.">
+  <!--
+    ================================================================
+    مسار (Masar) — برمجية مملوكة | Proprietary & Confidential
+    © جميع الحقوق محفوظة. هذا الكود مقدَّم للعرض والمعاينة فقط.
+    يُمنع منعًا باتًّا نسخه أو اشتقاقه أو إعادة نشره أو استخدامه
+    لتدريب نماذج ذكاء اصطناعي دون إذن خطّي مسبق من المالك.
+    Unauthorized copying, scraping, redistribution, or use of this
+    source or its concept for AI training is strictly prohibited.
+    ================================================================
+  -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_SA">
   <meta property="og:title" content="مسار، حوّل طريقة العمل إلى نظام واضح">
@@ -63,49 +77,55 @@
           </div>
         </div>
 
-        <div class="workspace" id="product" aria-label="معاينة مصمّمة لمحرر مسار">
+        <div class="workspace" id="product" aria-label="معاينة من محرر مسار — قالب دورة اعتماد طلب">
           <div class="ws-bar">
             <span class="dot" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="ws-title"><span class="live"></span> إجراء طلب شراء</span>
-            <span class="mono">v1.4</span>
+            <span class="ws-title"><span class="live"></span> دورة اعتماد طلب</span>
+            <span class="mono">قالب</span>
           </div>
           <div class="ws-canvas">
             <div class="flow">
-              <div class="node">
+              <div class="node green">
                 <span class="idx mono">01</span>
-                <span class="n-label">استلام الطلب</span>
-                <span class="n-dept">المشتريات</span>
+                <span class="n-label">تقديم الطلب</span>
+                <span class="n-type">بداية</span>
               </div>
               <div class="connector" aria-hidden="true"></div>
-              <div class="node decision">
+              <div class="node blue">
                 <span class="idx mono">02</span>
-                <span class="n-label">المبلغ أعلى من ٥٬٠٠٠؟</span>
-                <span class="n-dept">قرار</span>
+                <span class="n-label">مراجعة أوّلية</span>
+                <span class="n-type">عملية</span>
               </div>
-              <div class="branch" aria-hidden="true"><span>نعم ← <b>اعتماد المدير</b></span><span>لا ← <b>صرف مباشر</b></span></div>
               <div class="connector" aria-hidden="true"></div>
-              <div class="node active">
+              <div class="node amber">
                 <span class="idx mono">03</span>
-                <span class="n-label">اعتماد المدير المالي</span>
-                <span class="n-dept">المالية</span>
+                <span class="n-label">مكتمل المستندات؟</span>
+                <span class="n-type">قرار</span>
+              </div>
+              <div class="branch" aria-hidden="true"><span>نعم ← <b>اعتماد المدير المباشر</b></span><span>لا ← <b>إعادة للمُقدِّم</b></span></div>
+              <div class="connector" aria-hidden="true"></div>
+              <div class="node blue active">
+                <span class="idx mono">04</span>
+                <span class="n-label">اعتماد المدير المباشر</span>
+                <span class="n-type">عملية</span>
               </div>
             </div>
 
-            <div class="inspector" aria-label="تفاصيل الخطوة المحددة">
+            <div class="inspector" aria-label="الحوكمة وRACI للخطوة المحددة">
               <div class="insp-head">
-                <b>اعتماد المدير المالي</b>
-                <span class="mono">خطوة ٠٣</span>
+                <b>اعتماد المدير المباشر</b>
+                <span class="mono">الحوكمة وRACI</span>
               </div>
               <div class="raci">
-                <div class="r"><span class="tag">R</span><span>منفّذ</span><em>محاسب أول</em></div>
-                <div class="r"><span class="tag">A</span><span>معتمد</span><em>مدير مالي</em></div>
-                <div class="r"><span class="tag">C</span><span>مستشار</span><em>المراجعة</em></div>
-                <div class="r"><span class="tag">I</span><span>مطّلع</span><em>المشتريات</em></div>
+                <div class="r"><span class="tag">R</span><span>المنفذ</span><em>منسّق الطلبات</em></div>
+                <div class="r"><span class="tag">A</span><span>المعتمد</span><em>المدير المباشر</em></div>
+                <div class="r"><span class="tag">C</span><span>المستشارون</span><em>الموارد البشرية</em></div>
+                <div class="r"><span class="tag">I</span><span>المطلعون</span><em>مقدّم الطلب</em></div>
               </div>
               <div class="meta-row">
-                <span class="m time"><span class="k"></span> زمن: ٤ ساعات</span>
-                <span class="m cost"><span class="k"></span> نظام: أوراكل</span>
-                <span class="m risk"><span class="k"></span> خطر: تأخر الصرف</span>
+                <span class="m sys"><span class="k"></span> النظام: نظام المهام</span>
+                <span class="m time"><span class="k"></span> الزمن: ٤٨٠ د</span>
+                <span class="m risk"><span class="k"></span> المخاطر: متوسط</span>
               </div>
             </div>
           </div>
