@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1a15">
+  <meta name="robots" content="noindex,nofollow,noarchive,noai,noimageai">
+  <title>مسار · مساحة العمل السحابية</title>
+  <link rel="icon" href="../brand/masar-symbol.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./studio.css">
+</head>
+<body>
+  <!-- شعار الإعداد المطلوب -->
+  <div id="setupBanner" class="setup-banner" hidden>
+    <strong>الإعداد مطلوب:</strong> أضِف إعداد Firebase في <code>studio/config.js</code> لتفعيل الدخول والحفظ السحابي.
+    <a href="https://github.com/mansour-cyber/Masar-Live/blob/main/studio/SETUP.md" target="_blank" rel="noopener">دليل الإعداد ↗</a>
+  </div>
+
+  <!-- شاشة الدخول -->
+  <main id="authView" class="auth-view" hidden>
+    <div class="auth-card">
+      <a class="auth-brand" href="../">
+        <img src="../brand/masar-symbol.svg" alt=""><span>مسار</span>
+      </a>
+      <p class="auth-eyebrow">مساحة العمل السحابية</p>
+      <h1 id="authTitle">تسجيل الدخول</h1>
+      <p class="auth-sub" id="authSub">ادخل إلى عملياتك المحفوظة سحابيًا.</p>
+
+      <div class="auth-tabs" role="tablist">
+        <button class="auth-tab is-on" data-mode="login" type="button">دخول</button>
+        <button class="auth-tab" data-mode="signup" type="button">حساب جديد</button>
+      </div>
+
+      <form id="authForm" class="auth-form" novalidate>
+        <label class="field" id="nameField" hidden>
+          <span>الاسم</span>
+          <input id="displayName" type="text" autocomplete="name" placeholder="اسمك الكامل">
+        </label>
+        <label class="field">
+          <span>البريد الإلكتروني</span>
+          <input id="email" type="email" autocomplete="email" required placeholder="name@company.com" dir="ltr">
+        </label>
+        <label class="field">
+          <span>كلمة المرور</span>
+          <input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="٦ أحرف على الأقل" dir="ltr">
+        </label>
+        <p class="auth-error" id="authError" role="alert" hidden></p>
+        <button class="btn btn-primary" id="authSubmit" type="submit">دخول</button>
+      </form>
+
+      <div class="auth-divider"><span>أو</span></div>
+      <button class="btn btn-google" id="googleBtn" type="button">
+        <svg viewBox="0 0 18 18" width="17" height="17" aria-hidden="true"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.83.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58A9 9 0 0 0 .96 4.95L3.97 7.3C4.68 5.17 6.66 3.58 9 3.58z"/></svg>
+        المتابعة عبر Google
+      </button>
+
+      <p class="auth-foot">بالدخول فأنت توافق على أن الاستخدام للعرض والتجربة، وجميع الحقوق محفوظة لمسار.</p>
+    </div>
+  </main>
+
+  <!-- التطبيق بعد الدخول -->
+  <div id="appView" class="app-view" hidden>
+    <header class="app-bar">
+      <a class="app-brand" href="./"><img src="../brand/masar-symbol.svg" alt=""><span>مسار</span></a>
+      <div class="app-user">
+        <span class="app-plan">تجربة</span>
+        <span id="userEmail" class="app-email" dir="ltr"></span>
+        <button id="logoutBtn" class="btn btn-ghost btn-sm" type="button">خروج</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <div class="app-head">
+        <div>
+          <h2>عملياتي</h2>
+          <p id="projectsCount" class="app-muted">…</p>
+        </div>
+        <button id="newProjectBtn" class="btn btn-primary" type="button">+ عملية جديدة</button>
+      </div>
+
+      <div id="projectsState" class="app-state" hidden></div>
+      <div id="projectsGrid" class="projects-grid" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <!-- نافذة إنشاء/إعادة تسمية -->
+  <div id="modal" class="modal-overlay" hidden>
+    <div class="modal">
+      <h3 id="modalTitle">عملية جديدة</h3>
+      <label class="field">
+        <span>اسم العملية</span>
+        <input id="projectName" type="text" placeholder="مثال: دورة اعتماد المشتريات">
+      </label>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="modalCancel" type="button">إلغاء</button>
+        <button class="btn btn-primary" id="modalSave" type="button">حفظ</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
