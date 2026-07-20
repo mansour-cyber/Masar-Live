@@ -132,37 +132,6 @@ const gOver=document.getElementById('overlay');
 const stage=document.getElementById('stage');
 const inspector=document.getElementById('inspector');
 
-function T_stc(){
-  const cx=300;
-  const N=[
-   ['s','terminator','purple','طلب إصدار خدمة STC للقاصر',cx-90,20,240,58],
-   ['naf','process','gray','التحقق عبر النفاذ الوطني الموحّد',cx-90,110,240,58],
-   ['p1','process','purple','١. القاصر يقدّم الطلب عبر قنوات STC',cx-100,200,260,60],
-   ['p2','process','purple','٢. النظام يطلب النفاذ ويُدخل هوية القاصر',cx-100,290,260,60],
-   ['p3','process','purple','٣. النفاذ يرسل رقماً عشوائياً للقاصر',cx-100,380,260,60],
-   ['p4','process','purple','٤. تطبيق نفاذ يُشعِر القاصر بالطلب',cx-100,470,260,60],
-   ['p5','process','purple','٥. القاصر يقبل الطلب عبر نفاذ',cx-100,560,260,60],
-   ['p6','process','purple','٦. التحقق من هوية القاصر عبر 3FA',cx-100,650,260,60],
-   ['d','decision','amber','٧. التحقق من الأهلية عبر «علم» — العمر ١٥–١٨ وحالة ولي الأمر',cx-110,745,340,104],
-   ['rej','process','red','رفض الطلب',30,905,190,58],
-   ['m1','process','gray','٨. إرسال طلب الموافقة لولي الأمر',cx-100,905,260,60],
-   ['m2','process','gray','٩. النفاذ يرسل رقماً عشوائياً لولي الأمر',cx-100,995,260,60],
-   ['m3','process','gray','١٠. إشعار ولي الأمر بالطلب',cx-100,1085,260,60],
-   ['m4','process','gray','١١. ولي الأمر يقبل الطلب',cx-100,1175,260,60],
-   ['m5','process','gray','١٢. التحقق من ولي الأمر عبر 3FA',cx-100,1265,260,60],
-   ['x1','subprocess','amber','تحويل الطلب للتحقق من الوصي الشرعي',cx+230,905,260,60],
-   ['x2','subprocess','amber','التحقق من الوصي بموجب صك الولاية',cx+230,995,260,60],
-   ['x3','subprocess','amber','إعادة الخطوات ٨–١٢ مع الوصي',cx+230,1085,260,60],
-   ['iss','terminator','green','إصدار الخدمة',cx-90,1395,240,58],
-  ].map(a=>({id:a[0],type:a[1],color:a[2],label:a[3],x:a[4],y:a[5],w:a[6],h:a[7]}));
-  const E=[
-   ['s','naf'],['naf','p1'],['p1','p2'],['p2','p3'],['p3','p4'],['p4','p5'],['p5','p6'],['p6','d'],
-   ['d','rej','عمر < ١٥ أو عدم أهلية'],['d','m1','ولي الأمر على قيد الحياة'],
-   ['m1','m2'],['m2','m3'],['m3','m4'],['m4','m5'],['m5','iss'],
-   ['d','x1','ولي الأمر متوفّى'],['x1','x2'],['x2','x3'],['x3','iss'],
-  ].map((e,i)=>({id:'E'+i,from:e[0],to:e[1],label:e[2]||'',dashed:false}));
-  return {nodes:N,edges:E,lanes:[]};
-}
 function T_approval(){
   return {nodes:[
     {id:'a',type:'terminator',color:'green',label:'تقديم الطلب',x:220,y:30,w:180,h:56},
@@ -193,7 +162,7 @@ function T_onboarding(){
 function loadTemplate(name,options={}){
   const {force=false,markAsDirty=true,persist=true}=options;
   if(!force&&!confirmProjectReplacement('فتح القالب'))return false;
-  const template=name==='stc'?T_stc():name==='approval'?T_approval():name==='onboarding'?T_onboarding():{nodes:[],edges:[],lanes:[]};
+  const template=name==='approval'?T_approval():name==='onboarding'?T_onboarding():{nodes:[],edges:[],lanes:[]};
   state=structuredClone(template); normalize(); sel.clear(); selEdge=null; selLane=null; hist=[]; future=[]; currentSession=null;
   recalculateUid(); render(); fit();
   if(persist)autosave({markDirty:false});

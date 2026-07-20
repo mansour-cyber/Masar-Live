@@ -164,6 +164,6 @@ document.getElementById('guide').addEventListener('click',e=>{ if(e.target.id===
 let tT; const toastEl=document.getElementById('toast');
 function toast(m){ toastEl.textContent=m; toastEl.classList.add('show'); clearTimeout(tT); tT=setTimeout(()=>toastEl.classList.remove('show'),1600); }
 applyView(); applyBoard();
-if(!bootProject())loadTemplate('stc',{force:true,markAsDirty:false,persist:true});
+if(!bootProject())loadTemplate('approval',{force:true,markAsDirty:false,persist:true});
 syncBgSel();
 document.getElementById('status').textContent='اسحب من نقاط الحواف للربط · Shift+سحب للتحديد المتعدد · ؟ للاختصارات';
