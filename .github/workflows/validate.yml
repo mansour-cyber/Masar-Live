@@ -49,7 +49,6 @@ jobs:
         run: |
           set -e
           grep -q 'href="./app/"' index.html
-          grep -q 'src="./app/"' index.html
           grep -q 'href="../src/styles/app.css"' app/index.html
           grep -q 'src="../src/js/50-validation-ui.js"' app/index.html
           if grep -E '(src|href)="/(src|assets|brand)/' index.html app/index.html; then

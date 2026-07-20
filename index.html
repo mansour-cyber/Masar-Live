@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f7f8f5">
-  <meta name="description" content="مسار منصة عربية لتوثيق العمليات، حسم المسؤوليات، وربط كل خطوة بالزمن والمخاطر والاعتمادات.">
+  <meta name="theme-color" content="#0b1a15">
+  <meta name="description" content="مسار منصة عربية لتوثيق العمليات، حسم المسؤوليات، وربط كل خطوة بالزمن والمخاطر والاعتمادات في مخطط واحد قابل للمراجعة.">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_SA">
@@ -17,7 +17,7 @@
   <link rel="icon" href="./brand/masar-symbol.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/landing.css">
 </head>
 <body>
@@ -49,11 +49,11 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="overline">منصة عربية لإدارة وضوح العمليات</p>
-          <h1>حوّل طريقة العمل من معرفة شفوية إلى نظام واضح.</h1>
-          <p class="lead">مسار يوثّق الإجراء، يحسم المسؤولية، ويربط كل خطوة بالزمن والمخاطر والاعتماد، في مساحة واحدة يفهمها الفريق وتراجعها الإدارة.</p>
+          <p class="overline">منصة عربية لوضوح العمليات</p>
+          <h1>حوّل المعرفة الشفوية إلى نظام يُراجَع.</h1>
+          <p class="lead">مسار يوثّق الإجراء، يحسم المسؤولية، ويربط كل خطوة بالزمن والتكلفة والمخاطر والاعتماد، في مساحة واحدة يفهمها الفريق وتراجعها الإدارة.</p>
           <div class="hero-actions">
-            <a class="button button-primary button-large" href="./app/">جرّب المحرر</a>
+            <a class="button button-primary button-large" href="./app/">جرّب المحرر مجانًا</a>
             <a class="button button-secondary button-large" href="#workflow">شاهد كيف يعمل</a>
           </div>
           <div class="hero-notes" aria-label="مزايا مختصرة">
@@ -63,55 +63,98 @@
           </div>
         </div>
 
-        <div class="product-stage" id="product" aria-label="معاينة مباشرة لمحرر مسار">
-          <div class="stage-head">
-            <div>
-              <span class="stage-mark"></span>
-              <strong>إجراء طلب شراء</strong>
-            </div>
-            <span>معاينة مباشرة</span>
+        <div class="workspace" id="product" aria-label="معاينة مصمّمة لمحرر مسار">
+          <div class="ws-bar">
+            <span class="dot" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="ws-title"><span class="live"></span> إجراء طلب شراء</span>
+            <span class="mono">v1.4</span>
           </div>
-          <div class="stage-browser">
-            <div class="browser-bar">
-              <span></span><span></span><span></span>
-              <small>masar / workspace</small>
+          <div class="ws-canvas">
+            <div class="flow">
+              <div class="node">
+                <span class="idx mono">01</span>
+                <span class="n-label">استلام الطلب</span>
+                <span class="n-dept">المشتريات</span>
+              </div>
+              <div class="connector" aria-hidden="true"></div>
+              <div class="node decision">
+                <span class="idx mono">02</span>
+                <span class="n-label">المبلغ أعلى من ٥٬٠٠٠؟</span>
+                <span class="n-dept">قرار</span>
+              </div>
+              <div class="branch" aria-hidden="true"><span>نعم ← <b>اعتماد المدير</b></span><span>لا ← <b>صرف مباشر</b></span></div>
+              <div class="connector" aria-hidden="true"></div>
+              <div class="node active">
+                <span class="idx mono">03</span>
+                <span class="n-label">اعتماد المدير المالي</span>
+                <span class="n-dept">المالية</span>
+              </div>
             </div>
-            <iframe src="./app/" title="معاينة محرر مسار" loading="eager" tabindex="-1"></iframe>
-            <a class="stage-open" href="./app/">افتح المحرر بكامل الشاشة</a>
+
+            <div class="inspector" aria-label="تفاصيل الخطوة المحددة">
+              <div class="insp-head">
+                <b>اعتماد المدير المالي</b>
+                <span class="mono">خطوة ٠٣</span>
+              </div>
+              <div class="raci">
+                <div class="r"><span class="tag">R</span><span>منفّذ</span><em>محاسب أول</em></div>
+                <div class="r"><span class="tag">A</span><span>معتمد</span><em>مدير مالي</em></div>
+                <div class="r"><span class="tag">C</span><span>مستشار</span><em>المراجعة</em></div>
+                <div class="r"><span class="tag">I</span><span>مطّلع</span><em>المشتريات</em></div>
+              </div>
+              <div class="meta-row">
+                <span class="m time"><span class="k"></span> زمن: ٤ ساعات</span>
+                <span class="m cost"><span class="k"></span> نظام: أوراكل</span>
+                <span class="m risk"><span class="k"></span> خطر: تأخر الصرف</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="signal-strip" aria-label="المشكلة التي يحلها مسار">
-      <div class="container signal-grid">
-        <div><strong>المعرفة عند شخص واحد</strong><span>تصبح مرجعًا مشتركًا</span></div>
-        <div><strong>الموافقات موزعة</strong><span>تصبح نقاط قرار واضحة</span></div>
-        <div><strong>المسؤولية رمادية</strong><span>تصبح ملكية محسومة</span></div>
+    <section class="signal" aria-label="المشكلة التي يحلها مسار">
+      <div class="container">
+        <div class="cell">
+          <span class="from">المعرفة عند شخص واحد</span>
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span class="to">مرجع مشترك للفريق</span>
+        </div>
+        <div class="cell">
+          <span class="from">الموافقات موزّعة</span>
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span class="to">نقاط قرار واضحة</span>
+        </div>
+        <div class="cell">
+          <span class="from">المسؤولية رمادية</span>
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span class="to">ملكية محسومة</span>
+        </div>
       </div>
     </section>
 
     <section class="section" id="value">
       <div class="container split-section">
         <div class="section-intro">
-          <p class="overline">القيمة الفعلية</p>
-          <h2>المخطط ليس الهدف. الهدف أن يعرف كل شخص ما الذي يحدث، ومن يملكه، وما الذي قد يعطله.</h2>
+          <p class="eyebrow">القيمة الفعلية</p>
+          <h2>المخطط ليس الهدف. الهدف أن يعرف كل شخص ما الذي يحدث، ومن يملكه، وما الذي قد يعطّله.</h2>
+          <p>أربع قدرات تحوّل الرسم من صورة جامدة إلى نظام تشغيل قابل للمساءلة.</p>
         </div>
         <div class="value-list">
           <article>
-            <span>01</span>
+            <span class="num mono">01</span>
             <div><h3>تسلسل واحد للعمل</h3><p>البداية، الخطوات، القرارات، الاستثناءات، والنهاية، بدون نسخ متضاربة.</p></div>
           </article>
           <article>
-            <span>02</span>
-            <div><h3>مسؤولية قابلة للمحاسبة</h3><p>المنفذ، المعتمد، المستشار، والمطلع محددون داخل الخطوة نفسها.</p></div>
+            <span class="num mono">02</span>
+            <div><h3>مسؤولية قابلة للمحاسبة</h3><p>المنفّذ، المعتمد، المستشار، والمطّلع محددون داخل الخطوة نفسها.</p></div>
           </article>
           <article>
-            <span>03</span>
+            <span class="num mono">03</span>
             <div><h3>مخاطر مرتبطة بالواقع</h3><p>الزمن والتكلفة والنظام والخطر تظهر عند النقطة التي تحدث فيها.</p></div>
           </article>
           <article>
-            <span>04</span>
+            <span class="num mono">04</span>
             <div><h3>مخرج يمكن اعتماده</h3><p>مخطط واضح وتقرير حوكمة قابل للمشاركة والمراجعة.</p></div>
           </article>
         </div>
@@ -120,26 +163,29 @@
 
     <section class="section workflow-section" id="workflow">
       <div class="container">
-        <div class="section-heading compact">
-          <p class="overline">كيف يعمل</p>
+        <div class="section-heading">
+          <p class="eyebrow">كيف يعمل</p>
           <h2>إجراء واحد، ثلاث خطوات.</h2>
-          <p>لا تبدأ بمشروع تحول ضخم. اختر أكثر إجراء يتأخر أو يسبب خلافًا، ثم ابنِه كما يحدث فعلًا.</p>
+          <p>لا تبدأ بمشروع تحوّل ضخم. اختر أكثر إجراء يتأخّر أو يسبّب خلافًا، ثم ابنِه كما يحدث فعلًا.</p>
         </div>
         <div class="workflow-grid">
           <article>
-            <span class="workflow-number">1</span>
+            <span class="thread" aria-hidden="true"></span>
+            <span class="step-num mono">1</span>
             <h3>ارسم الواقع</h3>
-            <p>ضع الخطوات والقرارات والاستثناءات بدون تجميل.</p>
+            <p>ضع الخطوات والقرارات والاستثناءات كما تجري فعلًا، بدون تجميل.</p>
           </article>
           <article>
-            <span class="workflow-number">2</span>
+            <span class="thread" aria-hidden="true"></span>
+            <span class="step-num mono">2</span>
             <h3>احسم الملكية</h3>
-            <p>اربط كل خطوة بالقسم وصاحب القرار ومصفوفة RACI.</p>
+            <p>اربط كل خطوة بالقسم وصاحب القرار ومصفوفة RACI الكاملة.</p>
           </article>
           <article>
-            <span class="workflow-number">3</span>
+            <span class="thread" aria-hidden="true"></span>
+            <span class="step-num mono">3</span>
             <h3>افحص واعتمد</h3>
-            <p>اكشف النقص، ثم صدّر المخطط وتقرير الحوكمة.</p>
+            <p>اكشف النقص والتعطّل، ثم صدّر المخطط وتقرير الحوكمة.</p>
           </article>
         </div>
       </div>
@@ -147,32 +193,34 @@
 
     <section class="section" id="use-cases">
       <div class="container use-layout">
-        <div class="section-intro narrow">
-          <p class="overline">أين يبدأ الأثر</p>
+        <div class="section-intro">
+          <p class="eyebrow">أين يبدأ الأثر</p>
           <h2>ابدأ بالعملية التي تستهلك وقت الإدارة كل أسبوع.</h2>
           <p>مسار مناسب لأي عمل يعتمد على تسليم أو اعتماد أو استثناء بين أكثر من شخص أو إدارة.</p>
         </div>
-        <div class="use-table">
+        <div class="use-grid">
           <div><strong>المشتريات والموافقات</strong><span>حدود القرار، المستندات، ومسارات الاستثناء</span></div>
           <div><strong>التوظيف والتهيئة</strong><span>تنسيق الموارد البشرية، التقنية، والمدير المباشر</span></div>
           <div><strong>الطلبات والشكاوى</strong><span>الملكية، التصعيد، وزمن الاستجابة</span></div>
-          <div><strong>تشغيل الفروع</strong><span>طريقة موحدة بدل اجتهاد كل فرع</span></div>
+          <div><strong>تشغيل الفروع</strong><span>طريقة موحّدة بدل اجتهاد كل فرع</span></div>
           <div><strong>الإجراءات والسياسات</strong><span>تحويل النص الطويل إلى مسار قابل للتنفيذ</span></div>
           <div><strong>الضوابط والمخاطر</strong><span>ربط الخطر بالخطوة والمسؤول الفعلي</span></div>
         </div>
       </div>
     </section>
 
-    <section class="section license-section" id="license">
-      <div class="container license-panel">
-        <div>
-          <p class="overline light">النموذج التجاري</p>
-          <h2>ترخيص سنوي للشركات، يبدأ بسيطًا ويتوسع مع فريقك.</h2>
-          <p>النسخة الحالية متاحة للتجربة والحفظ المحلي. النسخة التجارية المستهدفة تضيف المستخدمين والصلاحيات ومكتبة العمليات وسجل المراجعات.</p>
-        </div>
-        <div class="license-actions">
-          <a class="button button-primary button-large" href="./app/">ابدأ التجربة</a>
-          <a class="button button-dark button-large" href="#faq">حدود النسخة الحالية</a>
+    <section class="license-section" id="license">
+      <div class="container">
+        <div class="license-panel">
+          <div>
+            <p class="eyebrow">النموذج التجاري</p>
+            <h2>ترخيص سنوي للشركات، يبدأ بسيطًا ويتوسّع مع فريقك.</h2>
+            <p>النسخة الحالية متاحة للتجربة والحفظ المحلي. النسخة التجارية المستهدفة تضيف المستخدمين والصلاحيات ومكتبة العمليات وسجل المراجعات.</p>
+          </div>
+          <div class="license-actions">
+            <a class="button button-light button-large" href="./app/">ابدأ التجربة</a>
+            <a class="button button-ghost button-large" href="#faq">حدود النسخة الحالية</a>
+          </div>
         </div>
       </div>
     </section>
@@ -180,21 +228,21 @@
     <section class="section faq-section" id="faq">
       <div class="container faq-layout">
         <div>
-          <p class="overline">أسئلة مباشرة</p>
+          <p class="eyebrow">أسئلة مباشرة</p>
           <h2>قبل أن تبدأ.</h2>
         </div>
         <div class="faq-list">
           <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false"><span>هل مسار مجرد أداة Flowchart؟</span><span>+</span></button>
-            <div class="faq-answer">لا. الرسم هو الواجهة، لكن القيمة في ربط كل خطوة بالقسم والمالك وRACI والزمن والتكلفة والمخاطر، ثم فحص المسار وتصدير تقرير الحوكمة.</div>
+            <button class="faq-question" type="button" aria-expanded="false"><span>هل مسار مجرد أداة Flowchart؟</span><span class="ic" aria-hidden="true">+</span></button>
+            <div class="faq-answer"><div>لا. الرسم هو الواجهة، لكن القيمة في ربط كل خطوة بالقسم والمالك وRACI والزمن والتكلفة والمخاطر، ثم فحص المسار وتصدير تقرير الحوكمة.</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false"><span>أين تحفظ البيانات الآن؟</span><span>+</span></button>
-            <div class="faq-answer">الحفظ يعمل محليًا داخل المتصفح في النسخة الحالية، ويمكن تصدير ملف JSON كنسخة احتياطية وفتحه لاحقًا.</div>
+            <button class="faq-question" type="button" aria-expanded="false"><span>أين تُحفظ البيانات الآن؟</span><span class="ic" aria-hidden="true">+</span></button>
+            <div class="faq-answer"><div>الحفظ يعمل محليًا داخل المتصفح في النسخة الحالية، ويمكن تصدير ملف JSON كنسخة احتياطية وفتحه لاحقًا.</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false"><span>هل النسخة الحالية جاهزة للعمل الجماعي المؤسسي؟</span><span>+</span></button>
-            <div class="faq-answer">لا. النسخة الحالية مناسبة للتجربة وبناء العمليات وتصديرها. المستخدمون والصلاحيات والتعاون السحابي ضمن النسخة التجارية المستهدفة.</div>
+            <button class="faq-question" type="button" aria-expanded="false"><span>هل النسخة الحالية جاهزة للعمل الجماعي المؤسسي؟</span><span class="ic" aria-hidden="true">+</span></button>
+            <div class="faq-answer"><div>لا. النسخة الحالية مناسبة للتجربة وبناء العمليات وتصديرها. المستخدمون والصلاحيات والتعاون السحابي ضمن النسخة التجارية المستهدفة.</div></div>
           </div>
         </div>
       </div>
