@@ -21,9 +21,29 @@ button,input,select{font:inherit}.app{max-width:1200px;margin:auto;padding:12px}
 .warn{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:12px}.search{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px}.row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.gloss{padding:10px 0;border-bottom:1px solid var(--line)}
 footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 @media(max-width:850px){.grid4,.grid3{grid-template-columns:repeat(2,1fr)}.grid2,.exam{grid-template-columns:1fr}.qmap{grid-template-columns:repeat(8,1fr)}}@media(max-width:560px){.grid4,.grid3,.lessons{grid-template-columns:1fr}.qmap{grid-template-columns:repeat(6,1fr)}}
+.loginGate{min-height:100dvh;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#0f172a,#312e81 55%,#0f766e)}
+.loginCard{width:min(440px,100%);background:#fff;border-radius:24px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.28)}
+.loginCard h1{margin:0 0 6px}.loginCard p{margin:0 0 18px}.loginCard label{display:block;font-weight:800;margin:10px 0 6px}
+.loginCard input{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}
+.loginCard .loginBtn{width:100%;margin-top:14px}.loginError{min-height:22px;color:#b91c1c;font-size:13px;margin-top:9px}
+.userBadge{font-size:12px;color:#e2e8f0;border:1px solid #ffffff25;border-radius:999px;padding:7px 9px}
 </style></head>
-<body><div class="app">
-<div class="top"><div class="topbar"><div class="brand"><b data-ar="رحلة PMP" data-en="PMP Journey">رحلة PMP</b><small data-ar="وضع المعلم مفعّل" data-en="Teacher Mode ON">وضع المعلم مفعّل</small></div><button id="langBtn">EN</button></div></div>
+<body>
+<div id="loginGate" class="loginGate">
+  <div class="loginCard">
+    <div style="font-weight:900;color:#6d28d9;margin-bottom:6px">PMP Teacher Studio</div>
+    <h1>تسجيل الدخول</h1>
+    <p class="muted">دخول خاص بالمستخدمين المعتمدين فقط، وكل مستخدم له مسار تقدم مستقل.</p>
+    <label for="loginUser">اسم المستخدم</label>
+    <input id="loginUser" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="username">
+    <label for="loginPin">الرقم السري</label>
+    <input id="loginPin" type="password" inputmode="numeric" maxlength="4" autocomplete="current-password" placeholder="••••">
+    <button id="loginBtn" class="btn dark loginBtn">دخول</button>
+    <div id="loginError" class="loginError"></div>
+  </div>
+</div>
+<div class="app" id="mainApp" style="display:none">
+<div class="top"><div class="topbar"><div class="brand"><b data-ar="رحلة PMP" data-en="PMP Journey">رحلة PMP</b><small data-ar="وضع المعلم مفعّل" data-en="Teacher Mode ON">وضع المعلم مفعّل</small></div><span id="userBadge" class="userBadge"></span><button onclick="logoutUser()" data-ar="خروج" data-en="Logout">خروج</button><button id="langBtn">EN</button></div></div>
 
 <section class="hero">
 <h1 data-ar="ابدأ رحلتك الآن" data-en="Start your journey now">ابدأ رحلتك الآن</h1>
@@ -152,11 +172,133 @@ const stages=[
 ];
 const flat=stages.flatMap(s=>s[3].map(x=>({id:x[0],stage:s[0],ar:x[1],en:x[2],ad:x[3],ed:x[4]})));
 const glossary=[['MVP','Minimum Viable Product','أصغر نسخة قابلة للاستخدام تحقق قيمة وتعلمًا.'],['DoD','Definition of Done','معايير اعتبار العمل مكتملًا.'],['DoR','Definition of Ready','معايير جاهزية العمل للبدء.'],['WIP','Work in Progress','العمل الجاري.'],['WBS','Work Breakdown Structure','تفكيك النطاق إلى حزم عمل.'],['RTM','Requirements Traceability Matrix','ربط وتتبع المتطلبات.'],['RACI','Responsible, Accountable, Consulted, Informed','توضيح الأدوار والمسؤوليات.'],['CPI','Cost Performance Index','EV / AC'],['SPI','Schedule Performance Index','EV / PV'],['CCB','Change Control Board','حوكمة التغيير.'],['Issue Log','Issue Log','سجل المشكلات التي حدثت فعليًا.'],['Risk Register','Risk Register','سجل المخاطر المحتملة.'],['Velocity','Velocity','نقاط القصص المكتملة فعليًا.'],['Spike','Spike','بحث محدد الوقت لتقليل عدم اليقين.']];
-const KEY='pmp_journey_live_v1';
-let state=JSON.parse(localStorage.getItem(KEY)||'null')||{lang:'ar',qLang:'ar',done:{},scores:{},mistakes:[],attempts:[],current:'f1',section:'dash'};
-let lang=state.lang||'ar';
+const API='https://anaylxsgsucyadkrawkq.supabase.co/functions/v1/pmp-api';
+const SESSION_KEY='pmp_auth_session_v1';
+const LEGACY_KEY='pmp_journey_live_v1';
+let currentUser=null;
+let session=null;
+let state=defaultState();
+let lang='ar';
+let saveChain=Promise.resolve();
+
+function defaultState(){
+  return {lang:'ar',qLang:'ar',done:{},scores:{},mistakes:[],attempts:[],current:'f1',section:'dash'};
+}
 const t=(a,e)=>lang==='ar'?a:e;
-function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function userCacheKey(){ return currentUser ? 'pmp_cache_'+currentUser.username : null; }
+function save(){
+  if(!currentUser || !session?.token) return;
+  state.lang=lang;
+  const key=userCacheKey();
+  if(key) localStorage.setItem(key,JSON.stringify(state));
+  const snapshot=JSON.stringify(state);
+  saveChain=saveChain.then(async()=>{
+    const r=await fetch(API+'?action=progress',{
+      method:'POST',
+      headers:{'content-type':'application/json','authorization':'Bearer '+session.token},
+      body:JSON.stringify({state:JSON.parse(snapshot)})
+    });
+    if(r.status===401){ await logoutUser(false); }
+  }).catch(()=>{});
+}
+
+async function apiFetch(action,options={}){
+  const headers={...(options.headers||{})};
+  if(session?.token) headers.authorization='Bearer '+session.token;
+  return fetch(API+'?action='+encodeURIComponent(action),{...options,headers});
+}
+function setLoginError(msg){ const e=$('#loginError'); if(e) e.textContent=msg||''; }
+function showLogin(){
+  $('#loginGate').style.display='grid';
+  $('#mainApp').style.display='none';
+}
+function showApp(){
+  $('#loginGate').style.display='none';
+  $('#mainApp').style.display='block';
+  $('#userBadge').textContent=currentUser?.display_name||currentUser?.username||'';
+  lang=state.lang||'ar';
+  applyLang();
+  go(state.section||'dash');
+}
+async function loginUser(){
+  const btn=$('#loginBtn');
+  const username=($('#loginUser').value||'').trim().toLowerCase();
+  const pin=$('#loginPin').value||'';
+  setLoginError('');
+  if(!username||!pin){ setLoginError('أدخل اسم المستخدم والرقم السري.'); return; }
+  btn.disabled=true; btn.textContent='جارٍ الدخول...';
+  try{
+    const r=await apiFetch('login',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({username,pin})
+    });
+    const data=await r.json().catch(()=>({}));
+    if(r.status===429){ setLoginError('محاولات كثيرة. جرّب بعد 10 دقائق.'); return; }
+    if(!r.ok){ setLoginError('اسم المستخدم أو الرقم السري غير صحيح.'); return; }
+
+    session={token:data.token,expires_at:data.expires_at,user:data.user};
+    currentUser=data.user;
+    localStorage.setItem(SESSION_KEY,JSON.stringify(session));
+
+    const cacheKey='pmp_cache_'+currentUser.username;
+    let loaded=data.progress && typeof data.progress==='object' ? data.progress : null;
+    if(!loaded){
+      try{ loaded=JSON.parse(localStorage.getItem(cacheKey)||'null'); }catch{}
+    }
+    if(!loaded && currentUser.username==='mansour'){
+      try{ loaded=JSON.parse(localStorage.getItem(LEGACY_KEY)||'null'); }catch{}
+    }
+    state={...defaultState(),...(loaded||{})};
+    lang=state.lang||'ar';
+    showApp();
+    save();
+    if(currentUser.username==='mansour') localStorage.removeItem(LEGACY_KEY);
+    $('#loginPin').value='';
+  }catch{
+    setLoginError('تعذر الاتصال الآن. جرّب مرة أخرى.');
+  }finally{
+    btn.disabled=false; btn.textContent='دخول';
+  }
+}
+async function logoutUser(callServer=true){
+  const oldUser=currentUser;
+  const oldToken=session?.token;
+  if(callServer && oldToken){
+    try{ await fetch(API+'?action=logout',{method:'POST',headers:{authorization:'Bearer '+oldToken}}); }catch{}
+  }
+  if(oldUser) localStorage.removeItem('pmp_cache_'+oldUser.username);
+  localStorage.removeItem(SESSION_KEY);
+  session=null; currentUser=null; state=defaultState(); lang='ar';
+  $('#loginUser').value=''; $('#loginPin').value='';
+  setLoginError('');
+  showLogin();
+}
+async function bootstrapAuth(){
+  $('#loginBtn').onclick=loginUser;
+  $('#loginPin').addEventListener('keydown',e=>{ if(e.key==='Enter') loginUser(); });
+  $('#loginUser').addEventListener('keydown',e=>{ if(e.key==='Enter') $('#loginPin').focus(); });
+
+  try{ session=JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); }catch{ session=null; }
+  if(!session?.token){ showLogin(); return; }
+  try{
+    const r=await apiFetch('progress',{method:'GET'});
+    if(!r.ok){ localStorage.removeItem(SESSION_KEY); session=null; showLogin(); return; }
+    const data=await r.json();
+    currentUser=data.user;
+    session.user=data.user;
+    localStorage.setItem(SESSION_KEY,JSON.stringify(session));
+    const cacheKey='pmp_cache_'+currentUser.username;
+    let loaded=data.progress && typeof data.progress==='object' ? data.progress : null;
+    if(!loaded){ try{ loaded=JSON.parse(localStorage.getItem(cacheKey)||'null'); }catch{} }
+    state={...defaultState(),...(loaded||{})};
+    lang=state.lang||'ar';
+    showApp();
+  }catch{
+    showLogin();
+  }
+}
+
 function applyLang(){document.documentElement.dir=lang==='ar'?'rtl':'ltr';$$('[data-ar]').forEach(e=>e.textContent=lang==='ar'?e.dataset.ar:e.dataset.en);$('#langBtn').textContent=lang==='ar'?'EN':'عربي';renderAll()}
 $('#langBtn').onclick=()=>{lang=lang==='ar'?'en':'ar';state.lang=lang;save();applyLang()}
 function go(id){$$('.section').forEach(x=>x.classList.toggle('active',x.id===id));$$('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.go===id));state.section=id;save();window.scrollTo({top:document.querySelector('.nav').offsetTop-65,behavior:'smooth'})}
@@ -193,6 +335,6 @@ function exportProgress(){const b=new Blob([JSON.stringify(state,null,2)],{type:
 $('#importProgress').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();location.reload()}catch{alert('Invalid')}};r.readAsText(f)}
 function resetProgress(){if(confirm(t('حذف كل التقدم؟','Erase all progress?'))){localStorage.removeItem(KEY);location.reload()}}
 function renderAll(){renderDashboard();renderStages();renderMistakes();renderGlossary($('#gSearch').value||'');$('#qLang').value=state.qLang||'ar'}
-applyLang();go(state.section||'dash');
+bootstrapAuth();
 </script>
 </body></html>
