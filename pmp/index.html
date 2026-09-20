@@ -14,8 +14,9 @@ button,input,select{font:inherit}.app{max-width:1200px;margin:auto;padding:12px}
 .nav{display:flex;gap:7px;overflow:auto;padding:11px 0}.nav button{white-space:nowrap;background:white;border:1px solid var(--line);border-radius:11px;padding:10px 12px}.nav .active{background:#111827;color:white}
 .section{display:none}.section.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin-bottom:11px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.muted{color:var(--muted);line-height:1.75}.stat b{font-size:26px;display:block}
 .progress{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
-.stage{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}.stageHead{display:flex;gap:10px;align-items:center}.num{width:34px;height:34px;border-radius:11px;background:#ede9fe;color:#5b21b6;display:grid;place-items:center;font-weight:900}.stageHead b{flex:1}
-.lessons{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}.lesson{border:1px solid var(--line);background:#fafafa;border-radius:11px;padding:10px;text-align:start}.lesson.done{background:#f0fdf4;border-color:#86efac}.lesson.current{outline:2px solid var(--brand)}
+.stage{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden}.stage summary{list-style:none;cursor:pointer}.stage summary::-webkit-details-marker{display:none}.stageHead{display:flex;gap:10px;align-items:center;padding:14px}.stage[open] .stageHead{background:#fafafa;border-bottom:1px solid var(--line)}.num{width:34px;height:34px;border-radius:11px;background:#ede9fe;color:#5b21b6;display:grid;place-items:center;font-weight:900}.stageHead b{flex:1}.chev{font-size:18px;color:#667085;transition:transform .18s ease}.stage[open] .chev{transform:rotate(90deg)}
+.stageBody{padding:10px 12px 12px}.lessons{display:grid;grid-template-columns:1fr;gap:7px}.lesson{border:1px solid var(--line);background:#fafafa;border-radius:11px;padding:11px 12px;text-align:start;display:flex;align-items:center;gap:9px;cursor:pointer}.lesson:hover{background:#f5f3ff}.lesson .lessonStatus{width:23px;height:23px;border-radius:50%;border:1px solid #d1d5db;display:grid;place-items:center;flex:0 0 auto;font-size:12px}.lesson .lessonLabel{flex:1}.lesson.done{background:#f3f4f6;border-color:#d1d5db;color:#9ca3af}.lesson.done:hover{background:#eef0f2}.lesson.done .lessonLabel{text-decoration:line-through}.lesson.done .lessonStatus{background:#d1d5db;border-color:#d1d5db;color:#6b7280}.lesson.current{outline:2px solid var(--brand);background:#f5f3ff;color:var(--text)}.lesson.current .lessonLabel{text-decoration:none}.lesson.current .lessonStatus{border-color:var(--brand);color:var(--brand)}
+#lessonHost{scroll-margin-top:78px}
 .teach{background:#fafafa;border-inline-start:5px solid var(--brand);border-radius:12px;padding:12px;margin:9px 0}.teach b{display:block;margin-bottom:4px}.q{border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0}.opts{display:grid;gap:7px;margin-top:8px}.opt{border:1px solid var(--line);background:white;border-radius:10px;padding:10px;text-align:start}.correct{background:#ecfdf5!important;border-color:#10b981!important}.wrong{background:#fef2f2!important;border-color:#ef4444!important}
 .exam{display:grid;grid-template-columns:1fr 220px;gap:10px}.qmap{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.qmap button{border:1px solid var(--line);background:white;border-radius:7px;padding:7px}.qmap .ans{background:#dcfce7}.qmap .mark{outline:2px solid #f59e0b}.timer{font-size:22px;font-weight:900}
 .warn{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:12px}.search{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px}.row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.gloss{padding:10px 0;border-bottom:1px solid var(--line)}
@@ -306,9 +307,43 @@ $$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.go));
 function mastery(stage){const a=flat.filter(x=>x.stage===stage);return Math.round(a.filter(x=>state.done[x.id]).length/a.length*100)}
 function weakest(){return Object.entries(state.scores).map(([id,r])=>({x:flat.find(z=>z.id===id),a:Math.round(r.c/r.n*100)})).filter(z=>z.x).sort((a,b)=>a.a-b.a)}
 function renderDashboard(){const done=Object.keys(state.done).filter(k=>state.done[k]).length,p=Math.round(done/flat.length*100);$('#stats').innerHTML=[['التقدم','Overall',p],['People','People',mastery('people')],['Process','Process',mastery('process')],['Business','Business',mastery('business')]].map(x=>'<div class="card stat"><b>'+x[2]+'%</b><span class="muted">'+(lang==='ar'?x[0]:x[1])+'</span></div>').join('');$('#overall').style.width=p+'%';$('#overallTxt').textContent=t('أنجزت '+done+' من '+flat.length+' درسًا','Completed '+done+' of '+flat.length+' lessons');const c=flat.find(x=>x.id===state.current)||flat[0];$('#curTitle').textContent=lang==='ar'?c.ar:c.en;$('#curDesc').textContent=lang==='ar'?c.ad:c.ed;const w=weakest().slice(0,3);$('#weak').innerHTML=w.length?w.map(v=>'<div class="teach"><b>'+(lang==='ar'?v.x.ar:v.x.en)+'</b><span class="muted">'+v.a+'%</span></div>').join(''):'<p class="muted">'+t('ابدأ الكويزات حتى أحدد نقاط الضعف.','Start quizzes to identify weak areas.')+'</p>'}
-function renderStages(){$('#stages').innerHTML=stages.map((s,i)=>'<div class="stage"><div class="stageHead"><div class="num">'+(i+1)+'</div><b>'+(lang==='ar'?s[1]:s[2])+'</b><span>'+mastery(s[0])+'%</span></div><div class="progress" style="margin-top:7px"><i style="width:'+mastery(s[0])+'%"></i></div><div class="lessons">'+s[3].map(x=>'<button class="lesson '+(state.done[x[0]]?'done ':'')+(state.current===x[0]?'current':'')+'" onclick="openLesson(\''+x[0]+'\')">'+(state.done[x[0]]?'✓ ':'')+(lang==='ar'?x[1]:x[2])+'</button>').join('')+'</div></div>').join('')}
+function renderStages(){
+  const current=flat.find(x=>x.id===state.current);
+  $('#stages').innerHTML=stages.map((s,i)=>{
+    const isCurrentStage=current?.stage===s[0];
+    const pct=mastery(s[0]);
+    return '<details class="stage" '+(isCurrentStage?'open':'')+'>'+
+      '<summary class="stageHead">'+
+        '<div class="num">'+(i+1)+'</div>'+
+        '<b>'+(lang==='ar'?s[1]:s[2])+'</b>'+
+        '<span class="muted">'+pct+'%</span>'+
+        '<span class="chev">›</span>'+
+      '</summary>'+
+      '<div class="stageBody">'+
+        '<div class="progress" style="margin-bottom:9px"><i style="width:'+pct+'%"></i></div>'+
+        '<div class="lessons">'+s[3].map(x=>{
+          const done=!!state.done[x[0]], currentLesson=state.current===x[0];
+          return '<button class="lesson '+(done?'done ':'')+(currentLesson?'current':'')+'" onclick="openLesson(\''+x[0]+'\')">'+
+            '<span class="lessonStatus">'+(done?'✓':(currentLesson?'•':''))+'</span>'+
+            '<span class="lessonLabel">'+(lang==='ar'?x[1]:x[2])+'</span>'+
+            '<span>›</span>'+
+          '</button>';
+        }).join('')+'</div>'+
+      '</div>'+
+    '</details>';
+  }).join('');
+}
 function trap(id){const m={f11:'لا تخلط حدثًا وقع بالفعل مع خطر مستقبلي.',a5:'Review يفحص المنتج، Retrospective تفحص طريقة العمل.',a6:'DoR قبل البدء، DoD عند الاكتمال.',r10:'لا تنفذ التغيير قبل تحليل الأثر والاعتماد.',p4:'التمكين لا يعني غياب المساءلة.',a8:'Kanban يركز على التدفق وWIP، وليس شرطًا أن يعمل بسبرنتات.'};return t(m[id]||'الخيارات التي تقفز للتصعيد أو الأوامر قبل الفهم غالبًا أضعف.','Options that jump to escalation or command before understanding are often weaker.')}
-function openLesson(id){state.current=id;save();go('journey');const x=flat.find(z=>z.id===id),qs=makeQuestions([x],3);$('#lessonHost').innerHTML='<div class="card"><h2>'+(lang==='ar'?x.ar:x.en)+'</h2><div class="teach"><b>'+t('الفكرة ببساطة','Simple idea')+'</b>'+(lang==='ar'?x.ad:x.ed)+'</div><div class="teach"><b>'+t('متى تستخدمها','When to use it')+'</b>'+t('عندما يكون جوهر السؤال متعلقًا بهذا المفهوم، اربط المشكلة بالمبدأ قبل اختيار الإجراء.','When the scenario centers on this concept, connect the problem to the principle before choosing an action.')+'</div><div class="teach"><b>'+t('مثال عملي','Practical example')+'</b>'+t('اسأل: من يملك القرار؟ ما السجل أو الأداة الصحيحة؟ وما الإجراء الذي يعالج السبب بدل العرض؟','Ask: who owns the decision, what artifact/tool applies, and which action addresses the cause rather than the symptom?')+'</div><div class="teach"><b>'+t('فخ الاختبار','Exam trap')+'</b>'+trap(id)+'</div><h3>'+t('اختبار قصير','Checkpoint')+'</h3><div id="lessonQuiz"></div><button class="btn dark" onclick="completeLesson(\''+id+'\')">'+t('تم، انتقل للدرس التالي','Done, next lesson')+'</button></div>';renderQuestions(qs,$('#lessonQuiz'),true)}
+function openLesson(id){
+  state.current=id;
+  save();
+  go('journey');
+  renderStages();
+  const x=flat.find(z=>z.id===id),qs=makeQuestions([x],3);
+  $('#lessonHost').innerHTML='<div class="card"><div class="muted" style="font-size:12px;margin-bottom:5px">'+t('الدرس الحالي','Current lesson')+'</div><h2>'+(lang==='ar'?x.ar:x.en)+'</h2><div class="teach"><b>'+t('الفكرة ببساطة','Simple idea')+'</b>'+(lang==='ar'?x.ad:x.ed)+'</div><div class="teach"><b>'+t('متى تستخدمها','When to use it')+'</b>'+t('عندما يكون جوهر السؤال متعلقًا بهذا المفهوم، اربط المشكلة بالمبدأ قبل اختيار الإجراء.','When the scenario centers on this concept, connect the problem to the principle before choosing an action.')+'</div><div class="teach"><b>'+t('مثال عملي','Practical example')+'</b>'+t('اسأل: من يملك القرار؟ ما السجل أو الأداة الصحيحة؟ وما الإجراء الذي يعالج السبب بدل العرض؟','Ask: who owns the decision, what artifact/tool applies, and which action addresses the cause rather than the symptom?')+'</div><div class="teach"><b>'+t('فخ الاختبار','Exam trap')+'</b>'+trap(id)+'</div><h3>'+t('اختبار قصير','Checkpoint')+'</h3><div id="lessonQuiz"></div><button class="btn dark" onclick="completeLesson(\''+id+'\')">'+t('تم، انتقل للدرس التالي','Done, next lesson')+'</button></div>';
+  renderQuestions(qs,$('#lessonQuiz'),true);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>document.getElementById('lessonHost')?.scrollIntoView({behavior:'smooth',block:'start'})));
+}
 function completeLesson(id){state.done[id]=true;const i=flat.findIndex(x=>x.id===id);if(i<flat.length-1)state.current=flat[i+1].id;save();renderAll();openLesson(state.current)}
 function resume(){openLesson(state.current||'f1')}
 function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
