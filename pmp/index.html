@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>رحلة PMP</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#111827;--muted:#667085;--line:#e5e7eb;--brand:#6d28d9;--brand2:#0ea5e9}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select{font:inherit}.app{max-width:1200px;margin:auto;padding:12px}.top{position:sticky;top:0;z-index:50;background:rgba(246,247,251,.92);backdrop-filter:blur(14px);padding:8px 0}
+.topbar{background:#0f172a;color:white;border-radius:18px;padding:10px 12px;display:flex;gap:8px;align-items:center}.brand{margin-inline-end:auto}.brand small{display:block;color:#cbd5e1}.topbar button{border:1px solid #ffffff2a;background:#ffffff12;color:white;border-radius:10px;padding:8px 10px}
+.hero{background:linear-gradient(135deg,#171127,#312e81 55%,#0f766e);color:#fff;border-radius:25px;padding:28px 20px}.hero h1{font-size:clamp(28px,5vw,48px);margin:0 0 8px}.hero p{color:#e2e8f0;line-height:1.8;max-width:850px}
+.btn{border:0;border-radius:11px;padding:10px 13px;font-weight:800}.white{background:#fff;color:#111827}.dark{background:#111827;color:#fff}.soft{background:#ede9fe;color:#5b21b6}
+.nav{display:flex;gap:7px;overflow:auto;padding:11px 0}.nav button{white-space:nowrap;background:white;border:1px solid var(--line);border-radius:11px;padding:10px 12px}.nav .active{background:#111827;color:white}
+.section{display:none}.section.active{display:block}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin-bottom:11px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.muted{color:var(--muted);line-height:1.75}.stat b{font-size:26px;display:block}
+.progress{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+.stage{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}.stageHead{display:flex;gap:10px;align-items:center}.num{width:34px;height:34px;border-radius:11px;background:#ede9fe;color:#5b21b6;display:grid;place-items:center;font-weight:900}.stageHead b{flex:1}
+.lessons{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}.lesson{border:1px solid var(--line);background:#fafafa;border-radius:11px;padding:10px;text-align:start}.lesson.done{background:#f0fdf4;border-color:#86efac}.lesson.current{outline:2px solid var(--brand)}
+.teach{background:#fafafa;border-inline-start:5px solid var(--brand);border-radius:12px;padding:12px;margin:9px 0}.teach b{display:block;margin-bottom:4px}.q{border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0}.opts{display:grid;gap:7px;margin-top:8px}.opt{border:1px solid var(--line);background:white;border-radius:10px;padding:10px;text-align:start}.correct{background:#ecfdf5!important;border-color:#10b981!important}.wrong{background:#fef2f2!important;border-color:#ef4444!important}
+.exam{display:grid;grid-template-columns:1fr 220px;gap:10px}.qmap{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.qmap button{border:1px solid var(--line);background:white;border-radius:7px;padding:7px}.qmap .ans{background:#dcfce7}.qmap .mark{outline:2px solid #f59e0b}.timer{font-size:22px;font-weight:900}
+.warn{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:12px}.search{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px}.row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.gloss{padding:10px 0;border-bottom:1px solid var(--line)}
+footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
+@media(max-width:850px){.grid4,.grid3{grid-template-columns:repeat(2,1fr)}.grid2,.exam{grid-template-columns:1fr}.qmap{grid-template-columns:repeat(8,1fr)}}@media(max-width:560px){.grid4,.grid3,.lessons{grid-template-columns:1fr}.qmap{grid-template-columns:repeat(6,1fr)}}
+</style></head>
+<body><div class="app">
+<div class="top"><div class="topbar"><div class="brand"><b data-ar="رحلة PMP" data-en="PMP Journey">رحلة PMP</b><small data-ar="وضع المعلم مفعّل" data-en="Teacher Mode ON">وضع المعلم مفعّل</small></div><button id="langBtn">EN</button></div></div>
+
+<section class="hero">
+<h1 data-ar="ابدأ رحلتك الآن" data-en="Start your journey now">ابدأ رحلتك الآن</h1>
+<p data-ar="منهج مرتب من ملفاتك: تأسيس، Agile، People، Process، Business Environment، مع حفظ تلقائي للتقدم وكويزات ومحاكاة." data-en="A structured journey from your materials: Foundation, Agile, People, Process, Business Environment, with automatic progress saving, quizzes, and mocks.">منهج مرتب من ملفاتك: تأسيس، Agile، People، Process، Business Environment، مع حفظ تلقائي للتقدم وكويزات ومحاكاة.</p>
+<div class="row"><button class="btn white" onclick="resume()" data-ar="أكمل من حيث توقفت" data-en="Resume">أكمل من حيث توقفت</button><button class="btn soft" onclick="go('journey')" data-ar="عرض المنهج" data-en="View curriculum">عرض المنهج</button></div>
+</section>
+
+<div class="nav" id="nav">
+<button class="active" data-go="dash" data-ar="رحلتي" data-en="Dashboard">رحلتي</button>
+<button data-go="journey" data-ar="المنهج" data-en="Curriculum">المنهج</button>
+<button data-go="practice" data-ar="تدريب" data-en="Practice">تدريب</button>
+<button data-go="mock" data-ar="محاكاة" data-en="Mocks">محاكاة</button>
+<button data-go="mistakes" data-ar="أخطائي" data-en="Mistakes">أخطائي</button>
+<button data-go="glossary" data-ar="القاموس" data-en="Glossary">القاموس</button>
+<button data-go="settings" data-ar="الإعدادات" data-en="Settings">الإعدادات</button>
+</div>
+
+<section id="dash" class="section active">
+<div id="stats" class="grid4"></div>
+<div class="grid2">
+<div class="card"><h2 data-ar="أين وصلت؟" data-en="Where are you?">أين وصلت؟</h2><h3 id="curTitle"></h3><p id="curDesc" class="muted"></p><button class="btn dark" onclick="resume()" data-ar="أكمل الآن" data-en="Continue">أكمل الآن</button></div>
+<div class="card"><h2 data-ar="الأضعف عندك" data-en="Weakest areas">الأضعف عندك</h2><div id="weak"></div></div>
+</div>
+<div class="card"><h3 data-ar="التقدم الكلي" data-en="Overall progress">التقدم الكلي</h3><div class="progress"><i id="overall" style="width:0"></i></div><p id="overallTxt" class="muted"></p></div>
+</section>
+
+<section id="journey" class="section"><div id="stages"></div><div id="lessonHost"></div></section>
+
+<section id="practice" class="section">
+<div class="grid3">
+<div class="card"><h3 data-ar="كويز سريع" data-en="Quick quiz">كويز سريع</h3><button class="btn dark" onclick="startPractice('all',10)">10</button></div>
+<div class="card"><h3 data-ar="حسب المجال" data-en="By domain">حسب المجال</h3><select id="domainSel" class="search"><option value="people">People</option><option value="process">Process</option><option value="business">Business</option><option value="agile">Agile</option><option value="foundation">Foundation</option></select><br><br><button class="btn dark" onclick="startPractice(document.getElementById('domainSel').value,30)">30</button></div>
+<div class="card"><h3 data-ar="أخطائي" data-en="Mistakes">أخطائي</h3><button class="btn dark" onclick="retryMistakes()" data-ar="إعادة التدريب" data-en="Retry">إعادة التدريب</button></div>
+</div><div id="practiceHost"></div>
+</section>
+
+<section id="mock" class="section">
+<div class="warn" data-ar="المحاكاة مبنية على موادك المرفوعة 2021-2023، وليست مواصفة PMI رسمية حديثة." data-en="Simulation is based on your uploaded 2021-2023 materials and is not a current official PMI specification.">المحاكاة مبنية على موادك المرفوعة 2021-2023، وليست مواصفة PMI رسمية حديثة.</div>
+<div class="grid3" style="margin-top:10px">
+<div class="card"><h3>Mini Mock</h3><p>30 · 38 min</p><button class="btn dark" onclick="startMock(30,38)">ابدأ</button></div>
+<div class="card"><h3>Half Mock</h3><p>90 · 115 min</p><button class="btn dark" onclick="startMock(90,115)">ابدأ</button></div>
+<div class="card"><h3>Full Mock</h3><p>180 · 230 min</p><small class="muted">People 42% · Process 50% · Business 8%</small><br><br><button class="btn dark" onclick="startMock(180,230)">ابدأ</button></div>
+</div><div id="mockHost"></div>
+</section>
+
+<section id="mistakes" class="section"><div class="card"><h2 data-ar="سجل الأخطاء" data-en="Mistake log">سجل الأخطاء</h2><div id="mistakesBox"></div></div></section>
+<section id="glossary" class="section"><div class="card"><h2 data-ar="القاموس" data-en="Glossary">القاموس</h2><input id="gSearch" class="search" placeholder="ابحث..."><div id="gBox"></div></div></section>
+<section id="settings" class="section"><div class="card"><h2 data-ar="الإعدادات والحفظ" data-en="Settings & backup">الإعدادات والحفظ</h2><label data-ar="لغة الأسئلة" data-en="Question language">لغة الأسئلة</label> <select id="qLang"><option value="ar">عربي</option><option value="en">English</option><option value="bi">ثنائي</option></select><br><br><div class="row"><button class="btn dark" onclick="exportProgress()" data-ar="تصدير التقدم" data-en="Export progress">تصدير التقدم</button><label class="btn soft" data-ar="استيراد" data-en="Import">استيراد<input id="importProgress" type="file" accept=".json" hidden></label><button class="btn" style="background:#fee2e2;color:#991b1b" onclick="resetProgress()" data-ar="تصفير" data-en="Reset">تصفير</button></div></div></section>
+
+<footer data-ar="مساعد دراسة مستقل صيغ من المواد التي رفعتها. لا يعيد نشر صفحات المصدر أو أسئلته حرفيًا، وليس منتجًا رسميًا من PMI أو PM-Tricks." data-en="Independent study aid synthesized from your uploaded materials. It does not republish source pages or exact questions and is not an official PMI or PM-Tricks product.">مساعد دراسة مستقل صيغ من المواد التي رفعتها. لا يعيد نشر صفحات المصدر أو أسئلته حرفيًا، وليس منتجًا رسميًا من PMI أو PM-Tricks.</footer>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const stages=[
+['foundation','التأسيس','Foundation',[
+['f1','المشروع وإدارة المشاريع','Project & PM','المشروع مسعى مؤقت يخلق نتيجة متفردة، وإدارة المشروع تستخدم المعرفة والمهارات والأدوات لتحقيق المتطلبات.','A project is a temporary endeavor creating a unique result; project management applies knowledge, skills and tools to meet requirements.'],
+['f2','Project / Program / Portfolio','Project / Program / Portfolio','المشروع وحدة مستقلة، البرنامج ينسق مشاريع مترابطة لتحقيق منافع، والمحفظة تجمع مبادرات لتحقيق أهداف استراتيجية.','A project is a single endeavor, a program coordinates related projects for benefits, and a portfolio aligns initiatives to strategic objectives.'],
+['f3','دورات الحياة','Life Cycles','المادة تفرق بين Predictive وIterative وIncremental وAgile وHybrid بحسب اليقين والتغيير وطريقة التسليم.','The material distinguishes Predictive, Iterative, Incremental, Agile and Hybrid based on certainty, change and delivery style.'],
+['f4','المراحل والبوابات','Phases & Gates','بوابة المرحلة نقطة قرار لمراجعة الأداء ووثائق المشروع قبل الاستمرار أو التعديل أو التكرار أو الإنهاء.','A phase gate is a decision point to review performance/documents before continuing, modifying, repeating or stopping.'],
+['f5','EEF و OPA','EEF & OPA','EEF عوامل بيئية داخلية وخارجية، وOPA سياسات وإجراءات وقوالب ودروس سابقة داخل المنظمة.','EEFs are internal/external environmental factors; OPAs include organizational policies, procedures, templates and lessons.'],
+['f6','Data / Information / Reports','Data / Information / Reports','البيانات خام، المعلومات بيانات محللة، والتقارير تقدم المعلومات لدعم القرار.','Data is raw, information is analyzed data, and reports present information for decisions.'],
+['f7','Tailoring','Tailoring','كل مشروع فريد، لذلك لا يلزم استخدام كل عملية وأداة بنفس الشكل في كل مشروع.','Every project is unique, so not every process or tool is used identically on every project.'],
+['f8','Business Case والمنافع','Business Case & Benefits','Business Case يبرر المشروع، وBenefits Plan يحدد كيف ومتى تتحقق المنافع وكيف تقاس.','The Business Case justifies the project; the Benefits Plan defines how and when benefits are realized and measured.'],
+['f9','الهياكل التنظيمية','Org Structures','صلاحية مدير المشروع تختلف بين Functional وMatrix وProjectized.','PM authority varies across Functional, Matrix and Projectized structures.'],
+['f10','الافتراضات والقيود','Assumptions & Constraints','الافتراض شيء نعتقد صحته وقد يتبين العكس، والقيد حد مفروض يجب التخطيط داخله.','An assumption is believed true but may prove false; a constraint is an imposed limit.'],
+['f11','Risk vs Issue','Risk vs Issue','Risk حدث غير مؤكد قد يقع، بينما Issue مشكلة حدثت فعليًا وتحتاج معالجة.','A Risk is an uncertain future event; an Issue has already occurred and needs resolution.'],
+['f12','Stakeholders','Stakeholders','حدد من يؤثر أو يتأثر بالمشروع وخطط لمشاركته وتوقعاته.','Identify who affects or is affected by the project and plan engagement.'],
+['f13','دور مدير المشروع','PM Role','يربط الأهداف بالتنفيذ ويوازن القيود ويسهّل القرار ويزيل العوائق.','Connects objectives to execution, balances constraints, facilitates decisions and removes obstacles.'],
+['f14','PMO والحوكمة','PMO & Governance','الحوكمة تحدد سلطات القرار والتصعيد، والـPMO قد يكون داعمًا أو رقابيًا أو توجيهيًا.','Governance defines decision/escalation authority; a PMO may be supportive, controlling or directive.']]},
+['agile','Agile','Agile',[
+['a1','عقلية Agile','Agile Mindset','العقلية الرشيقة تركز على القيمة والتعاون والتحسين والاستجابة للتغيير.','Agile mindset focuses on value, collaboration, improvement and responding to change.'],
+['a2','القيم والمبادئ','Values & Principles','القيم الأربع والمبادئ الاثنا عشر تدعم التسليم المتكرر والعمل الجماعي والبساطة والجودة والتحسين.','The four values and twelve principles support frequent delivery, teamwork, simplicity, quality and improvement.'],
+['a3','Scrum Roles','Scrum Roles','Product Owner للقيمة والـBacklog، Scrum Master قائد خادم وميسر، والفريق مسؤول عن التسليم والجودة.','Product Owner owns value/backlog, Scrum Master serves/facilitates, team owns delivery and quality.'],
+['a4','Scrum Artifacts','Scrum Artifacts','Product Backlog قائمة حية، Sprint Backlog للعمل الحالي، Increment للمخرج المكتمل القابل للاستخدام.','Product Backlog is live, Sprint Backlog is current work, Increment is completed usable output.'],
+['a5','Scrum Events','Scrum Events','Planning يحدد ماذا وكيف، Daily يزامن التقدم، Review يفحص المنتج، Retrospective تحسن طريقة العمل.','Planning decides what/how, Daily synchronizes progress, Review inspects product, Retrospective improves ways of working.'],
+['a6','DoR vs DoD','DoR vs DoD','DoR يحدد جاهزية العمل للبدء، DoD يحدد شروط اعتبار الناتج مكتملًا وقابلًا للاستخدام.','DoR checks readiness to start; DoD checks whether output is complete and usable.'],
+['a7','MVP','MVP','أصغر نسخة قابلة للاستخدام تحقق قيمة وتنتج تعلمًا مبكرًا.','The smallest usable version that delivers value and early learning.'],
+['a8','Kanban وWIP','Kanban & WIP','صوّر التدفق، حد WIP، واسحب عملًا جديدًا عند توفر سعة.','Visualize flow, limit WIP, pull new work when capacity exists.'],
+['a9','User Story','User Story','متطلب من منظور المستخدم يربط الدور بالحاجة والقيمة.','A requirement from the user perspective linking role, need and value.'],
+['a10','Story Points وPlanning Poker','Story Points & Planning Poker','تقدير نسبي جماعي للحجم والتعقيد والجهد والمخاطر.','Collaborative relative estimation of size, complexity, effort and risk.'],
+['a11','Spike','Spike','بحث محدد الوقت لتقليل عدم اليقين قبل التقدير أو التنفيذ.','Time-boxed research to reduce uncertainty before estimation or delivery.'],
+['a12','Velocity','Velocity','مجموع Story Points المكتملة فعليًا ويستخدم تاريخيًا لتوقع السعة.','Sum of story points actually completed, used historically to estimate capacity.'],
+['a13','Backlog Refinement','Backlog Refinement','تنقيح وتوضيح وتقسيم وإعادة ترتيب عناصر Backlog باستمرار.','Continuously clarify, split, estimate and reorder backlog items.'],
+['a14','Information Radiators','Information Radiators','عرض بصري شفاف للتقدم والعمل المتبقي والعوائق والمخاطر.','Visible transparent displays of progress, remaining work, impediments and risks.'],
+['a15','Scrum of Scrums','Scrum of Scrums','تنسيق عدة فرق Scrum عبر ممثلين لمشاركة الاعتماديات والعوائق.','Coordinates multiple Scrum teams through representatives sharing dependencies and impediments.'],
+['a16','Servant Leadership','Servant Leadership','القائد الخادم يزيل العوائق ويمكّن الفريق بدل السيطرة الدقيقة.','A servant leader removes impediments and empowers the team instead of micromanaging.']]},
+['people','People','People',[
+['p1','إدارة النزاع','Manage Conflict','افهم مصدر النزاع وسياقه واختر أسلوب حل مناسب وراقب فعاليته.','Understand conflict source/context, choose an approach and track effectiveness.'],
+['p2','قيادة الفريق','Lead Team','عدّل أسلوب القيادة حسب الموقف والثقافة واحتياجات الفريق.','Adapt leadership style to situation, culture and team needs.'],
+['p3','دعم الأداء','Support Performance','قِس الأداء وقدّم Feedback واستخدم مؤشرات مفيدة.','Measure performance, provide feedback and use useful indicators.'],
+['p4','التمكين','Empower','دع الأقرب للعمل يقدّر ويقرر ضمن حدود مساءلة واضحة.','Let those closest to the work estimate and decide within clear accountability.'],
+['p5','التدريب والتوجيه','Training / Coaching / Mentoring','حدد فجوة المهارات واختر التدخل المناسب ثم قِس أثره.','Identify skill gaps, choose the right intervention and measure impact.'],
+['p6','بناء الفريق وRACI','Build Team & RACI','وضح الموارد والأدوار والمسؤوليات والتوافر.','Clarify resources, roles, responsibilities and availability.'],
+['p7','إزالة العوائق','Remove Impediments','عالج ما يبطئ أو يمنع أو يوقف تقدم الفريق.','Address conditions that slow, block or stop team progress.'],
+['p8','التفاوض','Negotiate','افهم المصالح والحدود وابحث عن اتفاق عملي.','Understand interests and limits and seek a workable agreement.'],
+['p9','التعاون مع أصحاب المصلحة','Collaborate','ابن الثقة وشارك المعلومات واتخذ القرارات مع الأطراف المناسبة.','Build trust, share information and decide with the right stakeholders.'],
+['p10','فهم مشترك','Shared Understanding','استخدم التيسير واللغة الواضحة والتوافق لتقليل سوء الفهم.','Use facilitation, clear language and consensus to reduce misunderstanding.'],
+['p11','الفرق الافتراضية','Virtual Teams','اضبط الاتصال والتوقيت وقواعد العمل وبناء الثقة عن بعد.','Set communication, timing, working agreements and remote trust.'],
+['p12','Ground Rules','Ground Rules','حدد السلوك المقبول وغير المقبول مبكرًا في Team Charter.','Define acceptable/unacceptable behavior early in the Team Charter.'],
+['p13','Mentoring','Mentoring','انقل الخبرة عبر علاقة مستمرة تساعد الشخص على النمو.','Transfer experience through an ongoing developmental relationship.'],
+['p14','الذكاء العاطفي','Emotional Intelligence','تعرف على المشاعر واضبطها واستخدم التعاطف لتحسين التعاون.','Recognize and regulate emotions and use empathy to improve collaboration.']]},
+['process','Process','Process',[
+['r1','تسليم القيمة','Deliver Value','ابحث عن قيمة تدريجية وقِس التقدم واستخدم البيانات للقرار.','Seek incremental value, measure progress and use data for decisions.'],
+['r2','الاتصالات','Communications','حدد من يحتاج ماذا ومتى وبأي قناة ومن يملك التصعيد.','Define who needs what, when, via which channel and escalation owner.'],
+['r3','المخاطر','Risks','حدد وحلل واستجب وراقب مع تحديث Risk Register.','Identify, analyze, respond and monitor while updating the Risk Register.'],
+['r4','أصحاب المصلحة','Stakeholder Engagement','حددهم وخطط للمشاركة المطلوبة وراقب الفجوة.','Identify stakeholders, plan desired engagement and monitor gaps.'],
+['r5','الميزانية والموارد','Budget & Resources','خطط وقدّر واضبط التكلفة والموارد واستخدم EVM.','Plan, estimate and control cost/resources and use EVM.'],
+['r6','الجدول','Schedule','عرّف الأنشطة والعلاقات والمدد وطور الجدول واضبطه.','Define activities, dependencies and durations, then build/control the schedule.'],
+['r7','الجودة','Quality','خطط معايير الجودة وأدر الجودة ثم افحص النتائج.','Plan quality criteria, manage quality and inspect results.'],
+['r8','النطاق','Scope','اجمع المتطلبات، أنشئ RTM وWBS، تحقق من القبول واضبط الانحراف.','Collect requirements, create RTM/WBS, validate acceptance and control variance.'],
+['r9','تكامل التخطيط','Integrated Planning','ادمج Baselines والخطط الفرعية في خطة متسقة.','Integrate baselines and subsidiary plans into a coherent plan.'],
+['r10','التغيير','Changes','وثق التغيير وحلل أثره واعتمد عبر الحوكمة ثم نفذ المعتمد.','Document change, analyze impact, approve through governance, implement approved change.'],
+['r11','المشتريات','Procurement','Make-or-Buy، SOW، اختيار المورد والعقد، المراقبة والإغلاق.','Make-or-buy, SOW, seller/contract selection, control and closure.'],
+['r12','Artifacts','Artifacts','قوالب واعتماد وVersion Control وأمن وتوزيع منظم.','Templates, approval, version control, security and controlled distribution.'],
+['r13','اختيار المنهجية','Methodology','اختر Predictive أو Agile أو Hybrid حسب السياق.','Choose Predictive, Agile or Hybrid based on context.'],
+['r14','الحوكمة','Governance','حدد من يقرر ومتى تصعّد وما الحدود والصلاحيات.','Define who decides, when to escalate and decision thresholds.'],
+['r15','المشكلات','Issues','Issue Log، مالك، موعد، Workaround، أثر، متابعة وإغلاق.','Issue Log, owner, due date, workaround, impact, tracking and closure.'],
+['r16','نقل المعرفة','Knowledge Transfer','التقط Lessons Learned وانقل المعرفة واحفظها لإعادة الاستخدام.','Capture lessons learned, transfer and store knowledge for reuse.'],
+['r17','الإغلاق','Closure','حدد معايير الإغلاق، تحقق من الانتقال والجاهزية، ثم أغلق رسميًا.','Define closure criteria, validate transition/readiness, close formally.']]},
+['business','Business Environment','Business Environment',[
+['b1','الامتثال','Compliance','حدد متطلبات الامتثال وأثرها ومخاطرها وراقب الالتزام.','Identify compliance requirements, impacts/risks and monitor adherence.'],
+['b2','المنافع والقيمة','Benefits & Value','حدد المنافع ومالكها ومقاييسها ومتى تتحقق واربطها بالاستراتيجية.','Define benefits, owners, measures, timing and strategic alignment.'],
+['b3','تغيرات بيئة الأعمال','Business Environment Changes','راقب التغيرات وأعد ترتيب النطاق أو Backlog لحماية القيمة.','Monitor changes and reprioritize scope/backlog to protect value.'],
+['b4','التغيير المؤسسي','Organizational Change','افهم الثقافة وأثر التغيير والمشروع وحدد إجراءات التبني والدعم.','Understand culture and impacts and define adoption/support actions.']]}
+];
+const flat=stages.flatMap(s=>s[3].map(x=>({id:x[0],stage:s[0],ar:x[1],en:x[2],ad:x[3],ed:x[4]})));
+const glossary=[['MVP','Minimum Viable Product','أصغر نسخة قابلة للاستخدام تحقق قيمة وتعلمًا.'],['DoD','Definition of Done','معايير اعتبار العمل مكتملًا.'],['DoR','Definition of Ready','معايير جاهزية العمل للبدء.'],['WIP','Work in Progress','العمل الجاري.'],['WBS','Work Breakdown Structure','تفكيك النطاق إلى حزم عمل.'],['RTM','Requirements Traceability Matrix','ربط وتتبع المتطلبات.'],['RACI','Responsible, Accountable, Consulted, Informed','توضيح الأدوار والمسؤوليات.'],['CPI','Cost Performance Index','EV / AC'],['SPI','Schedule Performance Index','EV / PV'],['CCB','Change Control Board','حوكمة التغيير.'],['Issue Log','Issue Log','سجل المشكلات التي حدثت فعليًا.'],['Risk Register','Risk Register','سجل المخاطر المحتملة.'],['Velocity','Velocity','نقاط القصص المكتملة فعليًا.'],['Spike','Spike','بحث محدد الوقت لتقليل عدم اليقين.']];
+const KEY='pmp_journey_live_v1';
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||{lang:'ar',qLang:'ar',done:{},scores:{},mistakes:[],attempts:[],current:'f1',section:'dash'};
+let lang=state.lang||'ar';
+const t=(a,e)=>lang==='ar'?a:e;
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function applyLang(){document.documentElement.dir=lang==='ar'?'rtl':'ltr';$$('[data-ar]').forEach(e=>e.textContent=lang==='ar'?e.dataset.ar:e.dataset.en);$('#langBtn').textContent=lang==='ar'?'EN':'عربي';renderAll()}
+$('#langBtn').onclick=()=>{lang=lang==='ar'?'en':'ar';state.lang=lang;save();applyLang()}
+function go(id){$$('.section').forEach(x=>x.classList.toggle('active',x.id===id));$$('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.go===id));state.section=id;save();window.scrollTo({top:document.querySelector('.nav').offsetTop-65,behavior:'smooth'})}
+$$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.go));
+function mastery(stage){const a=flat.filter(x=>x.stage===stage);return Math.round(a.filter(x=>state.done[x.id]).length/a.length*100)}
+function weakest(){return Object.entries(state.scores).map(([id,r])=>({x:flat.find(z=>z.id===id),a:Math.round(r.c/r.n*100)})).filter(z=>z.x).sort((a,b)=>a.a-b.a)}
+function renderDashboard(){const done=Object.keys(state.done).filter(k=>state.done[k]).length,p=Math.round(done/flat.length*100);$('#stats').innerHTML=[['التقدم','Overall',p],['People','People',mastery('people')],['Process','Process',mastery('process')],['Business','Business',mastery('business')]].map(x=>'<div class="card stat"><b>'+x[2]+'%</b><span class="muted">'+(lang==='ar'?x[0]:x[1])+'</span></div>').join('');$('#overall').style.width=p+'%';$('#overallTxt').textContent=t('أنجزت '+done+' من '+flat.length+' درسًا','Completed '+done+' of '+flat.length+' lessons');const c=flat.find(x=>x.id===state.current)||flat[0];$('#curTitle').textContent=lang==='ar'?c.ar:c.en;$('#curDesc').textContent=lang==='ar'?c.ad:c.ed;const w=weakest().slice(0,3);$('#weak').innerHTML=w.length?w.map(v=>'<div class="teach"><b>'+(lang==='ar'?v.x.ar:v.x.en)+'</b><span class="muted">'+v.a+'%</span></div>').join(''):'<p class="muted">'+t('ابدأ الكويزات حتى أحدد نقاط الضعف.','Start quizzes to identify weak areas.')+'</p>'}
+function renderStages(){$('#stages').innerHTML=stages.map((s,i)=>'<div class="stage"><div class="stageHead"><div class="num">'+(i+1)+'</div><b>'+(lang==='ar'?s[1]:s[2])+'</b><span>'+mastery(s[0])+'%</span></div><div class="progress" style="margin-top:7px"><i style="width:'+mastery(s[0])+'%"></i></div><div class="lessons">'+s[3].map(x=>'<button class="lesson '+(state.done[x[0]]?'done ':'')+(state.current===x[0]?'current':'')+'" onclick="openLesson(\''+x[0]+'\')">'+(state.done[x[0]]?'✓ ':'')+(lang==='ar'?x[1]:x[2])+'</button>').join('')+'</div></div>').join('')}
+function trap(id){const m={f11:'لا تخلط حدثًا وقع بالفعل مع خطر مستقبلي.',a5:'Review يفحص المنتج، Retrospective تفحص طريقة العمل.',a6:'DoR قبل البدء، DoD عند الاكتمال.',r10:'لا تنفذ التغيير قبل تحليل الأثر والاعتماد.',p4:'التمكين لا يعني غياب المساءلة.',a8:'Kanban يركز على التدفق وWIP، وليس شرطًا أن يعمل بسبرنتات.'};return t(m[id]||'الخيارات التي تقفز للتصعيد أو الأوامر قبل الفهم غالبًا أضعف.','Options that jump to escalation or command before understanding are often weaker.')}
+function openLesson(id){state.current=id;save();go('journey');const x=flat.find(z=>z.id===id),qs=makeQuestions([x],3);$('#lessonHost').innerHTML='<div class="card"><h2>'+(lang==='ar'?x.ar:x.en)+'</h2><div class="teach"><b>'+t('الفكرة ببساطة','Simple idea')+'</b>'+(lang==='ar'?x.ad:x.ed)+'</div><div class="teach"><b>'+t('متى تستخدمها','When to use it')+'</b>'+t('عندما يكون جوهر السؤال متعلقًا بهذا المفهوم، اربط المشكلة بالمبدأ قبل اختيار الإجراء.','When the scenario centers on this concept, connect the problem to the principle before choosing an action.')+'</div><div class="teach"><b>'+t('مثال عملي','Practical example')+'</b>'+t('اسأل: من يملك القرار؟ ما السجل أو الأداة الصحيحة؟ وما الإجراء الذي يعالج السبب بدل العرض؟','Ask: who owns the decision, what artifact/tool applies, and which action addresses the cause rather than the symptom?')+'</div><div class="teach"><b>'+t('فخ الاختبار','Exam trap')+'</b>'+trap(id)+'</div><h3>'+t('اختبار قصير','Checkpoint')+'</h3><div id="lessonQuiz"></div><button class="btn dark" onclick="completeLesson(\''+id+'\')">'+t('تم، انتقل للدرس التالي','Done, next lesson')+'</button></div>';renderQuestions(qs,$('#lessonQuiz'),true)}
+function completeLesson(id){state.done[id]=true;const i=flat.findIndex(x=>x.id===id);if(i<flat.length-1)state.current=flat[i+1].id;save();renderAll();openLesson(state.current)}
+function resume(){openLesson(state.current||'f1')}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function makeQuestions(topics,n){const out=[];for(let i=0;i<n;i++){const x=topics[i%topics.length];let pool=flat.filter(z=>z.stage===x.stage&&z.id!==x.id);if(pool.length<3)pool=flat.filter(z=>z.id!==x.id);const opts=shuffle([x,...shuffle(pool).slice(0,3)]);const qAr=i%2===0?'أي مفهوم يطابق الوصف التالي؟ '+x.ad:'في موقف مرتبط بـ '+x.ar+'، أي خيار هو الأقرب؟';const qEn=i%2===0?'Which concept matches this description? '+x.ed:'In a scenario involving '+x.en+', which option fits best?';out.push({topic:x.id,stage:x.stage,c:x.id,qAr,qEn,opts})}return out}
+function bank(stage){const a=stage==='all'?flat:flat.filter(x=>x.stage===stage),o=[];for(let i=0;i<12;i++)o.push(...makeQuestions(a,a.length));return o}
+function qText(q){return state.qLang==='en'?q.qEn:state.qLang==='bi'?q.qAr+'\n'+q.qEn:q.qAr}
+function oText(o){return state.qLang==='en'?o.en:state.qLang==='bi'?o.ar+' / '+o.en:o.ar}
+function renderQuestions(qs,host,explain){host.innerHTML=qs.map((q,i)=>'<div class="q"><b style="white-space:pre-line">'+(i+1)+'. '+qText(q)+'</b><div class="opts">'+q.opts.map(o=>'<button class="opt" data-id="'+o.id+'" onclick="answerPractice(this,\''+q.c+'\',\''+q.topic+'\','+explain+')">'+oText(o)+'</button>').join('')+'</div><div class="muted exp"></div></div>').join('')}
+function answerPractice(btn,c,topic,explain){const box=btn.closest('.q');if(box.dataset.done)return;box.dataset.done='1';const chosen=btn.dataset.id;box.querySelectorAll('.opt').forEach(b=>{if(b.dataset.id===c)b.classList.add('correct')});if(chosen!==c){btn.classList.add('wrong');state.mistakes.push({topic,q:box.querySelector('b').textContent,at:Date.now()})}const r=state.scores[topic]||{c:0,n:0};r.n++;if(chosen===c)r.c++;state.scores[topic]=r;if(explain){const x=flat.find(z=>z.id===topic),e=box.querySelector('.exp');e.textContent=(chosen===c?t('صحيح. ','Correct. '):t('غير صحيح. ','Incorrect. '))+(lang==='ar'?x.ad:x.ed)}save();renderAll()}
+function startPractice(stage,n){go('practice');const qs=shuffle(bank(stage)).slice(0,n);$('#practiceHost').innerHTML='<div class="card"><h2>'+t('جلسة تدريب','Practice session')+'</h2><div id="practiceQs"></div></div>';renderQuestions(qs,$('#practiceQs'),true)}
+function retryMistakes(){const ids=[...new Set(state.mistakes.map(x=>x.topic))],ts=flat.filter(x=>ids.includes(x.id));if(!ts.length){alert(t('لا توجد أخطاء بعد.','No mistakes yet.'));return}go('practice');const qs=shuffle(makeQuestions(ts,Math.max(10,ts.length*2)));$('#practiceHost').innerHTML='<div class="card"><h2>'+t('إعادة تدريب الأخطاء','Mistake retry')+'</h2><div id="practiceQs"></div></div>';renderQuestions(qs,$('#practiceQs'),true)}
+let exam=null,timerHandle=null;
+function pick(stage,n){return shuffle(bank(stage)).slice(0,n)}
+function startMock(n,min){const p=Math.round(n*.42),r=Math.round(n*.50),b=n-p-r;exam={qs:shuffle([...pick('people',p),...pick('process',r),...pick('business',b)]),a:{},m:{},i:0,left:min*60,total:min*60};go('mock');renderExam();clearInterval(timerHandle);timerHandle=setInterval(()=>{if(!exam)return;exam.left--;if(exam.left<=0)submitMock(true);else updateTimer()},1000)}
+function renderExam(){const q=exam.qs[exam.i];$('#mockHost').innerHTML='<div class="exam" style="margin-top:10px"><div class="card"><div class="row"><span>'+(exam.i+1)+'/'+exam.qs.length+'</span><span class="timer" id="timer"></span></div><h3 style="white-space:pre-line">'+qText(q)+'</h3><div class="opts">'+q.opts.map(o=>'<button class="opt '+(exam.a[exam.i]===o.id?'correct':'')+'" onclick="examAnswer(\''+o.id+'\')">'+oText(o)+'</button>').join('')+'</div><div class="row" style="margin-top:12px"><button class="btn soft" onclick="prevQ()">‹</button><button class="btn soft" onclick="markQ()">⚑</button><button class="btn dark" onclick="nextQ()">›</button><button class="btn" style="background:#fee2e2;color:#991b1b" onclick="submitMock(false)">'+t('تسليم','Submit')+'</button></div></div><div class="card"><div class="qmap">'+exam.qs.map((_,i)=>'<button class="'+(exam.a[i]?'ans ':'')+(exam.m[i]?'mark':'')+'" onclick="jumpQ('+i+')">'+(i+1)+'</button>').join('')+'</div></div></div>';updateTimer()}
+function updateTimer(){const e=$('#timer');if(!e)return;const m=Math.floor(exam.left/60),s=exam.left%60;e.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+function examAnswer(id){exam.a[exam.i]=id;renderExam()}function nextQ(){if(exam.i<exam.qs.length-1)exam.i++;renderExam()}function prevQ(){if(exam.i>0)exam.i--;renderExam()}function jumpQ(i){exam.i=i;renderExam()}function markQ(){exam.m[exam.i]=!exam.m[exam.i];renderExam()}
+function submitMock(auto){if(!auto&&!confirm(t('تأكيد التسليم؟','Submit exam?')))return;clearInterval(timerHandle);let c=0;const by={people:[0,0],process:[0,0],business:[0,0]};exam.qs.forEach((q,i)=>{const ok=exam.a[i]===q.c;if(ok)c++;by[q.stage][1]++;if(ok)by[q.stage][0]++;else state.mistakes.push({topic:q.topic,q:qText(q),at:Date.now()})});const pct=Math.round(c/exam.qs.length*100);state.attempts.push({n:exam.qs.length,pct,at:new Date().toISOString()});save();$('#mockHost').innerHTML='<div class="card"><h2>'+t('النتيجة','Result')+': '+pct+'%</h2>'+Object.entries(by).map(([k,v])=>'<div class="teach"><b>'+k+'</b>'+Math.round(v[0]/v[1]*100)+'%</div>').join('')+'<p class="muted">'+t('راجع أخطاءك والمواضيع الأضعف قبل إعادة المحاكاة.','Review mistakes and weak topics before repeating the mock.')+'</p></div>';exam=null;renderAll()}
+function renderMistakes(){const a=state.mistakes.slice(-50).reverse();$('#mistakesBox').innerHTML=a.length?a.map(m=>{const x=flat.find(z=>z.id===m.topic);return '<div class="teach"><b>'+(x?(lang==='ar'?x.ar:x.en):m.topic)+'</b><span class="muted">'+m.q+'</span></div>'}).join(''):'<p class="muted">'+t('لا توجد أخطاء محفوظة.','No saved mistakes.')+'</p>'}
+function renderGlossary(f=''){f=f.toLowerCase();$('#gBox').innerHTML=glossary.filter(x=>x.join(' ').toLowerCase().includes(f)).map(x=>'<div class="gloss"><b>'+x[0]+' · '+x[1]+'</b><div class="muted">'+x[2]+'</div></div>').join('')}
+$('#gSearch').oninput=e=>renderGlossary(e.target.value);
+$('#qLang').onchange=e=>{state.qLang=e.target.value;save()};
+function exportProgress(){const b=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='pmp-progress.json';a.click()}
+$('#importProgress').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();location.reload()}catch{alert('Invalid')}};r.readAsText(f)}
+function resetProgress(){if(confirm(t('حذف كل التقدم؟','Erase all progress?'))){localStorage.removeItem(KEY);location.reload()}}
+function renderAll(){renderDashboard();renderStages();renderMistakes();renderGlossary($('#gSearch').value||'');$('#qLang').value=state.qLang||'ar'}
+applyLang();go(state.section||'dash');
+</script>
+</body></html>
