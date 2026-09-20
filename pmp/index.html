@@ -3,7 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
-<title>رحلة PMP</title>
+<title>رحلة PMP المكثفة | تعلم، اختبر، وقِس تقدمك</title>
+<meta name="description" content="دورة PMP مكثفة تفاعلية: تأسيس، Agile، People، Process وBusiness Environment، مع اختبارات حسب مستوى الصعوبة، حفظ التقدم وقياس التحسن مع الوقت.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#171127">
+<link rel="canonical" href="https://mansour-cyber.github.io/Masar-Live/pmp/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:site_name" content="PMP Intensive Journey">
+<meta property="og:title" content="رحلة PMP المكثفة | PMP Intensive Journey">
+<meta property="og:description" content="تعلم • اختبر • قِس تقدمك. رحلة دراسة PMP مكثفة مع اختبارات مستوى ومؤشرات تحسن شخصية.">
+<meta property="og:url" content="https://mansour-cyber.github.io/Masar-Live/pmp/">
+<meta property="og:image" content="https://placehold.co/1200x630/171127/FFFFFF/png?text=PMP+INTENSIVE+JOURNEY%0ALearn+%E2%80%A2+Test+%E2%80%A2+Improve">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PMP Intensive Journey - Learn, Test, Improve">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="رحلة PMP المكثفة">
+<meta name="twitter:description" content="رحلة PMP مكثفة تفاعلية مع اختبارات مستوى وقياس التحسن.">
+<meta name="twitter:image" content="https://placehold.co/1200x630/171127/FFFFFF/png?text=PMP+INTENSIVE+JOURNEY%0ALearn+%E2%80%A2+Test+%E2%80%A2+Improve">
 <style>
 :root{--bg:#f6f7fb;--card:#fff;--text:#111827;--muted:#667085;--line:#e5e7eb;--brand:#6d28d9;--brand2:#0ea5e9}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text)}
@@ -28,6 +46,10 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 .loginCard input{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px}
 .loginCard .loginBtn{width:100%;margin-top:14px}.loginError{min-height:22px;color:#b91c1c;font-size:13px;margin-top:9px}
 .userBadge{font-size:12px;color:#e2e8f0;border:1px solid #ffffff25;border-radius:999px;padding:7px 9px}
+.quickTestBtn{position:fixed;inset-inline-end:14px;top:46%;z-index:45;border:0;background:linear-gradient(135deg,#7c3aed,#0ea5e9);color:#fff;border-radius:16px;padding:13px 11px;font-weight:900;box-shadow:0 14px 36px rgba(76,29,149,.28);writing-mode:vertical-rl;transform:rotate(180deg);cursor:pointer}
+.quickTestBtn:hover{filter:brightness(1.05)}.levelCards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.levelCard{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}.levelCard b{font-size:20px}.levelCard.easy{border-top:4px solid #10b981}.levelCard.medium{border-top:4px solid #f59e0b}.levelCard.hard{border-top:4px solid #ef4444}
+.metricRow{display:grid;grid-template-columns:160px 1fr 70px;gap:10px;align-items:center;margin:9px 0}.metricBar{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden}.metricBar i{display:block;height:100%;background:linear-gradient(90deg,#7c3aed,#0ea5e9)}.deltaUp{color:#047857;font-weight:900}.deltaDown{color:#b91c1c;font-weight:900}.historyTable{width:100%;border-collapse:collapse}.historyTable th,.historyTable td{padding:9px;border-bottom:1px solid var(--line);text-align:start;font-size:13px}.focusBox{background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:12px;margin:8px 0}
+@media(max-width:700px){.quickTestBtn{top:auto;bottom:16px;inset-inline-end:12px;writing-mode:horizontal-tb;transform:none;border-radius:999px;padding:11px 15px}.levelCards{grid-template-columns:1fr}.metricRow{grid-template-columns:110px 1fr 55px}}
 </style></head>
 <body class="auth-locked">
 <div id="loginGate" class="loginGate">
@@ -45,6 +67,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 </div>
 <div class="app" id="mainApp" style="display:none">
 <div class="top"><div class="topbar"><div class="brand"><b data-ar="رحلة PMP" data-en="PMP Journey">رحلة PMP</b><small data-ar="وضع المعلم مفعّل" data-en="Teacher Mode ON">وضع المعلم مفعّل</small></div><span id="userBadge" class="userBadge"></span><button onclick="logoutUser()" data-ar="خروج" data-en="Logout">خروج</button><button id="langBtn">EN</button></div></div>
+<button class="quickTestBtn" onclick="openAssessment()" data-ar="اختبر الآن" data-en="Test Now">اختبر الآن</button>
 
 <section class="hero">
 <h1 data-ar="ابدأ رحلتك الآن" data-en="Start your journey now">ابدأ رحلتك الآن</h1>
@@ -69,6 +92,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 <div class="card"><h2 data-ar="الأضعف عندك" data-en="Weakest areas">الأضعف عندك</h2><div id="weak"></div></div>
 </div>
 <div class="card"><h3 data-ar="التقدم الكلي" data-en="Overall progress">التقدم الكلي</h3><div class="progress"><i id="overall" style="width:0"></i></div><p id="overallTxt" class="muted"></p></div>
+<div class="card"><div class="row" style="justify-content:space-between"><div><h3 style="margin:0" data-ar="مؤشر التحسن" data-en="Improvement indicator">مؤشر التحسن</h3><p class="muted" style="margin:4px 0 0" data-ar="يقارن آخر اختبار مستوى بالاختبار السابق من نفس الصعوبة." data-en="Compares your latest level test with the previous test at the same difficulty.">يقارن آخر اختبار مستوى بالاختبار السابق من نفس الصعوبة.</p></div><button class="btn soft" onclick="openAssessment()" data-ar="اختبر الآن" data-en="Test now">اختبر الآن</button></div><div id="improvementDash" style="margin-top:10px"></div></div>
 </section>
 
 <section id="journey" class="section"><div id="stages"></div><div id="lessonHost"></div></section>
@@ -88,6 +112,21 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 <div class="card"><h3>Half Mock</h3><p>90 · 115 min</p><button class="btn dark" onclick="startMock(90,115)">ابدأ</button></div>
 <div class="card"><h3>Full Mock</h3><p>180 · 230 min</p><small class="muted">People 42% · Process 50% · Business 8%</small><br><br><button class="btn dark" onclick="startMock(180,230)">ابدأ</button></div>
 </div><div id="mockHost"></div>
+</section>
+
+<section id="assessment" class="section">
+<div class="card">
+  <div class="kicker" data-ar="اختبار المستوى" data-en="Level Assessment">اختبار المستوى</div>
+  <h2 data-ar="اختبر مستواك الآن" data-en="Test your level now">اختبر مستواك الآن</h2>
+  <p class="muted" data-ar="اختر مستوى الصعوبة. تحفظ كل محاولة في حسابك، وبعد المحاولة التالية تحصل على مقارنة واضحة لمقدار التحسن وأضعف الأقسام." data-en="Choose difficulty. Every attempt is saved to your account; later attempts are compared to show improvement and weakest sections.">اختر مستوى الصعوبة. تحفظ كل محاولة في حسابك، وبعد المحاولة التالية تحصل على مقارنة واضحة لمقدار التحسن وأضعف الأقسام.</p>
+  <div class="levelCards">
+    <div class="levelCard easy"><b data-ar="بسيط" data-en="Easy">بسيط</b><p class="muted" data-ar="15 سؤالًا مباشرًا لقياس الأساس." data-en="15 direct questions to measure foundations.">15 سؤالًا مباشرًا لقياس الأساس.</p><button class="btn dark" onclick="startLevelAssessment('easy')" data-ar="ابدأ البسيط" data-en="Start Easy">ابدأ البسيط</button></div>
+    <div class="levelCard medium"><b data-ar="متوسط" data-en="Medium">متوسط</b><p class="muted" data-ar="20 سؤالًا بمواقف وتمييز بين المفاهيم." data-en="20 scenario and distinction questions.">20 سؤالًا بمواقف وتمييز بين المفاهيم.</p><button class="btn dark" onclick="startLevelAssessment('medium')" data-ar="ابدأ المتوسط" data-en="Start Medium">ابدأ المتوسط</button></div>
+    <div class="levelCard hard"><b data-ar="صعب" data-en="Hard">صعب</b><p class="muted" data-ar="25 سؤالًا بخيارات متقاربة داخل نفس المجال." data-en="25 questions with close distractors from the same domain.">25 سؤالًا بخيارات متقاربة داخل نفس المجال.</p><button class="btn dark" onclick="startLevelAssessment('hard')" data-ar="ابدأ الصعب" data-en="Start Hard">ابدأ الصعب</button></div>
+  </div>
+</div>
+<div id="assessmentHost"></div>
+<div class="card"><h3 data-ar="سجل اختبارات المستوى" data-en="Assessment history">سجل اختبارات المستوى</h3><div id="assessmentHistory"></div></div>
 </section>
 
 <section id="mistakes" class="section"><div class="card"><h2 data-ar="سجل الأخطاء" data-en="Mistake log">سجل الأخطاء</h2><div id="mistakesBox"></div></div></section>
@@ -183,7 +222,7 @@ let lang='ar';
 let saveChain=Promise.resolve();
 
 function defaultState(){
-  return {lang:'ar',qLang:'ar',done:{},scores:{},mistakes:[],attempts:[],current:'f1',section:'dash'};
+  return {lang:'ar',qLang:'ar',done:{},scores:{},mistakes:[],attempts:[],assessments:[],current:'f1',section:'dash'};
 }
 const t=(a,e)=>lang==='ar'?a:e;
 function userCacheKey(){ return currentUser ? 'pmp_cache_'+currentUser.username : null; }
@@ -308,7 +347,7 @@ function go(id){$$('.section').forEach(x=>x.classList.toggle('active',x.id===id)
 $$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.go));
 function mastery(stage){const a=flat.filter(x=>x.stage===stage);return Math.round(a.filter(x=>state.done[x.id]).length/a.length*100)}
 function weakest(){return Object.entries(state.scores).map(([id,r])=>({x:flat.find(z=>z.id===id),a:Math.round(r.c/r.n*100)})).filter(z=>z.x).sort((a,b)=>a.a-b.a)}
-function renderDashboard(){const done=Object.keys(state.done).filter(k=>state.done[k]).length,p=Math.round(done/flat.length*100);$('#stats').innerHTML=[['التقدم','Overall',p],['People','People',mastery('people')],['Process','Process',mastery('process')],['Business','Business',mastery('business')]].map(x=>'<div class="card stat"><b>'+x[2]+'%</b><span class="muted">'+(lang==='ar'?x[0]:x[1])+'</span></div>').join('');$('#overall').style.width=p+'%';$('#overallTxt').textContent=t('أنجزت '+done+' من '+flat.length+' درسًا','Completed '+done+' of '+flat.length+' lessons');const c=flat.find(x=>x.id===state.current)||flat[0];$('#curTitle').textContent=lang==='ar'?c.ar:c.en;$('#curDesc').textContent=lang==='ar'?c.ad:c.ed;const w=weakest().slice(0,3);$('#weak').innerHTML=w.length?w.map(v=>'<div class="teach"><b>'+(lang==='ar'?v.x.ar:v.x.en)+'</b><span class="muted">'+v.a+'%</span></div>').join(''):'<p class="muted">'+t('ابدأ الكويزات حتى أحدد نقاط الضعف.','Start quizzes to identify weak areas.')+'</p>'}
+function renderDashboard(){const done=Object.keys(state.done).filter(k=>state.done[k]).length,p=Math.round(done/flat.length*100);$('#stats').innerHTML=[['التقدم','Overall',p],['People','People',mastery('people')],['Process','Process',mastery('process')],['Business','Business',mastery('business')]].map(x=>'<div class="card stat"><b>'+x[2]+'%</b><span class="muted">'+(lang==='ar'?x[0]:x[1])+'</span></div>').join('');$('#overall').style.width=p+'%';$('#overallTxt').textContent=t('أنجزت '+done+' من '+flat.length+' درسًا','Completed '+done+' of '+flat.length+' lessons');const c=flat.find(x=>x.id===state.current)||flat[0];$('#curTitle').textContent=lang==='ar'?c.ar:c.en;$('#curDesc').textContent=lang==='ar'?c.ad:c.ed;const w=weakest().slice(0,3);$('#weak').innerHTML=w.length?w.map(v=>'<div class="teach"><b>'+(lang==='ar'?v.x.ar:v.x.en)+'</b><span class="muted">'+v.a+'%</span></div>').join(''):'<p class="muted">'+t('ابدأ الكويزات حتى أحدد نقاط الضعف.','Start quizzes to identify weak areas.')+'</p>'};renderImprovementDash()
 function renderStages(){
   const current=flat.find(x=>x.id===state.current);
   $('#stages').innerHTML=stages.map((s,i)=>{
@@ -357,6 +396,145 @@ function renderQuestions(qs,host,explain){host.innerHTML=qs.map((q,i)=>'<div cla
 function answerPractice(btn,c,topic,explain){const box=btn.closest('.q');if(box.dataset.done)return;box.dataset.done='1';const chosen=btn.dataset.id;box.querySelectorAll('.opt').forEach(b=>{if(b.dataset.id===c)b.classList.add('correct')});if(chosen!==c){btn.classList.add('wrong');state.mistakes.push({topic,q:box.querySelector('b').textContent,at:Date.now()})}const r=state.scores[topic]||{c:0,n:0};r.n++;if(chosen===c)r.c++;state.scores[topic]=r;if(explain){const x=flat.find(z=>z.id===topic),e=box.querySelector('.exp');e.textContent=(chosen===c?t('صحيح. ','Correct. '):t('غير صحيح. ','Incorrect. '))+(lang==='ar'?x.ad:x.ed)}save();renderAll()}
 function startPractice(stage,n){go('practice');const qs=shuffle(bank(stage)).slice(0,n);$('#practiceHost').innerHTML='<div class="card"><h2>'+t('جلسة تدريب','Practice session')+'</h2><div id="practiceQs"></div></div>';renderQuestions(qs,$('#practiceQs'),true)}
 function retryMistakes(){const ids=[...new Set(state.mistakes.map(x=>x.topic))],ts=flat.filter(x=>ids.includes(x.id));if(!ts.length){alert(t('لا توجد أخطاء بعد.','No mistakes yet.'));return}go('practice');const qs=shuffle(makeQuestions(ts,Math.max(10,ts.length*2)));$('#practiceHost').innerHTML='<div class="card"><h2>'+t('إعادة تدريب الأخطاء','Mistake retry')+'</h2><div id="practiceQs"></div></div>';renderQuestions(qs,$('#practiceQs'),true)}
+
+function openAssessment(){
+  go('assessment');
+  renderAssessmentHistory();
+  window.scrollTo({top:document.querySelector('#assessment').offsetTop-70,behavior:'smooth'});
+}
+function stageLabel(stage){
+  const s=stages.find(x=>x[0]===stage);
+  return s ? (lang==='ar'?s[1]:s[2]) : stage;
+}
+function assessmentConfig(level){
+  if(level==='easy') return {n:15,labelAr:'بسيط',labelEn:'Easy'};
+  if(level==='hard') return {n:25,labelAr:'صعب',labelEn:'Hard'};
+  return {n:20,labelAr:'متوسط',labelEn:'Medium'};
+}
+function balancedTopics(total){
+  const groups=['foundation','agile','people','process','business'];
+  const each=Math.floor(total/groups.length),extra=total%groups.length,out=[];
+  groups.forEach((g,idx)=>{
+    const pool=shuffle(flat.filter(x=>x.stage===g));
+    const need=each+(idx<extra?1:0);
+    for(let i=0;i<need;i++) out.push(pool[i%pool.length]);
+  });
+  return shuffle(out);
+}
+function makeAssessmentQuestions(level,total){
+  const topics=balancedTopics(total);
+  return topics.map((x,i)=>{
+    let pool;
+    if(level==='easy') pool=flat.filter(z=>z.id!==x.id && z.stage!==x.stage);
+    else pool=flat.filter(z=>z.id!==x.id && z.stage===x.stage);
+    if(pool.length<3) pool=flat.filter(z=>z.id!==x.id);
+    const distractors=shuffle(pool).slice(0,3);
+    const source=[x,...distractors];
+    let qAr,qEn,opts;
+    if(level==='easy'){
+      qAr='أي مفهوم يطابق الوصف التالي؟ '+x.ad;
+      qEn='Which concept matches this description? '+x.ed;
+      opts=shuffle(source.map(o=>({id:o.id,ar:o.ar,en:o.en})));
+    }else if(level==='medium'){
+      qAr='في موقف مشروع يرتبط بهذه الفكرة: '+x.ad+' ما المفهوم الذي يجب أن يوجه قرارك؟';
+      qEn='A project scenario reflects this idea: '+x.ed+' Which concept should guide your decision?';
+      opts=shuffle(source.map(o=>({id:o.id,ar:o.ar,en:o.en})));
+    }else{
+      qAr='اختر الإجراء/الفكرة الأقرب لمعالجة الموقف وفق المادة: '+x.ad;
+      qEn='Choose the action/idea that best addresses this scenario according to the material: '+x.ed;
+      opts=shuffle(source.map(o=>({id:o.id,ar:o.ad,en:o.ed})));
+    }
+    return {topic:x.id,stage:x.stage,c:x.id,qAr,qEn,opts,level};
+  });
+}
+let levelExam=null;
+function startLevelAssessment(level){
+  const cfg=assessmentConfig(level);
+  levelExam={level,qs:makeAssessmentQuestions(level,cfg.n),answers:{},idx:0,startedAt:Date.now()};
+  go('assessment');
+  drawLevelAssessment();
+}
+function drawLevelAssessment(){
+  const q=levelExam.qs[levelExam.idx];
+  const cfg=assessmentConfig(levelExam.level);
+  $('#assessmentHost').innerHTML='<div class="card">'+
+    '<div class="row" style="justify-content:space-between"><div><b>'+t('اختبار مستوى ','Level test ')+(lang==='ar'?cfg.labelAr:cfg.labelEn)+'</b><div class="muted">'+(levelExam.idx+1)+' / '+levelExam.qs.length+'</div></div><button class="btn soft" onclick="cancelLevelAssessment()">'+t('إلغاء','Cancel')+'</button></div>'+
+    '<div class="q"><b style="white-space:pre-line">'+qText(q)+'</b><div class="opts">'+q.opts.map(o=>'<button class="opt '+(levelExam.answers[levelExam.idx]===o.id?'correct':'')+'" onclick="answerLevelAssessment(\''+o.id+'\')">'+oText(o)+'</button>').join('')+'</div></div>'+
+    '<div class="row"><button class="btn soft" onclick="prevLevelQuestion()">‹ '+t('السابق','Previous')+'</button><button class="btn dark" onclick="nextLevelQuestion()">'+(levelExam.idx===levelExam.qs.length-1?t('إنهاء وحساب النتيجة','Finish & Score'):t('التالي','Next'))+' ›</button></div>'+
+  '</div>';
+}
+function answerLevelAssessment(id){levelExam.answers[levelExam.idx]=id;drawLevelAssessment()}
+function prevLevelQuestion(){if(levelExam.idx>0)levelExam.idx--;drawLevelAssessment()}
+function nextLevelQuestion(){
+  if(levelExam.answers[levelExam.idx]===undefined){alert(t('اختر إجابة أولًا.','Choose an answer first.'));return}
+  if(levelExam.idx<levelExam.qs.length-1){levelExam.idx++;drawLevelAssessment();return}
+  submitLevelAssessment();
+}
+function cancelLevelAssessment(){if(confirm(t('إلغاء هذا الاختبار؟','Cancel this test?'))){levelExam=null;$('#assessmentHost').innerHTML=''}}
+function submitLevelAssessment(){
+  const by={foundation:[0,0],agile:[0,0],people:[0,0],process:[0,0],business:[0,0]};
+  let correct=0;
+  levelExam.qs.forEach((q,i)=>{
+    const ok=levelExam.answers[i]===q.c;
+    by[q.stage][1]++; if(ok){correct++;by[q.stage][0]++}
+    else state.mistakes.push({topic:q.topic,q:qText(q),at:Date.now(),source:'assessment'});
+  });
+  const pct=Math.round(correct/levelExam.qs.length*100);
+  const byStage={};
+  Object.entries(by).forEach(([k,v])=>{byStage[k]=v[1]?Math.round(v[0]/v[1]*100):0});
+  const attempt={kind:'level',level:levelExam.level,pct,byStage,n:levelExam.qs.length,durationSec:Math.round((Date.now()-levelExam.startedAt)/1000),at:new Date().toISOString()};
+  state.assessments=Array.isArray(state.assessments)?state.assessments:[];
+  state.assessments.push(attempt);
+  save();
+  const previous=state.assessments.filter(a=>a.level===attempt.level && a!==attempt).slice(-1)[0]||null;
+  renderAssessmentResult(attempt,previous);
+  levelExam=null;
+  renderAssessmentHistory();
+  renderImprovementDash();
+}
+function focusRecommendations(attempt){
+  return Object.entries(attempt.byStage).sort((a,b)=>a[1]-b[1]).slice(0,3).map(([stage,score])=>{
+    const lessons=flat.filter(x=>x.stage===stage).filter(x=>!state.done[x.id]).slice(0,2);
+    return {stage,score,lessons};
+  });
+}
+function renderAssessmentResult(attempt,previous){
+  const cfg=assessmentConfig(attempt.level);
+  const delta=previous?attempt.pct-previous.pct:null;
+  const focus=focusRecommendations(attempt);
+  $('#assessmentHost').innerHTML='<div class="card">'+
+    '<div class="kicker">'+t('نتيجة اختبار المستوى','Level assessment result')+'</div>'+
+    '<h2>'+attempt.pct+'% · '+(lang==='ar'?cfg.labelAr:cfg.labelEn)+'</h2>'+
+    (previous?'<p class="'+(delta>=0?'deltaUp':'deltaDown')+'">'+t('التغير عن الاختبار السابق: ','Change vs previous: ')+(delta>=0?'+':'')+delta+'%</p>':'<p class="muted">'+t('هذه أول نتيجة بهذا المستوى. ستكون المقارنة أوضح بعد الاختبار القادم.','This is your first result at this level. The next attempt will enable a clear comparison.')+'</p>')+
+    '<h3>'+t('الأداء حسب القسم','Performance by section')+'</h3>'+
+    Object.entries(attempt.byStage).map(([stage,score])=>'<div class="metricRow"><span>'+stageLabel(stage)+'</span><div class="metricBar"><i style="width:'+score+'%"></i></div><b>'+score+'%</b></div>').join('')+
+    '<h3>'+t('ركّز الآن على','Focus next on')+'</h3>'+
+    focus.map(f=>'<div class="focusBox"><b>'+stageLabel(f.stage)+' · '+f.score+'%</b><div class="muted">'+(f.lessons.length?t('راجع: ','Review: ')+f.lessons.map(x=>lang==='ar'?x.ar:x.en).join('، '):t('أعد تدريب هذا القسم بأسئلة أصعب.','Retry this section with harder questions.'))+'</div></div>').join('')+
+  '</div>';
+}
+function renderAssessmentHistory(){
+  const a=(state.assessments||[]).slice().reverse();
+  const box=$('#assessmentHistory'); if(!box)return;
+  if(!a.length){box.innerHTML='<p class="muted">'+t('لا توجد اختبارات مستوى محفوظة بعد.','No saved level assessments yet.')+'</p>';return}
+  box.innerHTML='<div style="overflow:auto"><table class="historyTable"><thead><tr><th>'+t('التاريخ','Date')+'</th><th>'+t('المستوى','Level')+'</th><th>'+t('النتيجة','Score')+'</th><th>'+t('مقارنة','Change')+'</th></tr></thead><tbody>'+
+    a.map((x,idx)=>{
+      const newerIndex=state.assessments.findIndex(y=>y===x);
+      const prev=state.assessments.slice(0,newerIndex).filter(y=>y.level===x.level).slice(-1)[0];
+      const d=prev?x.pct-prev.pct:null, cfg=assessmentConfig(x.level);
+      return '<tr><td>'+new Date(x.at).toLocaleDateString(lang==='ar'?'ar-SA':'en-US')+'</td><td>'+(lang==='ar'?cfg.labelAr:cfg.labelEn)+'</td><td><b>'+x.pct+'%</b></td><td>'+(d===null?'—':'<span class="'+(d>=0?'deltaUp':'deltaDown')+'">'+(d>=0?'+':'')+d+'%</span>')+'</td></tr>';
+    }).join('')+'</tbody></table></div>';
+}
+function renderImprovementDash(){
+  const box=$('#improvementDash'); if(!box)return;
+  const a=state.assessments||[];
+  if(!a.length){box.innerHTML='<p class="muted">'+t('لم تسجل اختبار مستوى بعد. استخدم زر «اختبر الآن» لعمل خط أساس لمستواك.','No level assessment yet. Use “Test Now” to establish your baseline.')+'</p>';return}
+  const last=a[a.length-1], same=a.filter(x=>x.level===last.level), prev=same.length>1?same[same.length-2]:null;
+  const d=prev?last.pct-prev.pct:null, cfg=assessmentConfig(last.level), focus=focusRecommendations(last)[0];
+  box.innerHTML='<div class="row"><div class="stat"><b>'+last.pct+'%</b><span class="muted">'+(lang==='ar'?cfg.labelAr:cfg.labelEn)+'</span></div>'+
+    (d===null?'<span class="muted">'+t('هذه نتيجة خط الأساس الأولى.','This is your first baseline result.')+'</span>':'<span class="'+(d>=0?'deltaUp':'deltaDown')+'">'+t('تحسن ','Change ')+(d>=0?'+':'')+d+'%</span>')+'</div>'+
+    '<div class="focusBox"><b>'+t('أولوية التركيز: ','Focus priority: ')+stageLabel(focus.stage)+'</b><div class="muted">'+t('أداء القسم ','Section score ')+focus.score+'%</div></div>';
+}
+
 let exam=null,timerHandle=null;
 function pick(stage,n){return shuffle(bank(stage)).slice(0,n)}
 function startMock(n,min){const p=Math.round(n*.42),r=Math.round(n*.50),b=n-p-r;exam={qs:shuffle([...pick('people',p),...pick('process',r),...pick('business',b)]),a:{},m:{},i:0,left:min*60,total:min*60};go('mock');renderExam();clearInterval(timerHandle);timerHandle=setInterval(()=>{if(!exam)return;exam.left--;if(exam.left<=0)submitMock(true);else updateTimer()},1000)}
@@ -371,7 +549,7 @@ $('#qLang').onchange=e=>{state.qLang=e.target.value;save()};
 function exportProgress(){const b=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='pmp-progress.json';a.click()}
 $('#importProgress').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();location.reload()}catch{alert('Invalid')}};r.readAsText(f)}
 function resetProgress(){if(confirm(t('حذف كل التقدم؟','Erase all progress?'))){localStorage.removeItem(KEY);location.reload()}}
-function renderAll(){renderDashboard();renderStages();renderMistakes();renderGlossary($('#gSearch').value||'');$('#qLang').value=state.qLang||'ar'}
+function renderAll(){renderDashboard();renderStages();renderMistakes();renderGlossary($('#gSearch').value||'');renderAssessmentHistory();$('#qLang').value=state.qLang||'ar'}
 bootstrapAuth();
 </script>
 </body></html>
