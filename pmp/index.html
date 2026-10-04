@@ -50,7 +50,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 .quickTestBtn:hover{filter:brightness(1.05)}.levelCards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.levelCard{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}.levelCard b{font-size:20px}.levelCard.easy{border-top:4px solid #10b981}.levelCard.medium{border-top:4px solid #f59e0b}.levelCard.hard{border-top:4px solid #ef4444}
 .metricRow{display:grid;grid-template-columns:160px 1fr 70px;gap:10px;align-items:center;margin:9px 0}.metricBar{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden}.metricBar i{display:block;height:100%;background:linear-gradient(90deg,#7c3aed,#0ea5e9)}.deltaUp{color:#047857;font-weight:900}.deltaDown{color:#b91c1c;font-weight:900}.historyTable{width:100%;border-collapse:collapse}.historyTable th,.historyTable td{padding:9px;border-bottom:1px solid var(--line);text-align:start;font-size:13px}.focusBox{background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:12px;margin:8px 0}
 @media(max-width:700px){.quickTestBtn{top:auto;bottom:16px;inset-inline-end:12px;writing-mode:horizontal-tb;transform:none;border-radius:999px;padding:11px 15px}.levelCards{grid-template-columns:1fr}.metricRow{grid-template-columns:110px 1fr 55px}}
-.bank-link{display:inline-block;text-decoration:none;white-space:nowrap;border-radius:11px;padding:10px 13px;font-weight:800}.nav .bank-link{background:#ede9fe;color:#5b21b6;border:1px solid #ddd6fe}.gtranslate_wrapper{display:none}</style></head>
+.bank-link{display:inline-block;text-decoration:none;white-space:nowrap;border-radius:11px;padding:10px 13px;font-weight:800}.nav .bank-link{background:#ede9fe;color:#5b21b6;border:1px solid #ddd6fe}.gtranslate_wrapper{display:none}</style><link rel="stylesheet" href="./pmp-access.css?v=6"></head>
 <body class="auth-locked"><div class="gtranslate_wrapper"></div>
 <div id="loginGate" class="loginGate">
   <div class="loginCard">
@@ -59,8 +59,8 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
     <p class="muted">دخول خاص بالمستخدمين المعتمدين فقط، وكل مستخدم له مسار تقدم مستقل.</p>
     <label for="loginUser">اسم المستخدم</label>
     <input id="loginUser" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="username">
-    <label for="loginPin">الرقم السري</label>
-    <input id="loginPin" type="password" inputmode="numeric" maxlength="4" autocomplete="current-password" placeholder="••••">
+    <label for="loginPin">كلمة المرور</label>
+    <input id="loginPin" type="password" maxlength="128" autocomplete="current-password" placeholder="••••">
     <button id="loginBtn" class="btn dark loginBtn">دخول</button>
     <div id="loginError" class="loginError"></div>
   </div>
@@ -75,7 +75,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 <div class="row"><button class="btn white" onclick="resume()" data-ar="أكمل من حيث توقفت" data-en="Resume">أكمل من حيث توقفت</button><button class="btn soft" onclick="go('journey')" data-ar="عرض المنهج" data-en="View curriculum">عرض المنهج</button></div>
 </section>
 
-<div class="nav" id="nav"><a class="bank-link" href="./practice/?v=5" data-ar="بنك الأسئلة · ٣٬٥٥٩" data-en="Question bank · 3,559">بنك الأسئلة · ٣٬٥٥٩</a>
+<div class="nav" id="nav"><a id="adminLink" class="bank-link" href="./admin/?v=6" data-ar="لوحة التحكم" data-en="Admin dashboard" hidden>لوحة التحكم</a><a class="bank-link" href="./practice/?v=6" data-ar="بنك الأسئلة · ٣٬٥٥٩" data-en="Question bank · 3,559">بنك الأسئلة · ٣٬٥٥٩</a>
 <button class="active" data-go="dash" data-ar="رحلتي" data-en="Dashboard">رحلتي</button>
 <button data-go="journey" data-ar="المنهج" data-en="Curriculum">المنهج</button>
 <button data-go="practice" data-ar="تدريب" data-en="Practice">تدريب</button>
@@ -97,7 +97,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 
 <section id="journey" class="section"><div id="stages"></div><div id="lessonHost"></div></section>
 
-<section id="practice" class="section"><div class="card"><h2 data-ar="بنك أسئلة PMP الكامل" data-en="Complete PMP question bank">بنك أسئلة PMP الكامل</h2><p class="muted" data-ar="٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك." data-en="3,559 questions across 29 sections, with grading, explanations and error review. Question bank progress is saved separately in your account.">٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك.</p><a class="btn dark bank-link" href="./practice/?v=5" data-ar="افتح بنك الأسئلة" data-en="Open question bank">افتح بنك الأسئلة</a></div>
+<section id="practice" class="section"><div class="card"><h2 data-ar="بنك أسئلة PMP الكامل" data-en="Complete PMP question bank">بنك أسئلة PMP الكامل</h2><p class="muted" data-ar="٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك." data-en="3,559 questions across 29 sections, with grading, explanations and error review. Question bank progress is saved separately in your account.">٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك.</p><a class="btn dark bank-link" href="./practice/?v=6" data-ar="افتح بنك الأسئلة" data-en="Open question bank">افتح بنك الأسئلة</a></div>
 <div class="grid3">
 <div class="card"><h3 data-ar="كويز سريع" data-en="Quick quiz">كويز سريع</h3><button class="btn dark" onclick="startPractice('all',10)">10</button></div>
 <div class="card"><h3 data-ar="حسب المجال" data-en="By domain">حسب المجال</h3><select id="domainSel" class="search"><option value="people">People</option><option value="process">Process</option><option value="business">Business</option><option value="agile">Agile</option><option value="foundation">Foundation</option></select><br><br><button class="btn dark" onclick="startPractice(document.getElementById('domainSel').value,30)">30</button></div>
@@ -136,6 +136,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 <footer data-ar="منصة تدريب مستقلة للاستعداد لاختبار PMP. ليست منتجًا رسميًا من PMI." data-en="An independent training platform for PMP exam preparation. Not an official PMI product.">منصة تدريب مستقلة للاستعداد لاختبار PMP. ليست منتجًا رسميًا من PMI.</footer>
 </div>
 
+<script src="./pmp-access.js?v=6"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const stages=[
@@ -222,21 +223,22 @@ let lang='ar';
 let saveChain=Promise.resolve();
 
 function defaultState(){
-  return {lang:'ar',qLang:'ar',done:{},scores:{},mistakes:[],attempts:[],assessments:[],current:'f1',section:'dash'};
+  return {lang:'ar',qLang:'ar',done:{},scores:{},mistakes:[],attempts:[],assessments:[],activities:{},featureStats:{},current:'f1',section:'dash'};
 }
+function trackFeature(id,values){state.activities ||= {};state.activities[id]={...(state.activities[id]||{}),...values,updatedAt:new Date().toISOString()};save();}
 const t=(a,e)=>lang==='ar'?a:e;
 function userCacheKey(){ return currentUser ? 'pmp_cache_'+currentUser.username : null; }
 function save(){
-  if(!currentUser || !session?.token) return;
+  if(!currentUser || !session?.token || currentUser.must_change_password) return;
   state.lang=lang;
   const key=userCacheKey();
   if(key) localStorage.setItem(key,JSON.stringify(state));
-  const snapshot=JSON.stringify(state);
+  const snapshot=JSON.stringify(state),saveToken=session.token,expectedUserId=currentUser.id;
   saveChain=saveChain.then(async()=>{
     const r=await fetch(API+'?action=progress',{
       method:'POST',
-      headers:{'content-type':'application/json','authorization':'Bearer '+session.token},
-      body:JSON.stringify({state:JSON.parse(snapshot)})
+      headers:{'content-type':'application/json','authorization':'Bearer '+saveToken},
+      body:JSON.stringify({state:JSON.parse(snapshot),expectedUserId})
     });
     if(r.status===401){ await logoutUser(false); }
   }).catch(()=>{});
@@ -254,6 +256,9 @@ function showLogin(){
   $('#mainApp').style.display='none';
 }
 function showApp(){
+  if(currentUser?.must_change_password){window.PMP_ACCOUNT.showPasswordChange();return;}
+  $('#adminLink').hidden=currentUser?.role!=='admin';
+  if(new URLSearchParams(location.search).get('return_to')==='admin'){location.replace('./admin/?v=6');return;}
   if(new URLSearchParams(location.search).get('return_to')==='practice'){location.replace('./practice/');return;}
   document.body.classList.remove('auth-locked');
   $('#loginGate').style.display='none';
@@ -326,6 +331,7 @@ async function bootstrapAuth(){
   if(!session?.token){ showLogin(); return; }
   try{
     const r=await apiFetch('progress',{method:'GET'});
+    if(r.status===403){const restricted=await r.json();if(restricted.error==='password_change_required'){currentUser=restricted.user;session.user=restricted.user;localStorage.setItem(SESSION_KEY,JSON.stringify(session));window.PMP_ACCOUNT.showPasswordChange();return;}}
     if(!r.ok){ localStorage.removeItem(SESSION_KEY); session=null; showLogin(); return; }
     const data=await r.json();
     currentUser=data.user;
@@ -384,6 +390,7 @@ function openLesson(id){
   const x=flat.find(z=>z.id===id),qs=makeQuestions([x],3);
   $('#lessonHost').innerHTML='<div class="card"><div class="muted" style="font-size:12px;margin-bottom:5px">'+t('الدرس الحالي','Current lesson')+'</div><h2>'+(lang==='ar'?x.ar:x.en)+'</h2><div class="teach"><b>'+t('الفكرة ببساطة','Simple idea')+'</b>'+(lang==='ar'?x.ad:x.ed)+'</div><div class="teach"><b>'+t('متى تستخدمها','When to use it')+'</b>'+t('عندما يكون جوهر السؤال متعلقًا بهذا المفهوم، اربط المشكلة بالمبدأ قبل اختيار الإجراء.','When the scenario centers on this concept, connect the problem to the principle before choosing an action.')+'</div><div class="teach"><b>'+t('مثال عملي','Practical example')+'</b>'+t('اسأل: من يملك القرار؟ ما السجل أو الأداة الصحيحة؟ وما الإجراء الذي يعالج السبب بدل العرض؟','Ask: who owns the decision, what artifact/tool applies, and which action addresses the cause rather than the symptom?')+'</div><div class="teach"><b>'+t('فخ الاختبار','Exam trap')+'</b>'+trap(id)+'</div><h3>'+t('اختبار قصير','Checkpoint')+'</h3><div id="lessonQuiz"></div><button class="btn dark" onclick="completeLesson(\''+id+'\')">'+t('تم، انتقل للدرس التالي','Done, next lesson')+'</button></div>';
   renderQuestions(qs,$('#lessonQuiz'),true);
+  trackFeature('lesson_quiz',{title:x.ar,total:qs.length,answered:0,current:1,status:'active',correct:0,score:null});
   requestAnimationFrame(()=>requestAnimationFrame(()=>document.getElementById('lessonHost')?.scrollIntoView({behavior:'smooth',block:'start'})));
 }
 function completeLesson(id){state.done[id]=true;const i=flat.findIndex(x=>x.id===id);if(i<flat.length-1)state.current=flat[i+1].id;save();renderAll();openLesson(state.current)}
@@ -394,9 +401,9 @@ function bank(stage){const a=stage==='all'?flat:flat.filter(x=>x.stage===stage),
 function qText(q){return state.qLang==='en'?q.qEn:state.qLang==='bi'?q.qAr+'\n'+q.qEn:q.qAr}
 function oText(o){return state.qLang==='en'?o.en:state.qLang==='bi'?o.ar+' / '+o.en:o.ar}
 function renderQuestions(qs,host,explain){host.innerHTML=qs.map((q,i)=>'<div class="q"><b style="white-space:pre-line">'+(i+1)+'. '+qText(q)+'</b><div class="opts">'+q.opts.map(o=>'<button class="opt" data-id="'+o.id+'" onclick="answerPractice(this,\''+q.c+'\',\''+q.topic+'\','+explain+')">'+oText(o)+'</button>').join('')+'</div><div class="muted exp"></div></div>').join('')}
-function answerPractice(btn,c,topic,explain){const box=btn.closest('.q');if(box.dataset.done)return;box.dataset.done='1';const chosen=btn.dataset.id;box.querySelectorAll('.opt').forEach(b=>{if(b.dataset.id===c)b.classList.add('correct')});if(chosen!==c){btn.classList.add('wrong');state.mistakes.push({topic,q:box.querySelector('b').textContent,at:Date.now()})}const r=state.scores[topic]||{c:0,n:0};r.n++;if(chosen===c)r.c++;state.scores[topic]=r;if(explain){const x=flat.find(z=>z.id===topic),e=box.querySelector('.exp');e.textContent=(chosen===c?t('صحيح. ','Correct. '):t('غير صحيح. ','Incorrect. '))+(lang==='ar'?x.ad:x.ed)}save();renderAll()}
-function startPractice(stage,n){go('practice');const qs=shuffle(bank(stage)).slice(0,n);$('#practiceHost').innerHTML='<div class="card"><h2>'+t('جلسة تدريب','Practice session')+'</h2><div id="practiceQs"></div></div>';renderQuestions(qs,$('#practiceQs'),true)}
-function retryMistakes(){const ids=[...new Set(state.mistakes.map(x=>x.topic))],ts=flat.filter(x=>ids.includes(x.id));if(!ts.length){alert(t('لا توجد أخطاء بعد.','No mistakes yet.'));return}go('practice');const qs=shuffle(makeQuestions(ts,Math.max(10,ts.length*2)));$('#practiceHost').innerHTML='<div class="card"><h2>'+t('إعادة تدريب الأخطاء','Mistake retry')+'</h2><div id="practiceQs"></div></div>';renderQuestions(qs,$('#practiceQs'),true)}
+function answerPractice(btn,c,topic,explain){const box=btn.closest('.q');if(box.dataset.done)return;box.dataset.done='1';const chosen=btn.dataset.id;box.querySelectorAll('.opt').forEach(b=>{if(b.dataset.id===c)b.classList.add('correct')});if(chosen!==c){btn.classList.add('wrong');state.mistakes.push({topic,q:box.querySelector('b').textContent,at:Date.now()})}const r=state.scores[topic]||{c:0,n:0};r.n++;if(chosen===c)r.c++;state.scores[topic]=r;const host=box.closest('#lessonQuiz')||box.closest('#practiceQs'),feature=box.closest('#lessonQuiz')?'lesson_quiz':'course_practice';state.featureStats ||= {};const totals=state.featureStats[feature]||{answered:0,correct:0};totals.answered++;if(chosen===c)totals.correct++;state.featureStats[feature]=totals;const answered=host?host.querySelectorAll('.q[data-done]').length:1,total=host?host.querySelectorAll('.q').length:1,correct=(state.activities?.[feature]?.correct||0)+(chosen===c?1:0);trackFeature(feature,{answered,total,current:Math.min(total,answered+1),correct,status:answered===total?'completed':'active',score:Math.round(correct/answered*100)});if(explain){const x=flat.find(z=>z.id===topic),e=box.querySelector('.exp');e.textContent=(chosen===c?t('صحيح. ','Correct. '):t('غير صحيح. ','Incorrect. '))+(lang==='ar'?x.ad:x.ed)}save();renderAll()}
+function startPractice(stage,n){go('practice');const qs=shuffle(bank(stage)).slice(0,n);trackFeature('course_practice',{title:stage==='all'?'تدريب شامل':stageLabel(stage),total:qs.length,answered:0,current:1,correct:0,score:null,status:'active'});$('#practiceHost').innerHTML='<div class="card"><h2>'+t('جلسة تدريب','Practice session')+'</h2><div id="practiceQs"></div></div>';renderQuestions(qs,$('#practiceQs'),true)}
+function retryMistakes(){const ids=[...new Set(state.mistakes.map(x=>x.topic))],ts=flat.filter(x=>ids.includes(x.id));if(!ts.length){alert(t('لا توجد أخطاء بعد.','No mistakes yet.'));return}go('practice');const qs=shuffle(makeQuestions(ts,Math.max(10,ts.length*2)));trackFeature('course_practice',{title:'مراجعة الأخطاء',total:qs.length,answered:0,current:1,correct:0,score:null,status:'active'});$('#practiceHost').innerHTML='<div class="card"><h2>'+t('إعادة تدريب الأخطاء','Mistake retry')+'</h2><div id="practiceQs"></div></div>';renderQuestions(qs,$('#practiceQs'),true)}
 
 function openAssessment(){
   go('assessment');
@@ -456,6 +463,7 @@ function startLevelAssessment(level){
   drawLevelAssessment();
 }
 function drawLevelAssessment(){
+  trackFeature('level_assessment',{title:'اختبار مستوى '+assessmentConfig(levelExam.level).labelAr,total:levelExam.qs.length,answered:Object.keys(levelExam.answers).length,current:levelExam.idx+1,status:'active',score:null});
   const q=levelExam.qs[levelExam.idx];
   const cfg=assessmentConfig(levelExam.level);
   $('#assessmentHost').innerHTML='<div class="card">'+
@@ -471,7 +479,7 @@ function nextLevelQuestion(){
   if(levelExam.idx<levelExam.qs.length-1){levelExam.idx++;drawLevelAssessment();return}
   submitLevelAssessment();
 }
-function cancelLevelAssessment(){if(confirm(t('إلغاء هذا الاختبار؟','Cancel this test?'))){levelExam=null;$('#assessmentHost').innerHTML=''}}
+function cancelLevelAssessment(){if(confirm(t('إلغاء هذا الاختبار؟','Cancel this test?'))){trackFeature('level_assessment',{status:'cancelled'});levelExam=null;$('#assessmentHost').innerHTML=''}}
 function submitLevelAssessment(){
   const by={foundation:[0,0],agile:[0,0],people:[0,0],process:[0,0],business:[0,0]};
   let correct=0;
@@ -486,6 +494,7 @@ function submitLevelAssessment(){
   const attempt={kind:'level',level:levelExam.level,pct,byStage,n:levelExam.qs.length,durationSec:Math.round((Date.now()-levelExam.startedAt)/1000),at:new Date().toISOString()};
   state.assessments=Array.isArray(state.assessments)?state.assessments:[];
   state.assessments.push(attempt);
+  trackFeature('level_assessment',{status:'completed',answered:levelExam.qs.length,current:levelExam.qs.length,score:pct});
   save();
   const previous=state.assessments.filter(a=>a.level===attempt.level && a!==attempt).slice(-1)[0]||null;
   renderAssessmentResult(attempt,previous);
@@ -539,10 +548,10 @@ function renderImprovementDash(){
 let exam=null,timerHandle=null;
 function pick(stage,n){return shuffle(bank(stage)).slice(0,n)}
 function startMock(n,min){const p=Math.round(n*.42),r=Math.round(n*.50),b=n-p-r;exam={qs:shuffle([...pick('people',p),...pick('process',r),...pick('business',b)]),a:{},m:{},i:0,left:min*60,total:min*60};go('mock');renderExam();clearInterval(timerHandle);timerHandle=setInterval(()=>{if(!exam)return;exam.left--;if(exam.left<=0)submitMock(true);else updateTimer()},1000)}
-function renderExam(){const q=exam.qs[exam.i];$('#mockHost').innerHTML='<div class="exam" style="margin-top:10px"><div class="card"><div class="row"><span>'+(exam.i+1)+'/'+exam.qs.length+'</span><span class="timer" id="timer"></span></div><h3 style="white-space:pre-line">'+qText(q)+'</h3><div class="opts">'+q.opts.map(o=>'<button class="opt '+(exam.a[exam.i]===o.id?'correct':'')+'" onclick="examAnswer(\''+o.id+'\')">'+oText(o)+'</button>').join('')+'</div><div class="row" style="margin-top:12px"><button class="btn soft" onclick="prevQ()">‹</button><button class="btn soft" onclick="markQ()">⚑</button><button class="btn dark" onclick="nextQ()">›</button><button class="btn" style="background:#fee2e2;color:#991b1b" onclick="submitMock(false)">'+t('تسليم','Submit')+'</button></div></div><div class="card"><div class="qmap">'+exam.qs.map((_,i)=>'<button class="'+(exam.a[i]?'ans ':'')+(exam.m[i]?'mark':'')+'" onclick="jumpQ('+i+')">'+(i+1)+'</button>').join('')+'</div></div></div>';updateTimer()}
+function renderExam(){trackFeature('mock',{title:'محاكاة '+exam.qs.length+' سؤالًا',total:exam.qs.length,answered:Object.keys(exam.a).length,current:exam.i+1,status:'active',score:null});const q=exam.qs[exam.i];$('#mockHost').innerHTML='<div class="exam" style="margin-top:10px"><div class="card"><div class="row"><span>'+(exam.i+1)+'/'+exam.qs.length+'</span><span class="timer" id="timer"></span></div><h3 style="white-space:pre-line">'+qText(q)+'</h3><div class="opts">'+q.opts.map(o=>'<button class="opt '+(exam.a[exam.i]===o.id?'correct':'')+'" onclick="examAnswer(\''+o.id+'\')">'+oText(o)+'</button>').join('')+'</div><div class="row" style="margin-top:12px"><button class="btn soft" onclick="prevQ()">‹</button><button class="btn soft" onclick="markQ()">⚑</button><button class="btn dark" onclick="nextQ()">›</button><button class="btn" style="background:#fee2e2;color:#991b1b" onclick="submitMock(false)">'+t('تسليم','Submit')+'</button></div></div><div class="card"><div class="qmap">'+exam.qs.map((_,i)=>'<button class="'+(exam.a[i]?'ans ':'')+(exam.m[i]?'mark':'')+'" onclick="jumpQ('+i+')">'+(i+1)+'</button>').join('')+'</div></div></div>';updateTimer()}
 function updateTimer(){const e=$('#timer');if(!e)return;const m=Math.floor(exam.left/60),s=exam.left%60;e.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
 function examAnswer(id){exam.a[exam.i]=id;renderExam()}function nextQ(){if(exam.i<exam.qs.length-1)exam.i++;renderExam()}function prevQ(){if(exam.i>0)exam.i--;renderExam()}function jumpQ(i){exam.i=i;renderExam()}function markQ(){exam.m[exam.i]=!exam.m[exam.i];renderExam()}
-function submitMock(auto){if(!auto&&!confirm(t('تأكيد التسليم؟','Submit exam?')))return;clearInterval(timerHandle);let c=0;const by={people:[0,0],process:[0,0],business:[0,0]};exam.qs.forEach((q,i)=>{const ok=exam.a[i]===q.c;if(ok)c++;by[q.stage][1]++;if(ok)by[q.stage][0]++;else state.mistakes.push({topic:q.topic,q:qText(q),at:Date.now()})});const pct=Math.round(c/exam.qs.length*100);state.attempts.push({n:exam.qs.length,pct,at:new Date().toISOString()});save();$('#mockHost').innerHTML='<div class="card"><h2>'+t('النتيجة','Result')+': '+pct+'%</h2>'+Object.entries(by).map(([k,v])=>'<div class="teach"><b>'+k+'</b>'+Math.round(v[0]/v[1]*100)+'%</div>').join('')+'<p class="muted">'+t('راجع أخطاءك والمواضيع الأضعف قبل إعادة المحاكاة.','Review mistakes and weak topics before repeating the mock.')+'</p></div>';exam=null;renderAll()}
+function submitMock(auto){if(!auto&&!confirm(t('تأكيد التسليم؟','Submit exam?')))return;clearInterval(timerHandle);let c=0;const by={people:[0,0],process:[0,0],business:[0,0]};exam.qs.forEach((q,i)=>{const ok=exam.a[i]===q.c;if(ok)c++;by[q.stage][1]++;if(ok)by[q.stage][0]++;else state.mistakes.push({topic:q.topic,q:qText(q),at:Date.now()})});const pct=Math.round(c/exam.qs.length*100);state.attempts.push({n:exam.qs.length,pct,at:new Date().toISOString()});trackFeature('mock',{status:'completed',answered:Object.keys(exam.a).length,current:exam.qs.length,score:pct});save();$('#mockHost').innerHTML='<div class="card"><h2>'+t('النتيجة','Result')+': '+pct+'%</h2>'+Object.entries(by).map(([k,v])=>'<div class="teach"><b>'+k+'</b>'+Math.round(v[0]/v[1]*100)+'%</div>').join('')+'<p class="muted">'+t('راجع أخطاءك والمواضيع الأضعف قبل إعادة المحاكاة.','Review mistakes and weak topics before repeating the mock.')+'</p></div>';exam=null;renderAll()}
 function renderMistakes(){const a=state.mistakes.slice(-50).reverse();$('#mistakesBox').innerHTML=a.length?a.map(m=>{const x=flat.find(z=>z.id===m.topic);return '<div class="teach"><b>'+(x?(lang==='ar'?x.ar:x.en):m.topic)+'</b><span class="muted">'+m.q+'</span></div>'}).join(''):'<p class="muted">'+t('لا توجد أخطاء محفوظة.','No saved mistakes.')+'</p>'}
 function renderGlossary(f=''){f=f.toLowerCase();$('#gBox').innerHTML=glossary.filter(x=>x.join(' ').toLowerCase().includes(f)).map(x=>'<div class="gloss"><b>'+x[0]+' · '+x[1]+'</b><div class="muted">'+x[2]+'</div></div>').join('')}
 $('#gSearch').oninput=e=>renderGlossary(e.target.value);
@@ -552,6 +561,7 @@ $('#importProgress').onchange=e=>{const f=e.target.files[0];if(!f)return;const r
 function resetProgress(){if(confirm(t('حذف كل التقدم؟','Erase all progress?'))){localStorage.removeItem(KEY);location.reload()}}
 function renderAll(){renderDashboard();renderStages();renderMistakes();renderGlossary($('#gSearch').value||'');renderAssessmentHistory();$('#qLang').value=state.qLang||'ar'}
 window.setCourseLanguage=value=>{lang=value;state.lang=value;save();applyLang();};
+window.addEventListener('pagehide',()=>{for(const a of Object.values(state.activities||{})){if(a.status==='active'){a.status='paused';a.updatedAt=new Date().toISOString();}}save();});
 bootstrapAuth();
 </script>
-<script>window.gtranslateSettings={default_language:"ar",languages:["ar","en"],native_language_names:true,detect_browser_language:false,wrapper_selector:".gtranslate_wrapper",url_structure:"none"};</script><script src="./pmp-language.js?v=5" defer></script><script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script></body></html>
+<script>window.gtranslateSettings={default_language:"ar",languages:["ar","en"],native_language_names:true,detect_browser_language:false,wrapper_selector:".gtranslate_wrapper",url_structure:"none"};</script><script src="./pmp-language.js?v=6" defer></script><script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script></body></html>

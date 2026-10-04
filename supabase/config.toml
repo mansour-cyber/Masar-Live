@@ -3,3 +3,13 @@
 # expiry and user activation before any private read or write.
 verify_jwt = false
 entrypoint = "./functions/pmp-practice-api/index.js"
+
+[functions.pmp-api]
+# Opaque sessions are validated in the handler; first-login sessions are restricted.
+verify_jwt = false
+entrypoint = "./functions/pmp-api/index.js"
+
+[functions.pmp-admin-api]
+# The handler checks active session, completed password change and admin role.
+verify_jwt = false
+entrypoint = "./functions/pmp-admin-api/index.js"
