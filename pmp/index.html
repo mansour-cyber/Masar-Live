@@ -50,11 +50,11 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 .quickTestBtn:hover{filter:brightness(1.05)}.levelCards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.levelCard{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}.levelCard b{font-size:20px}.levelCard.easy{border-top:4px solid #10b981}.levelCard.medium{border-top:4px solid #f59e0b}.levelCard.hard{border-top:4px solid #ef4444}
 .metricRow{display:grid;grid-template-columns:160px 1fr 70px;gap:10px;align-items:center;margin:9px 0}.metricBar{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden}.metricBar i{display:block;height:100%;background:linear-gradient(90deg,#7c3aed,#0ea5e9)}.deltaUp{color:#047857;font-weight:900}.deltaDown{color:#b91c1c;font-weight:900}.historyTable{width:100%;border-collapse:collapse}.historyTable th,.historyTable td{padding:9px;border-bottom:1px solid var(--line);text-align:start;font-size:13px}.focusBox{background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:12px;margin:8px 0}
 @media(max-width:700px){.quickTestBtn{top:auto;bottom:16px;inset-inline-end:12px;writing-mode:horizontal-tb;transform:none;border-radius:999px;padding:11px 15px}.levelCards{grid-template-columns:1fr}.metricRow{grid-template-columns:110px 1fr 55px}}
-</style></head>
-<body class="auth-locked">
+.bank-link{display:inline-block;text-decoration:none;white-space:nowrap;border-radius:11px;padding:10px 13px;font-weight:800}.nav .bank-link{background:#ede9fe;color:#5b21b6;border:1px solid #ddd6fe}.gtranslate_wrapper{display:none}</style></head>
+<body class="auth-locked"><div class="gtranslate_wrapper"></div>
 <div id="loginGate" class="loginGate">
   <div class="loginCard">
-    <div style="font-weight:900;color:#6d28d9;margin-bottom:6px">PMP Teacher Studio</div>
+    <div class="row" style="justify-content:space-between;margin-bottom:18px"><b class="notranslate" translate="no">PMP Teacher Studio</b><div class="notranslate" translate="no"><button class="btn soft" onclick="setCourseLanguage('ar')">عربي</button><button class="btn soft" onclick="setCourseLanguage('en')">English</button></div></div>
     <h1>تسجيل الدخول</h1>
     <p class="muted">دخول خاص بالمستخدمين المعتمدين فقط، وكل مستخدم له مسار تقدم مستقل.</p>
     <label for="loginUser">اسم المستخدم</label>
@@ -66,7 +66,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
   </div>
 </div>
 <div class="app" id="mainApp" style="display:none">
-<div class="top"><div class="topbar"><div class="brand"><b data-ar="رحلة PMP" data-en="PMP Journey">رحلة PMP</b><small data-ar="وضع المعلم مفعّل" data-en="Teacher Mode ON">وضع المعلم مفعّل</small></div><span id="userBadge" class="userBadge"></span><button onclick="logoutUser()" data-ar="خروج" data-en="Logout">خروج</button><button id="langBtn">EN</button></div></div>
+<div class="top"><div class="topbar"><div class="brand"><b data-ar="رحلة PMP" data-en="PMP Journey">رحلة PMP</b><small data-ar="وضع المعلم مفعّل" data-en="Teacher Mode ON">وضع المعلم مفعّل</small></div><span id="userBadge" class="userBadge notranslate" translate="no"></span><button onclick="logoutUser()" data-ar="خروج" data-en="Logout">خروج</button><button id="langBtn" class="notranslate" translate="no">عربي | English</button></div></div>
 <button class="quickTestBtn" onclick="openAssessment()" data-ar="اختبر الآن" data-en="Test Now">اختبر الآن</button>
 
 <section class="hero">
@@ -75,7 +75,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 <div class="row"><button class="btn white" onclick="resume()" data-ar="أكمل من حيث توقفت" data-en="Resume">أكمل من حيث توقفت</button><button class="btn soft" onclick="go('journey')" data-ar="عرض المنهج" data-en="View curriculum">عرض المنهج</button></div>
 </section>
 
-<div class="nav" id="nav">
+<div class="nav" id="nav"><a class="bank-link" href="./practice/?v=4" data-ar="بنك الأسئلة · ٣٬٥٥٩" data-en="Question bank · 3,559">بنك الأسئلة · ٣٬٥٥٩</a>
 <button class="active" data-go="dash" data-ar="رحلتي" data-en="Dashboard">رحلتي</button>
 <button data-go="journey" data-ar="المنهج" data-en="Curriculum">المنهج</button>
 <button data-go="practice" data-ar="تدريب" data-en="Practice">تدريب</button>
@@ -97,7 +97,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 
 <section id="journey" class="section"><div id="stages"></div><div id="lessonHost"></div></section>
 
-<section id="practice" class="section">
+<section id="practice" class="section"><div class="card"><h2 data-ar="بنك أسئلة PMP الكامل" data-en="Complete PMP question bank">بنك أسئلة PMP الكامل</h2><p class="muted" data-ar="٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك." data-en="3,559 questions across 29 sections, with grading, explanations and error review. Question bank progress is saved separately in your account.">٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك.</p><a class="btn dark bank-link" href="./practice/?v=4" data-ar="افتح بنك الأسئلة" data-en="Open question bank">افتح بنك الأسئلة</a></div>
 <div class="grid3">
 <div class="card"><h3 data-ar="كويز سريع" data-en="Quick quiz">كويز سريع</h3><button class="btn dark" onclick="startPractice('all',10)">10</button></div>
 <div class="card"><h3 data-ar="حسب المجال" data-en="By domain">حسب المجال</h3><select id="domainSel" class="search"><option value="people">People</option><option value="process">Process</option><option value="business">Business</option><option value="agile">Agile</option><option value="foundation">Foundation</option></select><br><br><button class="btn dark" onclick="startPractice(document.getElementById('domainSel').value,30)">30</button></div>
@@ -254,6 +254,7 @@ function showLogin(){
   $('#mainApp').style.display='none';
 }
 function showApp(){
+  if(new URLSearchParams(location.search).get('return_to')==='practice'){location.replace('./practice/');return;}
   document.body.classList.remove('auth-locked');
   $('#loginGate').style.display='none';
   $('#mainApp').style.display='block';
@@ -341,7 +342,7 @@ async function bootstrapAuth(){
   }
 }
 
-function applyLang(){document.documentElement.dir=lang==='ar'?'rtl':'ltr';$$('[data-ar]').forEach(e=>e.textContent=lang==='ar'?e.dataset.ar:e.dataset.en);$('#langBtn').textContent=lang==='ar'?'EN':'عربي';renderAll()}
+function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';try{localStorage.setItem('pmp-language',lang);}catch{}window.PMP_TRANSLATE?.set(lang);$$('[data-ar]').forEach(e=>e.textContent=lang==='ar'?e.dataset.ar:e.dataset.en);$('#langBtn').textContent=lang==='ar'?'English':'عربي';renderAll()}
 $('#langBtn').onclick=()=>{lang=lang==='ar'?'en':'ar';state.lang=lang;save();applyLang()}
 function go(id){$$('.section').forEach(x=>x.classList.toggle('active',x.id===id));$$('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.go===id));state.section=id;save();window.scrollTo({top:document.querySelector('.nav').offsetTop-65,behavior:'smooth'})}
 $$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.go));
@@ -550,6 +551,7 @@ function exportProgress(){const b=new Blob([JSON.stringify(state,null,2)],{type:
 $('#importProgress').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();location.reload()}catch{alert('Invalid')}};r.readAsText(f)}
 function resetProgress(){if(confirm(t('حذف كل التقدم؟','Erase all progress?'))){localStorage.removeItem(KEY);location.reload()}}
 function renderAll(){renderDashboard();renderStages();renderMistakes();renderGlossary($('#gSearch').value||'');renderAssessmentHistory();$('#qLang').value=state.qLang||'ar'}
+window.setCourseLanguage=value=>{lang=value;state.lang=value;save();applyLang();};
 bootstrapAuth();
 </script>
-</body></html>
+<script>window.gtranslateSettings={default_language:"ar",languages:["ar","en"],native_language_names:true,detect_browser_language:false,wrapper_selector:".gtranslate_wrapper",url_structure:"none"};</script><script src="./pmp-language.js?v=4" defer></script><script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script></body></html>

@@ -1,0 +1,5 @@
+[functions.pmp-practice-api]
+# Existing PMP sessions are opaque tokens. The function verifies their hashes,
+# expiry and user activation before any private read or write.
+verify_jwt = false
+entrypoint = "./functions/pmp-practice-api/index.js"
