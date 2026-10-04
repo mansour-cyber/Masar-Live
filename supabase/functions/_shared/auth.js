@@ -3,7 +3,7 @@ const serviceKey=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 export const siteOrigin='https://mansour-cyber.github.io';
 export const cors={'access-control-allow-origin':siteOrigin,'access-control-allow-headers':'authorization, content-type','access-control-allow-methods':'GET, POST, OPTIONS','content-type':'application/json; charset=utf-8','cache-control':'no-store','vary':'Origin'};
 export const json=(value,status=200)=>new Response(JSON.stringify(value),{status,headers:cors});
-export function checkOrigin(request){const origin=request.headers.get('origin');return origin&&origin!==siteOrigin?json({error:'invalid_origin'},403):null;}
+export function checkOrigin(request){const origin=request.headers.get('origin');return origin&&!allowedOrigins.has(origin)?json({error:'invalid_origin'},403):null;}
 export async function database(table,query={},options={}){
   const url=new URL(databaseUrl+'/rest/v1/'+table);for(const [key,value] of Object.entries(query))url.searchParams.set(key,String(value));
   const response=await fetch(url,{...options,headers:{apikey:serviceKey,authorization:'Bearer '+serviceKey,'content-type':'application/json',...options.headers}});
@@ -30,3 +30,13 @@ export async function authenticate(request){
 }
 export function requirePasswordChange(s){return s.user.must_change_password?json({error:'password_change_required',user:userPublic(s.user)},403):null;}
 export async function readBody(request,max=4096){if(!request.headers.get('content-type')?.startsWith('application/json'))return {error:json({error:'invalid_content_type'},415)};const raw=await request.text();if(new TextEncoder().encode(raw).length>max)return {error:json({error:'request_too_large'},413)};try{return {body:JSON.parse(raw)};}catch{return {error:json({error:'invalid_request'},400)};}}
+
+export const allowedOrigins=new Set([siteOrigin,'https://atqn.tech','https://www.atqn.tech']);
+export function withCors(handler){return async request=>{
+  const origin=request.headers.get('origin');
+  if(origin&&!allowedOrigins.has(origin))return json({error:'invalid_origin'},403);
+  const response=await handler(request),headers=new Headers(response.headers);
+  headers.set('access-control-allow-origin',origin||siteOrigin);
+  headers.set('vary','Origin');
+  return new Response(response.body,{status:response.status,statusText:response.statusText,headers});
+};}

@@ -1,4 +1,4 @@
-import {cors,json,database,checkOrigin,authenticate,requirePasswordChange,userPublic,createCredential,passwordValid,readBody} from '../_shared/auth.js';
+import {withCors,cors,json,database,checkOrigin,authenticate,requirePasswordChange,userPublic,createCredential,passwordValid,readBody} from '../_shared/auth.js';
 import {CATALOG,percent,score,summarizeJourney} from '../_shared/journey.js';
 export async function handler(request){
   if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors});const originError=checkOrigin(request);if(originError)return originError;
@@ -27,4 +27,4 @@ export async function handler(request){
     return json({error:'not_found'},404);
   }catch{return json({error:'storage_unavailable'},503);}
 }
-Deno.serve(handler);
+Deno.serve(withCors(handler));

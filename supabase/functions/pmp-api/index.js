@@ -1,4 +1,4 @@
-import {cors,json,database,checkOrigin,authenticate,requirePasswordChange,userPublic,credentialFor,verifyPassword,createCredential,passwordValid,hashToken,newToken,readBody} from '../_shared/auth.js';
+import {withCors,cors,json,database,checkOrigin,authenticate,requirePasswordChange,userPublic,credentialFor,verifyPassword,createCredential,passwordValid,hashToken,newToken,readBody} from '../_shared/auth.js';
 export async function handler(request){
   if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors});const originError=checkOrigin(request);if(originError)return originError;
   const action=new URL(request.url).searchParams.get('action')||'health';
@@ -39,4 +39,4 @@ export async function handler(request){
     return json({error:'not_found'},404);
   }catch{return json({error:'storage_unavailable'},503);}
 }
-Deno.serve(handler);
+Deno.serve(withCors(handler));

@@ -1,4 +1,4 @@
-import {cors,json,database,checkOrigin,authenticate,requirePasswordChange} from '../_shared/auth.js';
+import {withCors,cors,json,database,checkOrigin,authenticate,requirePasswordChange} from '../_shared/auth.js';
 const validState=s=>!!s&&typeof s==='object'&&!Array.isArray(s)&&s.version===1&&s.progress&&typeof s.progress==='object'&&!Array.isArray(s.progress)&&s.flags&&typeof s.flags==='object'&&!Array.isArray(s.flags)&&Array.isArray(s.history)&&(s.session===null||(typeof s.session==='object'&&!Array.isArray(s.session)));
 export async function handler(request){
   if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors});
@@ -28,4 +28,4 @@ export async function handler(request){
     return json({userId:user.id,revision:body.revision+1,updatedAt});
   }catch{return json({error:'storage_unavailable'},503);}
 }
-Deno.serve(handler);
+Deno.serve(withCors(handler));

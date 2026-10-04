@@ -21,7 +21,7 @@
     window.PMP_USER={userId:initial.userId,displayName:initial.user.display_name||initial.user.username};
     window.PMP_SHELL.mount({host:document.getElementById('practiceShell'),user:initial.user,area:'practice',onLogout:window.PMP_SIGNOUT});
     document.getElementById('account-name').textContent=window.PMP_USER.displayName;
-    for(const name of ['pmp-account.js','pmp-data.js','pmp-app.js'])await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='./'+name+'?v=9';script.onload=resolve;script.onerror=reject;document.body.appendChild(script);});
+    for(const name of ['pmp-account.js','pmp-data.js','pmp-app.js'])await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='./'+name+'?v=10';script.onload=resolve;script.onerror=reject;document.body.appendChild(script);});
   }catch{
     document.getElementById('app').innerHTML='<section class="panel login-page"><h2>تعذر تحميل تقدمك</h2><p>تحقق من اتصال الإنترنت ثم أعد المحاولة.</p><button onclick="location.reload()">إعادة المحاولة</button><br><a href="../">العودة إلى رحلة PMP</a></section>';
   }
