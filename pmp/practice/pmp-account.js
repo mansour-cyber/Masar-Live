@@ -11,7 +11,7 @@
     document.getElementById('language-ar').setAttribute('aria-pressed',String(value==='ar'));
     document.getElementById('language-en').setAttribute('aria-pressed',String(value==='en'));
     const out=document.getElementById('signout');if(out)out.textContent=manual[value].signout;
-    const course=document.getElementById('course-link');if(course)course.textContent=manual[value].course;
+    const course=document.getElementById('course-link');if(course&&!course.closest('.workspace-shell'))course.textContent=manual[value].course;window.PMP_SHELL?.updateLanguage(value);
     const label=document.getElementById('account-label');if(label)label.textContent=manual[value].account;
     status(statusKey);try{localStorage.setItem('pmp-language',value);}catch{}
     if(notify)window.dispatchEvent(new CustomEvent('pmp-language-change',{detail:value}));

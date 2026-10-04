@@ -20,7 +20,7 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           set -e
-          for file in src/js/*.js assets/*.js; do
+          for file in src/js/*.js assets/*.js pmp/*.js pmp/practice/*.js pmp/admin/*.js; do
             node --check "$file"
           done
 
@@ -31,6 +31,10 @@ jobs:
           test -f editor.html
           test -f robots.txt
           test -f sitemap.xml
+          test -f pmp/pmp-system.css
+          test -f pmp/index.html
+          test -f pmp/practice/index.html
+          test -f pmp/admin/index.html
           test -f brand/masar-symbol.svg
           test -f assets/landing.css
           test -f assets/landing.js
