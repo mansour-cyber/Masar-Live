@@ -50,21 +50,9 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 .quickTestBtn:hover{filter:brightness(1.05)}.levelCards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.levelCard{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}.levelCard b{font-size:20px}.levelCard.easy{border-top:4px solid #10b981}.levelCard.medium{border-top:4px solid #f59e0b}.levelCard.hard{border-top:4px solid #ef4444}
 .metricRow{display:grid;grid-template-columns:160px 1fr 70px;gap:10px;align-items:center;margin:9px 0}.metricBar{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden}.metricBar i{display:block;height:100%;background:linear-gradient(90deg,#7c3aed,#0ea5e9)}.deltaUp{color:#047857;font-weight:900}.deltaDown{color:#b91c1c;font-weight:900}.historyTable{width:100%;border-collapse:collapse}.historyTable th,.historyTable td{padding:9px;border-bottom:1px solid var(--line);text-align:start;font-size:13px}.focusBox{background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:12px;margin:8px 0}
 @media(max-width:700px){.quickTestBtn{top:auto;bottom:16px;inset-inline-end:12px;writing-mode:horizontal-tb;transform:none;border-radius:999px;padding:11px 15px}.levelCards{grid-template-columns:1fr}.metricRow{grid-template-columns:110px 1fr 55px}}
-.bank-link{display:inline-block;text-decoration:none;white-space:nowrap;border-radius:11px;padding:10px 13px;font-weight:800}.nav .bank-link{background:#ede9fe;color:#5b21b6;border:1px solid #ddd6fe}.gtranslate_wrapper{display:none}</style><link rel="stylesheet" href="./pmp-access.css?v=6"></head>
+.bank-link{display:inline-block;text-decoration:none;white-space:nowrap;border-radius:11px;padding:10px 13px;font-weight:800}.nav .bank-link{background:#ede9fe;color:#5b21b6;border:1px solid #ddd6fe}.gtranslate_wrapper{display:none}</style><link rel="stylesheet" href="./pmp-access.css?v=7"><link rel="stylesheet" href="./pmp-ui.css?v=7"></head>
 <body class="auth-locked"><div class="gtranslate_wrapper"></div>
-<div id="loginGate" class="loginGate">
-  <div class="loginCard">
-    <div class="row" style="justify-content:space-between;margin-bottom:18px"><b class="notranslate" translate="no">PMP Teacher Studio</b><div class="notranslate" translate="no"><button class="btn soft" onclick="setCourseLanguage('ar')">عربي</button><button class="btn soft" onclick="setCourseLanguage('en')">English</button></div></div>
-    <h1>تسجيل الدخول</h1>
-    <p class="muted">دخول خاص بالمستخدمين المعتمدين فقط، وكل مستخدم له مسار تقدم مستقل.</p>
-    <label for="loginUser">اسم المستخدم</label>
-    <input id="loginUser" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="username">
-    <label for="loginPin">كلمة المرور</label>
-    <input id="loginPin" type="password" maxlength="128" autocomplete="current-password" placeholder="••••">
-    <button id="loginBtn" class="btn dark loginBtn">دخول</button>
-    <div id="loginError" class="loginError"></div>
-  </div>
-</div>
+<div id="loginGate" class="loginGate"><p>جارٍ تجهيز رحلة PMP…</p></div>
 <div class="app" id="mainApp" style="display:none">
 <div class="top"><div class="topbar"><div class="brand"><b data-ar="رحلة PMP" data-en="PMP Journey">رحلة PMP</b><small data-ar="وضع المعلم مفعّل" data-en="Teacher Mode ON">وضع المعلم مفعّل</small></div><span id="userBadge" class="userBadge notranslate" translate="no"></span><button onclick="logoutUser()" data-ar="خروج" data-en="Logout">خروج</button><button id="langBtn" class="notranslate" translate="no">عربي | English</button></div></div>
 <button class="quickTestBtn" onclick="openAssessment()" data-ar="اختبر الآن" data-en="Test Now">اختبر الآن</button>
@@ -75,7 +63,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 <div class="row"><button class="btn white" onclick="resume()" data-ar="أكمل من حيث توقفت" data-en="Resume">أكمل من حيث توقفت</button><button class="btn soft" onclick="go('journey')" data-ar="عرض المنهج" data-en="View curriculum">عرض المنهج</button></div>
 </section>
 
-<div class="nav" id="nav"><a id="adminLink" class="bank-link" href="./admin/?v=6" data-ar="لوحة التحكم" data-en="Admin dashboard" hidden>لوحة التحكم</a><a class="bank-link" href="./practice/?v=6" data-ar="بنك الأسئلة · ٣٬٥٥٩" data-en="Question bank · 3,559">بنك الأسئلة · ٣٬٥٥٩</a>
+<div class="nav" id="nav"><a id="adminLink" class="bank-link" href="./admin/?v=7" data-ar="لوحة التحكم" data-en="Admin dashboard" hidden>لوحة التحكم</a><a class="bank-link" href="./practice/?v=7" data-ar="بنك الأسئلة · ٣٬٥٥٩" data-en="Question bank · 3,559">بنك الأسئلة · ٣٬٥٥٩</a>
 <button class="active" data-go="dash" data-ar="رحلتي" data-en="Dashboard">رحلتي</button>
 <button data-go="journey" data-ar="المنهج" data-en="Curriculum">المنهج</button>
 <button data-go="practice" data-ar="تدريب" data-en="Practice">تدريب</button>
@@ -97,7 +85,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 
 <section id="journey" class="section"><div id="stages"></div><div id="lessonHost"></div></section>
 
-<section id="practice" class="section"><div class="card"><h2 data-ar="بنك أسئلة PMP الكامل" data-en="Complete PMP question bank">بنك أسئلة PMP الكامل</h2><p class="muted" data-ar="٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك." data-en="3,559 questions across 29 sections, with grading, explanations and error review. Question bank progress is saved separately in your account.">٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك.</p><a class="btn dark bank-link" href="./practice/?v=6" data-ar="افتح بنك الأسئلة" data-en="Open question bank">افتح بنك الأسئلة</a></div>
+<section id="practice" class="section"><div class="card"><h2 data-ar="بنك أسئلة PMP الكامل" data-en="Complete PMP question bank">بنك أسئلة PMP الكامل</h2><p class="muted" data-ar="٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك." data-en="3,559 questions across 29 sections, with grading, explanations and error review. Question bank progress is saved separately in your account.">٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك.</p><a class="btn dark bank-link" href="./practice/?v=7" data-ar="افتح بنك الأسئلة" data-en="Open question bank">افتح بنك الأسئلة</a></div>
 <div class="grid3">
 <div class="card"><h3 data-ar="كويز سريع" data-en="Quick quiz">كويز سريع</h3><button class="btn dark" onclick="startPractice('all',10)">10</button></div>
 <div class="card"><h3 data-ar="حسب المجال" data-en="By domain">حسب المجال</h3><select id="domainSel" class="search"><option value="people">People</option><option value="process">Process</option><option value="business">Business</option><option value="agile">Agile</option><option value="foundation">Foundation</option></select><br><br><button class="btn dark" onclick="startPractice(document.getElementById('domainSel').value,30)">30</button></div>
@@ -131,12 +119,12 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 
 <section id="mistakes" class="section"><div class="card"><h2 data-ar="سجل الأخطاء" data-en="Mistake log">سجل الأخطاء</h2><div id="mistakesBox"></div></div></section>
 <section id="glossary" class="section"><div class="card"><h2 data-ar="القاموس" data-en="Glossary">القاموس</h2><input id="gSearch" class="search" placeholder="ابحث..."><div id="gBox"></div></div></section>
-<section id="settings" class="section"><div class="card"><h2 data-ar="الإعدادات والحفظ" data-en="Settings & backup">الإعدادات والحفظ</h2><label data-ar="لغة الأسئلة" data-en="Question language">لغة الأسئلة</label> <select id="qLang"><option value="ar">عربي</option><option value="en">English</option><option value="bi">ثنائي</option></select><br><br><div class="row"><button class="btn dark" onclick="exportProgress()" data-ar="تصدير التقدم" data-en="Export progress">تصدير التقدم</button><label class="btn soft" data-ar="استيراد" data-en="Import">استيراد<input id="importProgress" type="file" accept=".json" hidden></label><button class="btn" style="background:#fee2e2;color:#991b1b" onclick="resetProgress()" data-ar="تصفير" data-en="Reset">تصفير</button></div></div></section>
+<section id="settings" class="section"><div class="card"><button class="btn soft" onclick="showPmpOnboarding()" data-ar="تعديل بداية الرحلة والهدف اليومي" data-en="Update your starting point and daily goal">تعديل بداية الرحلة والهدف اليومي</button><h2 data-ar="الإعدادات والحفظ" data-en="Settings & backup">الإعدادات والحفظ</h2><label data-ar="لغة الأسئلة" data-en="Question language">لغة الأسئلة</label> <select id="qLang"><option value="ar">عربي</option><option value="en">English</option><option value="bi">ثنائي</option></select><br><br><div class="row"><button class="btn dark" onclick="exportProgress()" data-ar="تصدير التقدم" data-en="Export progress">تصدير التقدم</button><label class="btn soft" data-ar="استيراد" data-en="Import">استيراد<input id="importProgress" type="file" accept=".json" hidden></label><button class="btn" style="background:#fee2e2;color:#991b1b" onclick="resetProgress()" data-ar="تصفير" data-en="Reset">تصفير</button></div></div></section>
 
 <footer data-ar="منصة تدريب مستقلة للاستعداد لاختبار PMP. ليست منتجًا رسميًا من PMI." data-en="An independent training platform for PMP exam preparation. Not an official PMI product.">منصة تدريب مستقلة للاستعداد لاختبار PMP. ليست منتجًا رسميًا من PMI.</footer>
 </div>
 
-<script src="./pmp-access.js?v=6"></script>
+<script src="./pmp-entry.js?v=7"></script><script src="./pmp-access.js?v=7"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const stages=[
@@ -240,7 +228,7 @@ function save(){
       headers:{'content-type':'application/json','authorization':'Bearer '+saveToken},
       body:JSON.stringify({state:JSON.parse(snapshot),expectedUserId})
     });
-    if(r.status===401){ await logoutUser(false); }
+    if(r.status===401&&session?.token===saveToken){ await logoutUser(false); }
   }).catch(()=>{});
 }
 
@@ -249,16 +237,19 @@ async function apiFetch(action,options={}){
   if(session?.token) headers.authorization='Bearer '+session.token;
   return fetch(API+'?action='+encodeURIComponent(action),{...options,headers});
 }
-function setLoginError(msg){ const e=$('#loginError'); if(e) e.textContent=msg||''; }
+function setLoginError(msg){const e=$('#loginError');if(e)e.textContent=msg||'';for(const input of [$('#loginUser'),$('#loginPin')])input?.setAttribute('aria-invalid',String(!!msg));}
 function showLogin(){
+  try{lang=localStorage.getItem('pmp-language')==='en'?'en':'ar';}catch{} applyLang();
   document.body.classList.add('auth-locked');
   $('#loginGate').style.display='grid';
   $('#mainApp').style.display='none';
 }
 function showApp(){
   if(currentUser?.must_change_password){window.PMP_ACCOUNT.showPasswordChange();return;}
+  lang=state.lang||'ar';applyLang();
+  if(!state.onboarding?.completedAt){showPmpOnboarding();return;}
   $('#adminLink').hidden=currentUser?.role!=='admin';
-  if(new URLSearchParams(location.search).get('return_to')==='admin'){location.replace('./admin/?v=6');return;}
+  if(new URLSearchParams(location.search).get('return_to')==='admin'){location.replace('./admin/?v=7');return;}
   if(new URLSearchParams(location.search).get('return_to')==='practice'){location.replace('./practice/');return;}
   document.body.classList.remove('auth-locked');
   $('#loginGate').style.display='none';
@@ -268,13 +259,25 @@ function showApp(){
   applyLang();
   go(state.section||'dash');
 }
+function showPmpOnboarding(){
+  window.PMP_ENTRY.onboarding({user:currentUser,preferences:state.onboarding||{},onLanguage:value=>{lang=value;applyLang();},onComplete:async preferences=>{
+    const expectedUserId=currentUser.id,token=session.token;
+    await saveChain;
+    const next={...state,lang,onboarding:preferences};
+    const r=await fetch(API+'?action=progress',{method:'POST',headers:{'content-type':'application/json',authorization:'Bearer '+token},body:JSON.stringify({state:next,expectedUserId})});
+    if(!r.ok||session?.token!==token)throw Error('save_failed');state=next;localStorage.setItem(userCacheKey(),JSON.stringify(state));
+    const requested=new URLSearchParams(location.search).get('return_to'),target=requested||preferences.start;
+    if(target==='admin'){location.assign('./admin/?v=7');return;}if(target==='practice'){location.assign('./practice/?v=7');return;}
+    showApp();if(target==='assessment')openAssessment();else if(target==='curriculum')go('journey');
+  }});
+}
 async function loginUser(){
   const btn=$('#loginBtn');
   const username=($('#loginUser').value||'').trim().toLowerCase();
   const pin=$('#loginPin').value||'';
   setLoginError('');
-  if(!username||!pin){ setLoginError('أدخل اسم المستخدم والرقم السري.'); return; }
-  btn.disabled=true; btn.textContent='جارٍ الدخول...';
+  if(!username||!pin){ setLoginError(t('أدخل اسم المستخدم وكلمة المرور.','Enter your username and password.')); return; }
+  btn.disabled=true; btn.textContent=t('جارٍ تسجيل الدخول…','Signing in…');
   try{
     const r=await apiFetch('login',{
       method:'POST',
@@ -282,8 +285,8 @@ async function loginUser(){
       body:JSON.stringify({username,pin})
     });
     const data=await r.json().catch(()=>({}));
-    if(r.status===429){ setLoginError('محاولات كثيرة. جرّب بعد 10 دقائق.'); return; }
-    if(!r.ok){ setLoginError('اسم المستخدم أو الرقم السري غير صحيح.'); return; }
+    if(r.status===429){ setLoginError(t('محاولات كثيرة. جرّب بعد ١٠ دقائق.','Too many attempts. Try again in 10 minutes.')); return; }
+    if(!r.ok){ setLoginError(t('اسم المستخدم أو كلمة المرور غير صحيحة.','Username or password is incorrect.')); return; }
 
     session={token:data.token,expires_at:data.expires_at,user:data.user};
     currentUser=data.user;
@@ -297,16 +300,16 @@ async function loginUser(){
     if(!loaded && currentUser.username==='mansour'){
       try{ loaded=JSON.parse(localStorage.getItem(LEGACY_KEY)||'null'); }catch{}
     }
-    state={...defaultState(),...(loaded||{})};
+    state={...defaultState(),...(loaded||{}),lang};
     lang=state.lang||'ar';
     showApp();
     save();
     if(currentUser.username==='mansour') localStorage.removeItem(LEGACY_KEY);
     $('#loginPin').value='';
   }catch{
-    setLoginError('تعذر الاتصال الآن. جرّب مرة أخرى.');
+    setLoginError(t('تعذر الاتصال. تحقق من الإنترنت ثم أعد المحاولة.','Connection failed. Check your internet connection and retry.'));
   }finally{
-    btn.disabled=false; btn.textContent='دخول';
+    btn.disabled=false; btn.innerHTML=window.PMP_ENTRY.icon('arrow')+'<span>'+t('تسجيل الدخول','Sign in')+'</span>';
   }
 }
 async function logoutUser(callServer=true){
@@ -323,9 +326,9 @@ async function logoutUser(callServer=true){
   showLogin();
 }
 async function bootstrapAuth(){
-  $('#loginBtn').onclick=loginUser;
-  $('#loginPin').addEventListener('keydown',e=>{ if(e.key==='Enter') loginUser(); });
-  $('#loginUser').addEventListener('keydown',e=>{ if(e.key==='Enter') $('#loginPin').focus(); });
+  try{lang=localStorage.getItem('pmp-language')==='en'?'en':'ar';}catch{}document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  window.PMP_ENTRY.login({host:$('#loginGate'),onLanguage:window.setCourseLanguage});
+  $('#loginForm').onsubmit=e=>{e.preventDefault();if(!$('#loginBtn').disabled)loginUser();};
 
   try{ session=JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); }catch{ session=null; }
   if(!session?.token){ showLogin(); return; }
@@ -340,7 +343,7 @@ async function bootstrapAuth(){
     const cacheKey='pmp_cache_'+currentUser.username;
     let loaded=data.progress && typeof data.progress==='object' ? data.progress : null;
     if(!loaded){ try{ loaded=JSON.parse(localStorage.getItem(cacheKey)||'null'); }catch{} }
-    state={...defaultState(),...(loaded||{})};
+    state={...defaultState(),...(loaded||{}),lang:loaded?.lang||lang};
     lang=state.lang||'ar';
     showApp();
   }catch{
@@ -564,4 +567,4 @@ window.setCourseLanguage=value=>{lang=value;state.lang=value;save();applyLang();
 window.addEventListener('pagehide',()=>{for(const a of Object.values(state.activities||{})){if(a.status==='active'){a.status='paused';a.updatedAt=new Date().toISOString();}}save();});
 bootstrapAuth();
 </script>
-<script>window.gtranslateSettings={default_language:"ar",languages:["ar","en"],native_language_names:true,detect_browser_language:false,wrapper_selector:".gtranslate_wrapper",url_structure:"none"};</script><script src="./pmp-language.js?v=6" defer></script><script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script></body></html>
+<script>window.gtranslateSettings={default_language:"ar",languages:["ar","en"],native_language_names:true,detect_browser_language:false,wrapper_selector:".gtranslate_wrapper",url_structure:"none"};</script><script src="./pmp-language.js?v=7" defer></script><script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script></body></html>
