@@ -3,7 +3,7 @@
   let lang;try{lang=localStorage.getItem('pmp-language');}catch{}
   lang=lang==='en'?'en':'ar';
   window.PMP_LANGUAGE=lang;
-  const manual={ar:{signout:'تسجيل الخروج',account:'مساحة تدريب PMP',loading:'جارٍ تحميل تقدمك…',saved:'تم حفظ تقدمك في حسابك',saving:'جارٍ الحفظ…',offline:'محفوظ على هذا الجهاز؛ المزامنة عند عودة الاتصال',changed:'تغير الحساب. أعد تحميل الصفحة.'},en:{signout:'Sign out',account:'PMP Practice',loading:'Loading your progress…',saved:'Progress saved to your account',saving:'Saving…',offline:'Saved on this device; sync resumes when online',changed:'Account changed. Reload this page.'}};
+  const manual={ar:{signout:'تسجيل الخروج',account:'مساحة تدريب PMP',course:'رحلة PMP',loading:'جارٍ تحميل تقدمك…',saved:'تم حفظ تقدمك في حسابك',saving:'جارٍ الحفظ…',offline:'محفوظ على هذا الجهاز؛ المزامنة عند عودة الاتصال',changed:'تغير الحساب. أعد تحميل الصفحة.'},en:{signout:'Sign out',account:'PMP Practice',course:'PMP Journey',loading:'Loading your progress…',saved:'Progress saved to your account',saving:'Saving…',offline:'Saved on this device; sync resumes when online',changed:'Account changed. Reload this page.'}};
   let statusKey='loading';
   function status(key,error=false){statusKey=key;const e=document.getElementById('sync-status');if(e){e.textContent=manual[lang][key]||key;e.dataset.error=String(error);}}
   function setLanguage(value,notify=true){
@@ -11,6 +11,7 @@
     document.getElementById('language-ar').setAttribute('aria-pressed',String(value==='ar'));
     document.getElementById('language-en').setAttribute('aria-pressed',String(value==='en'));
     const out=document.getElementById('signout');if(out)out.textContent=manual[value].signout;
+    const course=document.getElementById('course-link');if(course)course.textContent=manual[value].course;
     const label=document.getElementById('account-label');if(label)label.textContent=manual[value].account;
     status(statusKey);try{localStorage.setItem('pmp-language',value);}catch{}
     if(notify)window.dispatchEvent(new CustomEvent('pmp-language-change',{detail:value}));

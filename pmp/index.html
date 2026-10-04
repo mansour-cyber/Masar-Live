@@ -75,7 +75,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 <div class="row"><button class="btn white" onclick="resume()" data-ar="أكمل من حيث توقفت" data-en="Resume">أكمل من حيث توقفت</button><button class="btn soft" onclick="go('journey')" data-ar="عرض المنهج" data-en="View curriculum">عرض المنهج</button></div>
 </section>
 
-<div class="nav" id="nav"><a class="bank-link" href="./practice/?v=4" data-ar="بنك الأسئلة · ٣٬٥٥٩" data-en="Question bank · 3,559">بنك الأسئلة · ٣٬٥٥٩</a>
+<div class="nav" id="nav"><a class="bank-link" href="./practice/?v=5" data-ar="بنك الأسئلة · ٣٬٥٥٩" data-en="Question bank · 3,559">بنك الأسئلة · ٣٬٥٥٩</a>
 <button class="active" data-go="dash" data-ar="رحلتي" data-en="Dashboard">رحلتي</button>
 <button data-go="journey" data-ar="المنهج" data-en="Curriculum">المنهج</button>
 <button data-go="practice" data-ar="تدريب" data-en="Practice">تدريب</button>
@@ -97,7 +97,7 @@ footer{font-size:12px;color:#667085;padding:25px 4px 40px;line-height:1.7}
 
 <section id="journey" class="section"><div id="stages"></div><div id="lessonHost"></div></section>
 
-<section id="practice" class="section"><div class="card"><h2 data-ar="بنك أسئلة PMP الكامل" data-en="Complete PMP question bank">بنك أسئلة PMP الكامل</h2><p class="muted" data-ar="٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك." data-en="3,559 questions across 29 sections, with grading, explanations and error review. Question bank progress is saved separately in your account.">٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك.</p><a class="btn dark bank-link" href="./practice/?v=4" data-ar="افتح بنك الأسئلة" data-en="Open question bank">افتح بنك الأسئلة</a></div>
+<section id="practice" class="section"><div class="card"><h2 data-ar="بنك أسئلة PMP الكامل" data-en="Complete PMP question bank">بنك أسئلة PMP الكامل</h2><p class="muted" data-ar="٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك." data-en="3,559 questions across 29 sections, with grading, explanations and error review. Question bank progress is saved separately in your account.">٣٬٥٥٩ سؤالًا عبر ٢٩ قسمًا، مع التصحيح والشرح ومراجعة الأخطاء. تقدم هذا البنك محفوظ بشكل مستقل داخل حسابك.</p><a class="btn dark bank-link" href="./practice/?v=5" data-ar="افتح بنك الأسئلة" data-en="Open question bank">افتح بنك الأسئلة</a></div>
 <div class="grid3">
 <div class="card"><h3 data-ar="كويز سريع" data-en="Quick quiz">كويز سريع</h3><button class="btn dark" onclick="startPractice('all',10)">10</button></div>
 <div class="card"><h3 data-ar="حسب المجال" data-en="By domain">حسب المجال</h3><select id="domainSel" class="search"><option value="people">People</option><option value="process">Process</option><option value="business">Business</option><option value="agile">Agile</option><option value="foundation">Foundation</option></select><br><br><button class="btn dark" onclick="startPractice(document.getElementById('domainSel').value,30)">30</button></div>
@@ -554,4 +554,4 @@ function renderAll(){renderDashboard();renderStages();renderMistakes();renderGlo
 window.setCourseLanguage=value=>{lang=value;state.lang=value;save();applyLang();};
 bootstrapAuth();
 </script>
-<script>window.gtranslateSettings={default_language:"ar",languages:["ar","en"],native_language_names:true,detect_browser_language:false,wrapper_selector:".gtranslate_wrapper",url_structure:"none"};</script><script src="./pmp-language.js?v=4" defer></script><script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script></body></html>
+<script>window.gtranslateSettings={default_language:"ar",languages:["ar","en"],native_language_names:true,detect_browser_language:false,wrapper_selector:".gtranslate_wrapper",url_structure:"none"};</script><script src="./pmp-language.js?v=5" defer></script><script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script></body></html>
